@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/sujitIwale/node-file-upload#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "multer": "^1.4.3"
   }
 }
