@@ -1,0 +1,22 @@
+{
+  "name": "file-upload",
+  "version": "1.0.0",
+  "description": "upload and work with files in nodejs",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sujitIwale/node-file-upload.git"
+  },
+  "author": "Sujit Iwale",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sujitIwale/node-file-upload/issues"
+  },
+  "homepage": "https://github.com/sujitIwale/node-file-upload#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
