@@ -14,7 +14,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 router.get('/', upload.single('profile'), (req, res) => {
-	res.send('file upoaded successfully' + req.file);
+	res.send('file upoaded successfully' + req.filename);
 });
 
 module.exports = router;
