@@ -4,7 +4,7 @@
   "description": "upload and work with files in nodejs",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -20,5 +20,8 @@
     "express": "^4.17.1",
     "fast-csv": "^4.3.6",
     "multer": "^1.4.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
   }
 }

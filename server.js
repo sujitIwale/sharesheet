@@ -8,6 +8,6 @@ const app = express();
 app.use('/upload/img', require('./routes/imageUpload'));
 app.use('/upload/csv', require('./routes/csvUpload'));
 
-app.listen(3003, () => {
-	console.log('server is runnig on port 3003');
+app.listen(3001, () => {
+	console.log('server is runnig on port 3001');
 });
