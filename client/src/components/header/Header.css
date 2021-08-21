@@ -1,12 +1,12 @@
 .header {
     background-color: black;
+    height: 60px;
     top: 0;
     position: sticky;
 }
 .header-content {
     display: flex;
-    min-height: 30px;
-    padding: 20px 0;
+    padding: 15px 0;
     justify-content: space-between;
 }
 .header-content li{
@@ -14,4 +14,35 @@
     list-style: none;
     align-items: center;
     flex-direction:row;
+}
+
+.header-content .search-bar input{
+    border-radius: 4px;
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    background-color: #181a1f;
+    outline: none;
+    border: none;
+    height: 29px;
+    width: 400px;
+}
+
+@media only screen and (max-width: 575px) {
+    .header-content .search-bar input{
+        width: 275px;
+    }
+}
+@media only screen and (max-width: 600px) {
+    .header-content .search-bar input{
+        width: 300px;
+    }
+}
+@media only screen and (max-width: 400px) {
+    .header-content .search-bar input{
+        width: 200px;
+    }
+    .header-content .logo-text {
+        display: none;
+    }
 }
