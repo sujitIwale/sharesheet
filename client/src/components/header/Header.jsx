@@ -1,0 +1,22 @@
+import React from 'react';
+import './Header.css';
+
+const Header = () => {
+	return (
+		<div className='header'>
+			<div className='header-content base-layout'>
+				<li>
+					<h3>StockFolio</h3>
+				</li>
+				<li>
+					<input type='text' placeholder='Search' />
+				</li>
+				<div>
+					<li>About</li>
+				</div>
+			</div>
+		</div>
+	);
+};
+
+export default Header;

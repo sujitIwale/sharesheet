@@ -1,0 +1,17 @@
+.header {
+    background-color: black;
+    top: 0;
+    position: sticky;
+}
+.header-content {
+    display: flex;
+    min-height: 30px;
+    padding: 20px 0;
+    justify-content: space-between;
+}
+.header-content li{
+    display: flex;
+    list-style: none;
+    align-items: center;
+    flex-direction:row;
+}

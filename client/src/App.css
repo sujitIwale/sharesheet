@@ -1,2 +1,9 @@
+/* .container {
+    margin: 0 auto;
+} */
 
-
+.base-layout {
+     width: 1200px;
+    max-width: 90%;
+    margin: 0 auto;
+}
