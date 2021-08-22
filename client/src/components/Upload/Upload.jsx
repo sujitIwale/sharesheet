@@ -18,17 +18,6 @@ const Upload = ({ setData }) => {
 	};
 	return (
 		<div className='upload-main'>
-			{/* <label className='pa-10'>Upload Csv file</label>
-			<input
-				className='pa-10 pointer'
-				type='file'
-				name='file'
-				onChange={onChange}
-			/>
-			<button className='pa-10 pointer' onClick={onClick}>
-				Submit
-			</button> */}
-
 			<form id='file-upload-form' className='uploader'>
 				<input
 					id='file-upload'

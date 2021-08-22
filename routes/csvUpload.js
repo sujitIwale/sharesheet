@@ -25,11 +25,6 @@ router.post('/', csvUpload, (req, res) => {
 			.on('end', (rowCount) => {
 				res.send(data);
 				fs.unlinkSync('uploads/csv/' + req.file.filename);
-				fs.writeFile(
-					'rawdata/data.json',
-					JSON.stringify(data),
-					(error) => console.log(error)
-				);
 			});
 	} catch (error) {
 		console.log(error);
