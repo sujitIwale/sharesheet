@@ -1,21 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { BASE_API_URL } from '../../utils/apiEndPoints.js';
+import React from 'react';
 import './Table.css';
 
-const Table = () => {
-	const [Data, setData] = useState([]);
-	function hey() {
-		console.log('called');
-	}
-	useEffect(() => {
-		hey();
-		(async function () {
-			const res = await axios.get(`${BASE_API_URL}`);
-			setData(res.data);
-		})();
-	}, []);
-
+const Table = ({ Data }) => {
 	return (
 		<div className='table-main'>
 			{Data.length > 0 && (

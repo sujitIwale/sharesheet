@@ -5,12 +5,13 @@ import Table from './components/Table/Table';
 import Upload from './components/Upload/Upload';
 
 function App() {
+	const [Data, setData] = useState([]);
 	return (
 		<div className='container'>
 			<Header />
 			<div className='base-layout'>
-				<Upload />
-				<Table />
+				<Upload setData={setData} />
+				<Table Data={Data} />
 			</div>
 		</div>
 	);

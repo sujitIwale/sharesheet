@@ -33,3 +33,10 @@ body {
     font-family: 'Nunito', sans-serif;
     color: rgb(255, 255, 255);
 }
+
+.pa-10 {
+    padding: 10px;
+}
+.pointer {
+    cursor: pointer;
+}
