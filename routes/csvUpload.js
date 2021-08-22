@@ -7,7 +7,7 @@ const { error } = require('console');
 const { json } = require('express');
 const router = express.Router();
 
-router.get('/', csvUpload, (req, res) => {
+router.post('/', csvUpload, (req, res) => {
 	const data = [];
 	// fs.createReadStream(path.resolve('uploads/csv', req.file.filename))
 	// 	.pipe(csv.parse({ headers: true }))
