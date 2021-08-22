@@ -1,12 +1,16 @@
 const express = require('express');
+const cors = require('cors');
 const fs = require('fs');
 const app = express();
 
 // fs.rmdirSync('./uploads/img', { recursive: true });
 
+app.use(cors());
+
 app.get('/', (req, res) => {
 	// const data = fs.readFileSync('rawdata/data.json', 'utf-8');
-	res.sendFile(__dirname + '/rawdata/img.jpg');
+	console.log('req');
+	res.sendFile(__dirname + '/rawdata/data.json');
 });
 
 // Routes

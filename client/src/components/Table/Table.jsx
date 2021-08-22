@@ -1,7 +1,18 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { BASE_API_URL } from '../../utils/apiEndPoints.js';
 import './Table.css';
 
 const Table = () => {
+	const [Data, setData] = useState([]);
+
+	useEffect(() => {
+		(async function () {
+			const res = await axios.get(`${BASE_API_URL}`);
+			setData(res.data);
+		})();
+	}, []);
+
 	const data = [
 		{
 			Security: '3IINFOTECH',
@@ -245,42 +256,26 @@ const Table = () => {
 	];
 	return (
 		<div className='table-main'>
-			<table class='rwd-table'>
-				<tr className='table-header'>
-					<th>Sr.No.</th>
-					{Object.keys(data[0]).map((header) => (
-						<th>{header}</th>
-					))}
-				</tr>
-				{data.map((row, i) => {
-					return (
-						<tr>
-							<td data-th='Sr.No.'>{++i}</td>
-							{Object.keys(row).map((header) => (
-								<td data-th={header}>{row[header]}</td>
-							))}
-						</tr>
-					);
-				})}
-				{/* <tr>
-					<td data-th='Movie Title'>Star Wars</td>
-					<td data-th='Genre'>Adventure, Sci-fi</td>
-					<td data-th='Year'>1977</td>
-					<td data-th='Gross'>$460,935,665</td>
-				</tr>
-				<tr>
-					<td data-th='Movie Title'>Howard The Duck</td>
-					<td data-th='Genre'>"Comedy"</td>
-					<td data-th='Year'>1986</td>
-					<td data-th='Gross'>$16,295,774</td>
-				</tr>
-				<tr>
-					<td data-th='Movie Title'>American Graffiti</td>
-					<td data-th='Genre'>Comedy, Drama</td>
-					<td data-th='Year'>1973</td>
-					<td data-th='Gross'>$115,000,000</td>
-				</tr> */}
-			</table>
+			{Data.length > 0 && (
+				<table class='rwd-table'>
+					<tr className='table-header'>
+						<th>Sr.No.</th>
+						{Object.keys(Data[0]).map((header) => (
+							<th>{header}</th>
+						))}
+					</tr>
+					{Data.map((row, i) => {
+						return (
+							<tr>
+								<td data-th='Sr.No.'>{++i}</td>
+								{Object.keys(row).map((header) => (
+									<td data-th={header}>{row[header]}</td>
+								))}
+							</tr>
+						);
+					})}
+				</table>
+			)}
 		</div>
 	);
 };

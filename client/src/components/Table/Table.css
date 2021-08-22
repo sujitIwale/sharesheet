@@ -56,15 +56,19 @@
     display: none;
   }
 }
-.rwd-table th,
+/* .rwd-table th,
 .rwd-table td {
   text-align: left;
-}
+} */
 @media (min-width: 480px) {
-  .rwd-table th,
+
   .rwd-table td {
     display: table-cell;
     padding: 0.25em 0.5em;
+  }
+  .rwd-table th {
+    display: table-cell;
+    padding: 0.10em 0.15em;
   }
   .rwd-table th:first-child,
   .rwd-table td:first-child {
@@ -77,11 +81,11 @@
 }
 
 
-h1 {
+/* h1 {
   font-weight: normal;
   letter-spacing: -1px;
   color: #34495e;
-}
+} */
 
 .rwd-table tr {
   border-color: #46637f;
