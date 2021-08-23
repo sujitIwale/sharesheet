@@ -1,20 +1,27 @@
-import axios from 'axios';
 import React, { useState } from 'react';
-import { BASE_API_URL } from '../../utils/apiEndPoints';
+import { apiRequest } from '../../utils/apiRequests';
 import './Upload.css';
 
 const Upload = ({ setData }) => {
 	const [File, setFile] = useState(null);
+	const [uploadStatus, setuploadStatus] = useState(false);
 	const onChange = (e) => {
-		console.log(e.target.files[0]);
 		setFile(e.target.files[0]);
+		setuploadStatus(false);
 	};
 	const onClick = async () => {
-		if (File === null) return;
+		if (File === null || uploadStatus) {
+			alert('Please Select a file');
+			return;
+		}
 		const data = new FormData();
 		data.append('csvdata', File);
-		const res = await axios.post(`${BASE_API_URL}/upload/csv`, data);
-		setData(res.data);
+		console.log('Uploading');
+		const res = await apiRequest('/upload/csv', data);
+		if (res) {
+			setData(res);
+			setuploadStatus(true);
+		}
 	};
 	return (
 		<div className='upload-main'>
