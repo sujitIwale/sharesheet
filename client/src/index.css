@@ -40,3 +40,15 @@ body {
 .pointer {
     cursor: pointer;
 }
+
+/*Customize Scrollbar*/
+
+.customize-scrollbar::-webkit-scrollbar {
+    background-color:rgb(17, 17, 17);
+    width:15px
+}
+.customize-scrollbar::-webkit-scrollbar-thumb {
+    cursor: pointer;
+    background-color:rgb(219, 219, 219);
+    border-radius:2px;
+}

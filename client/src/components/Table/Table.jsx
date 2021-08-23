@@ -4,7 +4,7 @@ import './Table.css';
 const Table = ({ Data }) => {
 		if (Data.length > 0)
 			return (
-				<div className='table-main'>
+				<div className='table-main customize-scrollbar'>
 					<table className='rwd-table'>
 						<tr key='header' className='table-header'>
 							<th key='1'>Sr.No.</th>

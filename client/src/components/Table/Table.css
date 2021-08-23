@@ -23,7 +23,7 @@
 .table-header {
     top: 0;
     position: sticky;
-    background-color: rgb(20, 20, 20);
+    background: #34495e;
 }
 
 .rwd-table th {
@@ -64,11 +64,11 @@
 
   .rwd-table td {
     display: table-cell;
-    padding: 0.25em 0.5em;
+    /* padding: 0.25em 0.5em; */
   }
   .rwd-table th {
     display: table-cell;
-    padding: 0.10em 0.15em;
+    /* padding: 0.10em 0.15em; */
   }
   .rwd-table th:first-child,
   .rwd-table td:first-child {
@@ -80,24 +80,17 @@
   }
 }
 
-
-/* h1 {
-  font-weight: normal;
-  letter-spacing: -1px;
-  color: #34495e;
-} */
-
 .rwd-table tr {
   border-color: #46637f;
 }
 .rwd-table th,
 .rwd-table td {
-  margin: 0.5em 1em;
+  /* margin: 0.5em 1em; */
   text-align: center;
 }
 @media (min-width: 480px) {
   .rwd-table td {
-    padding: 1em !important;
+    padding: 0.8em !important;
   }
 }
 .rwd-table th,
