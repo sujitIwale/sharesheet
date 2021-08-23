@@ -1,8 +1,8 @@
 const express = require('express');
 const cors = require('cors');
-const fs = require('fs');
 const app = express();
-
+require('dotenv').config();
+const PORT = process.env.PORT || 3001;
 // fs.rmdirSync('./uploads/img', { recursive: true });
 
 app.use(cors());
@@ -17,6 +17,6 @@ app.get('/', (req, res) => {
 app.use('/upload/img', require('./routes/imageUpload'));
 app.use('/upload/csv', require('./routes/csvUpload'));
 
-app.listen(3001, () => {
-	console.log('server is runnig on port 3001');
+app.listen(PORT, () => {
+	console.log(`server is runnig on port ${PORT}`);
 });

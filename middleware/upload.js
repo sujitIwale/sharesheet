@@ -2,7 +2,7 @@ const path = require('path');
 const multer = require('multer');
 
 const imgStorage = multer.diskStorage({
-	destination: 'uploads/img',
+	destination: `${process.env.CSV_FILE_STORE_PATH}`,
 	filename: function (req, file, cb) {
 		cb(null, Date.now() + path.extname(file.originalname));
 	},

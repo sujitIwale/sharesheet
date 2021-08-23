@@ -1,10 +1,7 @@
 const express = require('express');
 const fs = require('fs');
-const path = require('path');
 const csv = require('fast-csv');
 const { csvUpload } = require('../middleware/upload');
-const { error } = require('console');
-const { json } = require('express');
 const router = express.Router();
 
 router.post('/', csvUpload, (req, res) => {
