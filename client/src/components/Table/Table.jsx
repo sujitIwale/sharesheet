@@ -4,7 +4,7 @@ import './Table.css';
 
 const Table = () => {
 	const tableContext = useContext(TableContext);
-	const { tableData, sortData } = tableContext;
+	const { tableData, sortData, sortBy, setSortBy } = tableContext;
 
 	console.log('table');
 	if (tableData.length > 0)
@@ -18,9 +18,13 @@ const Table = () => {
 								className='pointer'
 								onClick={() => {
 									sortData(tableData, header);
+									setSortBy(header);
 								}}
 								key={++key}>
-								{`${header} ${'hel' === header ? '->' : ''}`}
+								{header}
+								{sortBy === header && (
+									<i class='fas fa-arrow-up'></i>
+								)}
 							</th>
 						))}
 					</tr>

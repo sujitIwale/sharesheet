@@ -1,4 +1,4 @@
-import { SET_TABLE_DATA } from '../types';
+import { SET_SORT_BY, SET_TABLE_DATA } from '../types';
 
 const TableReducer = (state, action) => {
 	switch (action.type) {
@@ -6,6 +6,11 @@ const TableReducer = (state, action) => {
 			return {
 				...state,
 				tableData: action.payload,
+			};
+		case SET_SORT_BY:
+			return {
+				...state,
+				sortBy: action.payload,
 			};
 		default:
 			return state;
