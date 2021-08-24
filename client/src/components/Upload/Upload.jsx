@@ -18,8 +18,8 @@ const Upload = ({ setData }) => {
 		data.append('csvdata', File);
 		console.log('Uploading');
 		const res = await apiRequest('/upload/csv', data);
-		if (res) {
-			setData(res);
+		if (res && res.status === 'success') {
+			setData(res.data);
 			setuploadStatus(true);
 		}
 	};

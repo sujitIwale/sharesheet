@@ -12,22 +12,24 @@ const Table = ({ Data }) => {
 								<th key={++key}>{header}</th>
 							))}
 						</tr>
-						{Data.map((row, i) => {
-							return (
-								<tr key={i}>
-									<td key={i} data-th='Sr.No.'>
-										{++i}
-									</td>
-									{Object.keys(row).map((header) => (
-										<td
-											key={i * Math.random()}
-											data-th={header}>
-											{row[header]}
+						<tbody>
+							{Data.map((row, i) => {
+								return (
+									<tr key={i}>
+										<td key={i} data-th='Sr.No.'>
+											{++i}
 										</td>
-									))}
-								</tr>
-							);
-						})}
+										{Object.keys(row).map((header) => (
+											<td
+												key={i * Math.random()}
+												data-th={header}>
+												{row[header]}
+											</td>
+										))}
+									</tr>
+								);
+							})}
+						</tbody>
 					</table>
 				</div>
 			);

@@ -16,12 +16,22 @@ router.post('/', csvUpload, (req, res) => {
 	// 	});
 
 	try {
-		csv.parseFile('uploads/csv/' + req.file.filename, { headers: true })
+		csv.parseFile(
+			`${process.env.CSV_FILE_STORE_PATH}/` + req.file.filename,
+			{ headers: true }
+		)
 			.on('error', (error) => console.log(error))
 			.on('data', (row) => data.push(row))
 			.on('end', (rowCount) => {
-				res.send(data);
-				fs.unlinkSync('uploads/csv/' + req.file.filename);
+				const results = {
+					status: 'success',
+					rowCount,
+					data,
+				};
+				res.send(results);
+				fs.unlinkSync(
+					`${process.env.CSV_FILE_STORE_PATH}/` + req.file.filename
+				);
 			});
 	} catch (error) {
 		console.log(error);
