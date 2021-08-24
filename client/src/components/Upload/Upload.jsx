@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import TableContext from '../../context/table/TableContext';
 import { apiRequest } from '../../utils/apiRequests';
 import './Upload.css';
 
-const Upload = ({ setData }) => {
+const Upload = () => {
 	const [File, setFile] = useState(null);
 	const [uploadStatus, setuploadStatus] = useState(false);
+	const tableContext = useContext(TableContext);
+	const { setTableData } = tableContext;
 	const onChange = (e) => {
 		setFile(e.target.files[0]);
 		setuploadStatus(false);
@@ -19,7 +22,7 @@ const Upload = ({ setData }) => {
 		console.log('Uploading');
 		const res = await apiRequest('/upload/csv', data);
 		if (res && res.status === 'success') {
-			setData(res.data);
+			setTableData(res.data);
 			setuploadStatus(true);
 		}
 	};
