@@ -13,10 +13,24 @@ const TableState = (props) => {
 	const setTableData = (data) => {
 		dispatch({ type: SET_TABLE_DATA, payload: data });
 	};
+	const sortData = (Data, sortBy) => {
+		const compare = (a, b) => {
+			// console.log(SortHeader + 'sort');
+			// if (a[SortHeader] > b[SortHeader]) return -1;
+			// if (a[SortHeader] < b[SortHeader]) return 1;
+			// return 0;
 
+			return a[sortBy] - b[sortBy];
+		};
+
+		if (sortBy !== null) {
+			Data.sort(compare);
+		}
+		dispatch({ type: SET_TABLE_DATA, payload: Data });
+	};
 	return (
 		<TableContext.Provider
-			value={{ tableData: state.tableData, setTableData }}>
+			value={{ tableData: state.tableData, setTableData, sortData }}>
 			{props.children}
 		</TableContext.Provider>
 	);

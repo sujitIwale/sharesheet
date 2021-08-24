@@ -1,14 +1,11 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import TableContext from '../../context/table/TableContext';
-import { sortData } from '../../helpers/sort';
 import './Table.css';
 
 const Table = () => {
 	const tableContext = useContext(TableContext);
-	const { tableData } = tableContext;
-	// const onSort = (header) => {
-	// 	Data = sortData(Data, header);
-	// };
+	const { tableData, sortData } = tableContext;
+
 	console.log('table');
 	if (tableData.length > 0)
 		return (
