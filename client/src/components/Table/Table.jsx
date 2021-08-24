@@ -12,7 +12,12 @@ const Table = () => {
 			<div className='table-main customize-scrollbar'>
 				<table className='rwd-table'>
 					<tr key='header' className='table-header'>
-						<th key='1'>Sr.No.</th>
+						<th key='1'>
+							Sr.No.
+							{sortBy === 'Sr.No.' && (
+								<i class='fas fa-arrow-up'></i>
+							)}
+						</th>
 						{Object.keys(tableData[0]).map((header, key) => (
 							<th
 								className='pointer'

@@ -19,14 +19,21 @@ const TableState = (props) => {
 	};
 	const sortData = (Data, sortBy) => {
 		const compare = (a, b) => {
-			// console.log(SortHeader + 'sort');
-			// if (a[SortHeader] > b[SortHeader]) return -1;
-			// if (a[SortHeader] < b[SortHeader]) return 1;
-			// return 0;
+			let p, q;
 
-			return a[sortBy] - b[sortBy];
+			p = Number(a[sortBy]);
+			q = Number(b[sortBy]);
+			if (!isNaN(p)) {
+				return p - q;
+			}
+
+			p = String.prototype.toLowerCase.call(a[sortBy]);
+			q = String.prototype.toLowerCase.call(b[sortBy]);
+			if (p < q) return -1;
+			if (p > q) return 1;
+			return 0;
 		};
-
+		
 		if (sortBy !== null) {
 			Data.sort(compare);
 		}
