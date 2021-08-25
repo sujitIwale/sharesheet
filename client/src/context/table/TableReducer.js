@@ -1,7 +1,12 @@
-import { SET_SORT_BY, SET_TABLE_DATA } from '../types';
+import { SET_MODAL_OPEN, SET_SORT_BY, SET_TABLE_DATA } from '../types';
 
 const TableReducer = (state, action) => {
 	switch (action.type) {
+		case SET_MODAL_OPEN:
+			return {
+				...state,
+				modalOpen: !state.modalOpen,
+			};
 		case SET_TABLE_DATA:
 			return {
 				...state,

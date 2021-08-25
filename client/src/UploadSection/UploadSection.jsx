@@ -1,33 +1,36 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import Modal from '../components/Shared/Modal/Modal';
+import Upload from '../components/Upload/Upload';
+import TableContext from '../context/table/TableContext';
 import './UploadSection.css';
 
 const UploadSection = () => {
+	const fileUploadOption = [
+		{
+			title: 'Upload A CSV File',
+			uploadType: 'csv',
+		},
+	];
+
+	const tableContext = useContext(TableContext);
+	const { modalOpen, setModalOpen } = tableContext;
+
 	return (
-		// <div className='upload-section-main'>
 		<div class='upload-section-main'>
-			<div class='card1 pointer'>
-				<h3>Upload A CSV File</h3>
-				<div class='go-corner'>
-					<div class='go-arrow'>→</div>
+			{modalOpen && (
+				<Modal closeModal={setModalOpen}>
+					<Upload />
+				</Modal>
+			)}
+			{fileUploadOption.map((option) => (
+				<div class='card1 pointer' onClick={setModalOpen}>
+					<h3>{option.title}</h3>
+					<div class='go-corner'>
+						<div class='go-arrow'>→</div>
+					</div>
 				</div>
-			</div>
-
-			<div class='card1 pointer'>
-				<h3>This is option 2</h3>
-				<div class='go-corner'>
-					<div class='go-arrow'>→</div>
-				</div>
-			</div>
-
-			<div class='card1 pointer'>
-				<h3>This is option 3</h3>
-				<div class='dimmer'></div>
-				<div class='go-corner'>
-					<div class='go-arrow'>→</div>
-				</div>
-			</div>
+			))}
 		</div>
-		// </div>
 	);
 };
 

@@ -1,5 +1,5 @@
 import React, { useReducer } from 'react';
-import { SET_SORT_BY, SET_TABLE_DATA } from '../types';
+import { SET_MODAL_OPEN, SET_SORT_BY, SET_TABLE_DATA } from '../types';
 import TableContext from './TableContext';
 import TableReducer from './TableReducer';
 
@@ -10,10 +10,14 @@ const TableState = (props) => {
 			ASC: true,
 			item: 'Sr.No.',
 		},
+		modalOpen: false,
 	};
 
 	const [state, dispatch] = useReducer(TableReducer, initialState);
-
+	const setModalOpen = () => {
+		console.log(state.modalOpen);
+		dispatch({ type: SET_MODAL_OPEN });
+	};
 	const setTableData = (data) => {
 		dispatch({ type: SET_TABLE_DATA, payload: data });
 	};
@@ -46,8 +50,10 @@ const TableState = (props) => {
 	return (
 		<TableContext.Provider
 			value={{
+				modalOpen: state.modalOpen,
 				tableData: state.tableData,
 				sortBy: state.sortBy,
+				setModalOpen,
 				setTableData,
 				sortData,
 				setSortBy,

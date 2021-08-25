@@ -8,19 +8,12 @@ import TableState from './context/table/TableState';
 import UploadSection from './UploadSection/UploadSection';
 
 function App() {
-	const [modalOpen, setmodalOpen] = useState(false);
 	return (
 		<TableState>
 			<div className='container'>
 				<Header />
 				<div className='base-layout'>
 					<UploadSection />
-					<button onClick={() => setmodalOpen(true)}>open</button>
-					{modalOpen && (
-						<Modal closeModal={setmodalOpen}>
-							<Upload />
-						</Modal>
-					)}
 					<Table />
 				</div>
 			</div>
