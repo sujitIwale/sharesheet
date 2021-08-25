@@ -10,7 +10,10 @@ const TableReducer = (state, action) => {
 		case SET_SORT_BY:
 			return {
 				...state,
-				sortBy: action.payload,
+				sortBy: {
+					ASC: !state.sortBy.ASC,
+					item: action.payload,
+				},
 			};
 		default:
 			return state;

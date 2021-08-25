@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { Fragment, useContext } from 'react';
 import TableContext from '../../context/table/TableContext';
 import './Table.css';
 
@@ -14,23 +14,28 @@ const Table = () => {
 					<tr key='header' className='table-header'>
 						<th key='1'>
 							Sr.No.
-							{sortBy === 'Sr.No.' && (
+							{sortBy.item === 'Sr.No.' && (
 								<i class='fas fa-arrow-up'></i>
 							)}
 						</th>
 						{Object.keys(tableData[0]).map((header, key) => (
-							<th
-								className='pointer'
-								onClick={() => {
-									sortData(tableData, header);
-									setSortBy(header);
-								}}
-								key={++key}>
-								{header}
-								{sortBy === header && (
-									<i class='fas fa-arrow-up'></i>
-								)}
-							</th>
+							<Fragment>
+								<th
+									className='pointer'
+									onClick={() => {
+										setSortBy(header);
+										sortData(tableData, header);
+									}}
+									key={++key}>
+									{header}
+									{sortBy.item === header && sortBy.ASC && (
+										<i class='fas fa-arrow-up sort-arrow'></i>
+									)}
+									{sortBy.item === header && !sortBy.ASC && (
+										<i class='fas fa-arrow-down sort-arrow'></i>
+									)}
+								</th>
+							</Fragment>
 						))}
 					</tr>
 					<tbody>

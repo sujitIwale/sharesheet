@@ -6,6 +6,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+    z-index: 100;
 }
 
 .backdrop {
@@ -28,6 +29,7 @@
 	display: flex;
 	flex-direction: column;
 	padding: 25px;
+    margin-bottom: 10%;
 }
 
 .modalContainer .title {
@@ -60,21 +62,10 @@
 .modalContainer .footer {
 	flex: 20%;
 	display: flex;
-	justify-content: center;
-	align-items: center;
+	justify-content: flex-end;
 }
 
-.modalContainer .footer button {
-	width: 150px;
-	height: 45px;
-	margin: 10px;
-	border: none;
-	background-color: cornflowerblue;
-	color: white;
-	border-radius: 8px;
-	font-size: 20px;
-	cursor: pointer;
-}
+
 
 #cancelBtn {
 	background-color: crimson;

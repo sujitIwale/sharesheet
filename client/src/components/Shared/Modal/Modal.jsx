@@ -20,18 +20,15 @@ const ModalOverlay = ({ closeModal, children }) => {
 						onClick={() => {
 							closeModal(false);
 						}}
+						className='btn'
 						id='cancelBtn'>
-						Cancel
+						Close
 					</button>
-					<button>Continue</button>
 				</div>
 			</div>
 		</div>
 	);
-	return ReactDOM.createPortal(
-		content,
-		document.getElementById('modal-hook')
-	);
+	return ReactDOM.createPortal(content, document.getElementById('modal'));
 };
 
 const Backdrop = (props) => {
@@ -43,10 +40,7 @@ const Backdrop = (props) => {
 
 function Modal(props) {
 	return (
-		<React.Fragment>
-			{/* <Backdrop onClick={closeModal} /> */}
-			<ModalOverlay {...props} />
-		</React.Fragment>
+		<ModalOverlay {...props} />
 
 		// <div className='modalBackground'>
 		// 	<div className='modalContainer'>

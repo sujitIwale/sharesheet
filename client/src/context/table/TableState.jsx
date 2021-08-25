@@ -6,7 +6,10 @@ import TableReducer from './TableReducer';
 const TableState = (props) => {
 	const initialState = {
 		tableData: [],
-		sortBy: 'Sr.No.',
+		sortBy: {
+			ASC: true,
+			item: 'Sr.No.',
+		},
 	};
 
 	const [state, dispatch] = useReducer(TableReducer, initialState);
@@ -24,16 +27,17 @@ const TableState = (props) => {
 			p = Number(a[sortBy]);
 			q = Number(b[sortBy]);
 			if (!isNaN(p)) {
-				return p - q;
+				if (state.sortBy.ASC) return p - q;
+				else return q - p;
 			}
-
+			let stringReturn = state.sortBy.ASC ? -1 : 1;
 			p = String.prototype.toLowerCase.call(a[sortBy]);
 			q = String.prototype.toLowerCase.call(b[sortBy]);
-			if (p < q) return -1;
-			if (p > q) return 1;
+			if (p < q) return stringReturn;
+			if (p > q) return -stringReturn;
 			return 0;
 		};
-		
+
 		if (sortBy !== null) {
 			Data.sort(compare);
 		}

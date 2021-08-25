@@ -12,8 +12,8 @@ function App() {
 		<TableState>
 			<div className='container'>
 				<Header />
-				<button onClick={() => setmodalOpen(true)}>open</button>
 				<div className='base-layout'>
+					<button onClick={() => setmodalOpen(true)}>open</button>
 					{modalOpen && (
 						<Modal closeModal={setmodalOpen}>
 							<Upload />

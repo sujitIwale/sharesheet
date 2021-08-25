@@ -26,6 +26,11 @@
     background: #34495e;
 }
 
+.sort-arrow {
+  margin-left: 5px;
+  color: red;
+}
+
 .rwd-table th {
   display: none;
 }
