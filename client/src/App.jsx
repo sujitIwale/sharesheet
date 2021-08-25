@@ -10,12 +10,15 @@ function App() {
 	const [modalOpen, setmodalOpen] = useState(false);
 	return (
 		<TableState>
-			{modalOpen && <Modal closeModal={setmodalOpen} />}
 			<div className='container'>
 				<Header />
 				<button onClick={() => setmodalOpen(true)}>open</button>
 				<div className='base-layout'>
-					<Upload />
+					{modalOpen && (
+						<Modal closeModal={setmodalOpen}>
+							<Upload />
+						</Modal>
+					)}
 					<Table />
 				</div>
 			</div>
