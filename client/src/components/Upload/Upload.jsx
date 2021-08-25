@@ -3,7 +3,7 @@ import TableContext from '../../context/table/TableContext';
 import { apiRequest } from '../../utils/apiRequests';
 import './Upload.css';
 
-const Upload = () => {
+const Upload = ({ closeModal }) => {
 	const [File, setFile] = useState(null);
 	const [uploadStatus, setuploadStatus] = useState(false);
 	const tableContext = useContext(TableContext);
@@ -17,6 +17,7 @@ const Upload = () => {
 			alert('Please Select a file');
 			return;
 		}
+		closeModal();
 		const data = new FormData();
 		data.append('csvdata', File);
 		console.log('Uploading');

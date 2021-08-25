@@ -12,8 +12,24 @@
   justify-content: center;
 }
 
+.title-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  /* justify-content: space-between; */
+}
+
+.img-container {
+  margin-right: 10px;
+  height: 50px;
+  width: 50px;
+}
+.img-container img{
+  border-radius: 50%;
+}
+
 .upload-section-main h3 {
-  color: #262626;
+  color: #fdfdfd;
   font-size: 17px;
   line-height: 24px;
   font-weight: 700;
@@ -55,7 +71,7 @@ p.small {
   display: block;
   position: relative;
   max-width: 262px;
-  background-color: #f2f8f9;
+  background-color: #08031a;
   border-radius: 4px;
   padding: 32px 24px;
   margin: 12px;

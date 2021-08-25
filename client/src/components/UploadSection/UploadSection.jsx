@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import Modal from '../components/Shared/Modal/Modal';
-import Upload from '../components/Upload/Upload';
-import TableContext from '../context/table/TableContext';
+import Modal from '../Shared/Modal/Modal';
+import Upload from '../Upload/Upload';
+import TableContext from '../../context/table/TableContext';
 import './UploadSection.css';
 
 const UploadSection = () => {
@@ -19,14 +19,21 @@ const UploadSection = () => {
 		<div class='upload-section-main'>
 			{modalOpen && (
 				<Modal closeModal={setModalOpen}>
-					<Upload />
+					<Upload closeModal={setModalOpen} />
 				</Modal>
 			)}
 			{fileUploadOption.map((option) => (
 				<div class='card1 pointer' onClick={setModalOpen}>
-					<h3>{option.title}</h3>
+					<div className='title-container'>
+						<div className='img-container'>
+							<img src='/csvLogo.png' alt='csvLogo' />
+						</div>
+						<h3>{option.title}</h3>
+					</div>
 					<div class='go-corner'>
-						<div class='go-arrow'>→</div>
+						<div class='go-arrow'>
+							<i class='fas fa-file-csv'></i>
+						</div>
 					</div>
 				</div>
 			))}

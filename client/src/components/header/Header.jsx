@@ -8,9 +8,9 @@ const Header = () => {
 				<li>
 					<h3 className='logo-text'>StockFolio</h3>
 				</li>
-				<li className='search-bar'>
+				{/* <li className='search-bar'>
 					<input type='text' placeholder='Search' />
-				</li>
+				</li> */}
 				<div>
 					<li>About</li>
 				</div>
