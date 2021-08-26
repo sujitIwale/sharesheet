@@ -31,48 +31,10 @@ const ModalOverlay = ({ closeModal, children }) => {
 	return ReactDOM.createPortal(content, document.getElementById('modal'));
 };
 
-const Backdrop = (props) => {
-	return ReactDOM.createPortal(
-		<div className='backdrop' onClick={props.onClick}></div>,
-		document.getElementById('backdrop-hook')
-	);
-};
+
 
 function Modal(props) {
-	return (
-		<ModalOverlay {...props} />
-
-		// <div className='modalBackground'>
-		// 	<div className='modalContainer'>
-		// 		<div className='titleCloseBtn'>
-		// 			<button
-		// 				onClick={() => {
-		// 					closeModal(false);
-		// 				}}>
-		// 				X
-		// 			</button>
-		// 		</div>
-		// 		<div className='title'>
-		// 			<h1>Are You Sure You Want to Continue?</h1>
-		// 		</div>
-		// 		<div className='body'>
-		// 			<p>
-		// 				The next page looks amazing. Hope you want to go there!
-		// 			</p>
-		// 		</div>
-		// 		<div className='footer'>
-		// 			<button
-		// 				onClick={() => {
-		// 					closeModal(false);
-		// 				}}
-		// 				id='cancelBtn'>
-		// 				Cancel
-		// 			</button>
-		// 			<button>Continue</button>
-		// 		</div>
-		// 	</div>
-		// </div>
-	);
+	return <ModalOverlay {...props} />;
 }
 
 export default Modal;
