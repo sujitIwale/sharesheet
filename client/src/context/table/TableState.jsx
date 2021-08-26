@@ -34,7 +34,7 @@ const TableState = (props) => {
 				if (state.sortBy.ASC) return p - q;
 				else return q - p;
 			}
-			let stringReturn = state.sortBy.ASC ? -1 : 1;
+			let stringReturn = state.sortBy.ASC ? 1 : -1;
 			p = String.prototype.toLowerCase.call(a[sortBy]);
 			q = String.prototype.toLowerCase.call(b[sortBy]);
 			if (p < q) return stringReturn;
