@@ -6,7 +6,7 @@ const Header = () => {
 		<div className='header'>
 			<div className='header-content base-layout'>
 				<li>
-					<h3 className='logo-text'>StockFolio</h3>
+					<h3 className='logo-text'>File Upload</h3>
 				</li>
 				{/* <li className='search-bar'>
 					<input type='text' placeholder='Search' />

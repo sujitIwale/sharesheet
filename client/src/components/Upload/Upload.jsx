@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import TableContext from '../../context/table/TableContext';
 import { apiRequest } from '../../utils/apiRequests';
+import Button from '../Shared/Button/Button';
 import './Upload.css';
 
 const Upload = ({ closeModal }) => {
@@ -12,7 +13,7 @@ const Upload = ({ closeModal }) => {
 		setFile(e.target.files[0]);
 		setuploadStatus(false);
 	};
-	const onClick = async () => {
+	const onUpload = async () => {
 		if (File === null || uploadStatus) {
 			alert('Please Select a file');
 			return;
@@ -20,7 +21,6 @@ const Upload = ({ closeModal }) => {
 		closeModal();
 		const data = new FormData();
 		data.append('csvdata', File);
-		console.log('Uploading');
 		const res = await apiRequest('/upload/csv', data);
 		if (res && res.status === 'success') {
 			setTableData(res.data);
@@ -47,9 +47,7 @@ const Upload = ({ closeModal }) => {
 					</div>
 				</label>
 			</form>
-			<button className='btn' onClick={onClick}>
-				Upload
-			</button>
+			<Button textValue='Upload' onClick={onUpload} bgColor='#454cad' />
 		</div>
 	);
 };

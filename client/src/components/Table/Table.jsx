@@ -6,7 +6,6 @@ const Table = () => {
 	const tableContext = useContext(TableContext);
 	const { tableData, sortData, sortBy, setSortBy } = tableContext;
 
-	console.log('table');
 	if (tableData.length > 0)
 		return (
 			<div className='table-main customize-scrollbar'>

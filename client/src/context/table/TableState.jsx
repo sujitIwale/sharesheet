@@ -15,7 +15,6 @@ const TableState = (props) => {
 
 	const [state, dispatch] = useReducer(TableReducer, initialState);
 	const setModalOpen = () => {
-		console.log(state.modalOpen);
 		dispatch({ type: SET_MODAL_OPEN });
 	};
 	const setTableData = (data) => {
