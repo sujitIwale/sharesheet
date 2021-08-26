@@ -10,7 +10,7 @@ app.use(cors());
 app.get('/', (req, res) => {
 	// const data = fs.readFileSync('rawdata/data.json', 'utf-8');
 	console.log('req');
-	res.sendFile(__dirname + '/rawdata/data.json');
+	res.send('Welcome to file-upload api');
 });
 
 // Routes
