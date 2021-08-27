@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import TableContext from '../../context/table/TableContext';
+import FileContext from '../../context/file/FileContext';
 import { apiRequest } from '../../utils/apiRequests';
 import Button from '../Shared/Button/Button';
 import './Upload.css';
@@ -7,8 +7,8 @@ import './Upload.css';
 const Upload = ({ closeModal }) => {
 	const [File, setFile] = useState(null);
 	const [uploadStatus, setuploadStatus] = useState(false);
-	const tableContext = useContext(TableContext);
-	const { setTableData } = tableContext;
+	const fileContext = useContext(FileContext);
+	const { setFileData } = fileContext;
 	const onChange = (e) => {
 		setFile(e.target.files[0]);
 		setuploadStatus(false);
@@ -23,7 +23,7 @@ const Upload = ({ closeModal }) => {
 		data.append('csvdata', File);
 		const res = await apiRequest('/upload/csv', data);
 		if (res && res.status === 'success') {
-			setTableData(res.data);
+			setFileData(res.data);
 			setuploadStatus(true);
 		}
 	};

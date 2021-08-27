@@ -1,12 +1,12 @@
 import React, { Fragment, useContext } from 'react';
-import TableContext from '../../context/table/TableContext';
+import FileContext from '../../context/file/FileContext';
 import './Table.css';
 
 const Table = () => {
-	const tableContext = useContext(TableContext);
-	const { tableData, sortData, sortBy, setSortBy } = tableContext;
+	const fileContext = useContext(FileContext);
+	const { FileData, sortData, sortBy, setSortBy } = fileContext;
 
-	if (tableData.length > 0)
+	if (FileData.length > 0)
 		return (
 			<div className='table-main customize-scrollbar'>
 				<table className='rwd-table'>
@@ -17,13 +17,13 @@ const Table = () => {
 								<i class='fas fa-arrow-up'></i>
 							)}
 						</th>
-						{Object.keys(tableData[0]).map((header, key) => (
+						{Object.keys(FileData[0]).map((header, key) => (
 							<Fragment>
 								<th
 									className='pointer'
 									onClick={() => {
 										setSortBy(header);
-										sortData(tableData, header);
+										sortData(FileData, header);
 									}}
 									key={++key}>
 									{header}
@@ -38,7 +38,7 @@ const Table = () => {
 						))}
 					</tr>
 					<tbody>
-						{tableData.map((row, i) => {
+						{FileData.map((row, i) => {
 							return (
 								<tr key={i}>
 									<td key={i} data-th='Sr.No.'>

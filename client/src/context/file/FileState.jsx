@@ -1,11 +1,11 @@
 import React, { useReducer } from 'react';
-import { SET_MODAL_OPEN, SET_SORT_BY, SET_TABLE_DATA } from '../types';
-import TableContext from './TableContext';
-import TableReducer from './TableReducer';
+import { SET_MODAL_OPEN, SET_SORT_BY, SET_FILE_DATA } from '../types';
+import FileContext from './FileContext';
+import FileReducer from './FileReducer';
 
-const TableState = (props) => {
+const FileState = (props) => {
 	const initialState = {
-		tableData: [],
+		FileData: [],
 		sortBy: {
 			ASC: true,
 			item: 'Sr.No.',
@@ -13,12 +13,12 @@ const TableState = (props) => {
 		modalOpen: false,
 	};
 
-	const [state, dispatch] = useReducer(TableReducer, initialState);
+	const [state, dispatch] = useReducer(FileReducer, initialState);
 	const setModalOpen = () => {
 		dispatch({ type: SET_MODAL_OPEN });
 	};
-	const setTableData = (data) => {
-		dispatch({ type: SET_TABLE_DATA, payload: data });
+	const setFileData = (data) => {
+		dispatch({ type: SET_FILE_DATA, payload: data });
 	};
 	const setSortBy = (value) => {
 		dispatch({ type: SET_SORT_BY, payload: value });
@@ -44,22 +44,22 @@ const TableState = (props) => {
 		if (sortBy !== null) {
 			Data.sort(compare);
 		}
-		dispatch({ type: SET_TABLE_DATA, payload: Data });
+		dispatch({ type: SET_FILE_DATA, payload: Data });
 	};
 	return (
-		<TableContext.Provider
+		<FileContext.Provider
 			value={{
 				modalOpen: state.modalOpen,
-				tableData: state.tableData,
+				FileData: state.FileData,
 				sortBy: state.sortBy,
 				setModalOpen,
-				setTableData,
+				setFileData,
 				sortData,
 				setSortBy,
 			}}>
 			{props.children}
-		</TableContext.Provider>
+		</FileContext.Provider>
 	);
 };
 
-export default TableState;
+export default FileState;

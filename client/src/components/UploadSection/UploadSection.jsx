@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import Modal from '../Shared/Modal/Modal';
 import Upload from '../Upload/Upload';
-import TableContext from '../../context/table/TableContext';
+import FileContext from '../../context/file/FileContext';
 import './UploadSection.css';
 
 const UploadSection = () => {
@@ -12,8 +12,8 @@ const UploadSection = () => {
 		},
 	];
 
-	const tableContext = useContext(TableContext);
-	const { modalOpen, setModalOpen } = tableContext;
+	const fileContext = useContext(FileContext);
+	const { modalOpen, setModalOpen } = fileContext;
 
 	return (
 		<div class='upload-section-main'>

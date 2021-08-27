@@ -1,13 +1,13 @@
-import { SET_MODAL_OPEN, SET_SORT_BY, SET_TABLE_DATA } from '../types';
+import { SET_MODAL_OPEN, SET_SORT_BY, SET_FILE_DATA } from '../types';
 
-const TableReducer = (state, action) => {
+const FileReducer = (state, action) => {
 	switch (action.type) {
 		case SET_MODAL_OPEN:
 			return {
 				...state,
 				modalOpen: !state.modalOpen,
 			};
-		case SET_TABLE_DATA:
+		case SET_FILE_DATA:
 			return {
 				...state,
 				tableData: action.payload,
@@ -25,4 +25,4 @@ const TableReducer = (state, action) => {
 	}
 };
 
-export default TableReducer;
+export default FileReducer;
