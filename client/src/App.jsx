@@ -6,6 +6,7 @@ import Table from './components/Table/Table';
 import FileState from './context/file/FileState';
 import UploadSection from './components/UploadSection/UploadSection';
 import About from './Pages/About/About';
+import Home from './Pages/Home/Home';
 
 function App() {
 	return (
@@ -15,13 +16,13 @@ function App() {
 					<Header />
 					<div className='base-layout'>
 						<Switch>
-							<Route
-								exact
-								path='/about'
-								component={About}></Route>
+							<Route exact path='/'>
+								{Home}
+							</Route>
+							<Route exact path='/about'>
+								{About}
+							</Route>
 						</Switch>
-						<UploadSection />
-						<Table />
 					</div>
 				</div>
 			</BrowserRouter>

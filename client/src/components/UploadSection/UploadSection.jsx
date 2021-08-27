@@ -9,6 +9,12 @@ const UploadSection = () => {
 		{
 			title: 'Upload A CSV File',
 			uploadType: 'csv',
+			imgUrl: '/csvLogo.png',
+		},
+		{
+			title: 'Upload A PDF File',
+			uploadType: 'pdf',
+			imgUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuiOL2USQ02v7O7Yq4TPww6Nw9FkR33ZKyow&usqp=CAU',
 		},
 	];
 
@@ -26,7 +32,7 @@ const UploadSection = () => {
 				<div class='card1 pointer' onClick={setModalOpen}>
 					<div className='title-container'>
 						<div className='img-container'>
-							<img src='/csvLogo.png' alt='csvLogo' />
+							<img src={option.imgUrl} alt='csvLogo' />
 						</div>
 						<h3>{option.title}</h3>
 					</div>
