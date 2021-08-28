@@ -14,7 +14,7 @@ const Table = () => {
 						<th key='1'>
 							Sr.No.
 							{sortBy.item === 'Sr.No.' && (
-								<i class='fas fa-arrow-up'></i>
+								<i className='fas fa-arrow-up'></i>
 							)}
 						</th>
 						{Object.keys(FileData[0]).map((header, key) => (
@@ -28,10 +28,10 @@ const Table = () => {
 									key={++key}>
 									{header}
 									{sortBy.item === header && sortBy.ASC && (
-										<i class='fas fa-arrow-up sort-arrow'></i>
+										<i className='fas fa-arrow-up sort-arrow'></i>
 									)}
 									{sortBy.item === header && !sortBy.ASC && (
-										<i class='fas fa-arrow-down sort-arrow'></i>
+										<i className='fas fa-arrow-down sort-arrow'></i>
 									)}
 								</th>
 							</Fragment>

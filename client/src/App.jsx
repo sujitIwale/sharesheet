@@ -2,9 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Header from './components/header/Header';
-import Table from './components/Table/Table';
 import FileState from './context/file/FileState';
-import UploadSection from './components/UploadSection/UploadSection';
 import About from './Pages/About/About';
 import Home from './Pages/Home/Home';
 

@@ -10,7 +10,7 @@ const FileReducer = (state, action) => {
 		case SET_FILE_DATA:
 			return {
 				...state,
-				tableData: action.payload,
+				FileData: action.payload,
 			};
 		case SET_SORT_BY:
 			return {
