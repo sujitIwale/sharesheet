@@ -13,7 +13,7 @@ const Upload = ({ closeModal }) => {
 		setFile(e.target.files[0]);
 		setuploadStatus(false);
 	};
-	const onUpload = async () => {
+	const onUpload = () => {
 		if (File === null || uploadStatus) {
 			alert('Please Select a file');
 			return;
@@ -21,11 +21,12 @@ const Upload = ({ closeModal }) => {
 		closeModal();
 		const data = new FormData();
 		data.append('csvdata', File);
-		const res = await apiRequest('/upload/csv', data);
-		if (res && res.status === 'success') {
-			setFileData(res.data);
-			setuploadStatus(true);
-		}
+		apiRequest('/upload/csv', data).then((res) => {
+			if (res && res.status === 'success') {
+				setFileData(res.data);
+				setuploadStatus(true);
+			}
+		});
 	};
 	return (
 		<div className='upload-main'>

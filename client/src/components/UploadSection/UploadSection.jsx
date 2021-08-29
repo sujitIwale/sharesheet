@@ -1,6 +1,4 @@
 import React, { useContext } from 'react';
-import Modal from '../Shared/Modal/Modal';
-import Upload from '../Upload/Upload';
 import FileContext from '../../context/file/FileContext';
 import './UploadSection.css';
 
