@@ -5,6 +5,7 @@ const { csvUpload } = require('../middleware/upload');
 const router = express.Router();
 
 router.post('/', csvUpload, (req, res) => {
+	const { headers } = req.query;
 	const data = [];
 	// fs.createReadStream(path.resolve('uploads/csv', req.file.filename))
 	// 	.pipe(csv.parse({ headers: true }))
@@ -18,7 +19,7 @@ router.post('/', csvUpload, (req, res) => {
 	try {
 		csv.parseFile(
 			`${process.env.CSV_FILE_STORE_PATH}/` + req.file.filename,
-			{ headers: true }
+			{ headers }
 		)
 			.on('error', (error) => console.log(error))
 			.on('data', (row) => data.push(row))

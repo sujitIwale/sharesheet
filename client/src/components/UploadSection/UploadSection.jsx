@@ -21,15 +21,10 @@ const UploadSection = () => {
 	];
 
 	const fileContext = useContext(FileContext);
-	const { modalOpen, setModalOpen } = fileContext;
+	const { setModalOpen } = fileContext;
 
 	return (
 		<div className='upload-section-main'>
-			{modalOpen && (
-				<Modal closeModal={setModalOpen}>
-					<Upload closeModal={setModalOpen} />
-				</Modal>
-			)}
 			{fileUploadOption.map((option) => (
 				<div
 					key={option.id}

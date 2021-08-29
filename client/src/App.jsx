@@ -14,9 +14,7 @@ function App() {
 					<Header />
 					<div className='base-layout'>
 						<Switch>
-							<Route exact path='/'>
-								{Home}
-							</Route>
+							<Route exact path='/' component={Home}></Route>
 							<Route exact path='/about'>
 								{About}
 							</Route>
