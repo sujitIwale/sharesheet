@@ -16,7 +16,7 @@
   color: #fff;
   transition: all 0.2s ease-in-out;
   box-sizing: border-box;
-  background: #454cad;
-  border-color: #454cad;
+  /* background: #454cad;
+  border-color: #454cad; */
   cursor: pointer;
 }

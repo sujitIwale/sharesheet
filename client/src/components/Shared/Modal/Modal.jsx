@@ -22,7 +22,7 @@ const ModalOverlay = ({ closeModal, children }) => {
 						onClick={() => {
 							closeModal(false);
 						}}
-						bgColor='#454cad'
+						bgColor='rgb(224, 21, 62)'
 					/>
 				</div>
 			</div>

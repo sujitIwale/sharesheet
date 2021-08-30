@@ -20,7 +20,7 @@
 	z-index: 10;
 }
 .modalContainer {
-	min-width: 600px;
+	width: 600px;
 	margin: 20px;
     z-index: 1;
 	border-radius: 5px;
@@ -68,5 +68,11 @@
 
 
 #cancelBtn {
-	background-color: crimson;
+	background-color: rgb(224, 21, 62);
+}
+
+@media only screen and (max-width:400px){
+	.modalContainer {
+		width: 300px;
+	}
 }

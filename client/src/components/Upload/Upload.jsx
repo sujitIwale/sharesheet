@@ -42,9 +42,7 @@ const Upload = ({ closeModal }) => {
 					<div id='start'>
 						<i className='fa fa-download' aria-hidden='true'></i>
 						<div>Select a file or drag here</div>
-						<span id='file-upload-btn' className='btn btn-primary'>
-							Select a file
-						</span>
+						<Button textValue='Select a file' bgColor='#454cad' />
 					</div>
 				</label>
 			</form>
