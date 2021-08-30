@@ -11,7 +11,8 @@
   border-radius: 0.2rem;
   outline: none;
   padding: 0 0.5rem;
-  height: 36px;
+  height: 30px;
+  text-align: center;
   line-height: 36px;
   color: #fff;
   transition: all 0.2s ease-in-out;

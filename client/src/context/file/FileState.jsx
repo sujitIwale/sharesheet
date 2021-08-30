@@ -1,4 +1,5 @@
 import React, { useReducer } from 'react';
+import { apiRequest } from '../../utils/apiRequests';
 import { SET_MODAL_OPEN, SET_SORT_BY, SET_FILE_DATA } from '../types';
 import FileContext from './FileContext';
 import FileReducer from './FileReducer';
@@ -17,6 +18,15 @@ const FileState = (props) => {
 	const setModalOpen = () => {
 		dispatch({ type: SET_MODAL_OPEN });
 	};
+
+	const sendFileData = (data) => {
+		apiRequest('/upload/csv?headers=true', data).then((res) => {
+			if (res && res.status === 'success') {
+				setFileData(res.data);
+			}
+		});
+	};
+
 	const setFileData = (data) => {
 		dispatch({ type: SET_FILE_DATA, payload: data });
 	};
@@ -53,6 +63,7 @@ const FileState = (props) => {
 				FileData: state.FileData,
 				sortBy: state.sortBy,
 				setModalOpen,
+				sendFileData,
 				setFileData,
 				sortData,
 				setSortBy,
