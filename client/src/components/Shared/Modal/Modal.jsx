@@ -12,7 +12,7 @@ const ModalOverlay = ({ closeModal, children }) => {
 						onClick={() => {
 							closeModal(false);
 						}}>
-						X
+						<i class='fas fa-times'></i>
 					</button>
 				</div>
 				{children}

@@ -36,7 +36,7 @@ const Upload = ({ closeModal }) => {
 				<label htmlFor='file-upload' id='file-drag'>
 					<div id='start'>
 						<i className='fa fa-download' aria-hidden='true'></i>
-						<div>Select a file or drag here</div>
+						<div>Select a file</div>
 						<span id='file-upload-btn' className='btn btn-primary'>
 							Select a file
 						</span>

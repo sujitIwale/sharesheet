@@ -1,12 +1,18 @@
 import React, { useReducer } from 'react';
 import { apiRequest } from '../../utils/apiRequests';
-import { SET_MODAL_OPEN, SET_SORT_BY, SET_FILE_DATA } from '../types';
+import {
+	SET_MODAL_OPEN,
+	SET_SORT_BY,
+	SET_FILE_DATA,
+	SET_FILE_TYPE,
+} from '../types';
 import FileContext from './FileContext';
 import FileReducer from './FileReducer';
 
 const FileState = (props) => {
 	const initialState = {
 		FileData: [],
+		fileType: null,
 		sortBy: {
 			ASC: true,
 			item: 'Sr.No.',
@@ -27,6 +33,9 @@ const FileState = (props) => {
 		});
 	};
 
+	const setFileType = (type) => {
+		dispatch({ type: SET_FILE_TYPE, payload: type });
+	};
 	const setFileData = (data) => {
 		dispatch({ type: SET_FILE_DATA, payload: data });
 	};
@@ -61,9 +70,11 @@ const FileState = (props) => {
 			value={{
 				modalOpen: state.modalOpen,
 				FileData: state.FileData,
+				fileType: state.fileType,
 				sortBy: state.sortBy,
 				setModalOpen,
 				sendFileData,
+				setFileType,
 				setFileData,
 				sortData,
 				setSortBy,

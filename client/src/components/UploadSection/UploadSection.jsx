@@ -7,13 +7,13 @@ const UploadSection = () => {
 		{
 			id: 1,
 			title: 'Upload A CSV File',
-			uploadType: 'csv',
+			fileType: 'csv',
 			imgUrl: '/csvLogo.png',
 		},
 		{
 			id: 2,
-			title: 'Upload A PDF File',
-			uploadType: 'pdf',
+			title: 'Upload A CSV File Without Headers',
+			fileType: 'csvw/oheaders',
 			imgUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuiOL2USQ02v7O7Yq4TPww6Nw9FkR33ZKyow&usqp=CAU',
 		},
 	];
@@ -26,7 +26,7 @@ const UploadSection = () => {
 			{fileUploadOption.map((option) => (
 				<div
 					key={option.id}
-					className='card1 pointer'
+					className='upload-card pointer'
 					onClick={setModalOpen}>
 					<div className='title-container'>
 						<div className='img-container'>
@@ -34,11 +34,11 @@ const UploadSection = () => {
 						</div>
 						<h3>{option.title}</h3>
 					</div>
-					<div className='go-corner'>
+					{/* <div className='go-corner'>
 						<div className='go-arrow'>
 							<i className='fas fa-file-csv'></i>
 						</div>
-					</div>
+					</div> */}
 				</div>
 			))}
 		</div>

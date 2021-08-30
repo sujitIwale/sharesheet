@@ -1,4 +1,9 @@
-import { SET_MODAL_OPEN, SET_SORT_BY, SET_FILE_DATA } from '../types';
+import {
+	SET_MODAL_OPEN,
+	SET_SORT_BY,
+	SET_FILE_DATA,
+	SET_FILE_TYPE,
+} from '../types';
 
 const FileReducer = (state, action) => {
 	switch (action.type) {
@@ -6,6 +11,11 @@ const FileReducer = (state, action) => {
 			return {
 				...state,
 				modalOpen: !state.modalOpen,
+			};
+		case SET_FILE_TYPE:
+			return {
+				...state,
+				fileType: action.payload,
 			};
 		case SET_FILE_DATA:
 			return {
