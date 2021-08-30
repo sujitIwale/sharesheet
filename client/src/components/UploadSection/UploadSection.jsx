@@ -34,11 +34,6 @@ const UploadSection = () => {
 						</div>
 						<h3>{option.title}</h3>
 					</div>
-					{/* <div className='go-corner'>
-						<div className='go-arrow'>
-							<i className='fas fa-file-csv'></i>
-						</div>
-					</div> */}
 				</div>
 			))}
 		</div>

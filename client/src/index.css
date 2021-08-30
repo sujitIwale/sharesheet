@@ -61,6 +61,9 @@ body {
 }
 
 /* Buttton */
+.white {
+    color: white;
+}
 .btn-primary {
     background-color: #454cad;
 }

@@ -10,6 +10,7 @@ const Upload = ({ closeModal }) => {
 	const { sendFileData } = fileContext;
 	const onChange = (e) => {
 		setFile(e.target.files[0]);
+		console.log(e.target.files[0]);
 		setuploadStatus(false);
 	};
 	const onUpload = () => {
@@ -25,18 +26,17 @@ const Upload = ({ closeModal }) => {
 	};
 	return (
 		<div className='upload-main'>
-			<form id='file-upload-form' className='uploader'>
+			<form className='upload-form'>
 				<input
 					id='file-upload'
 					type='file'
 					name='file'
 					onChange={onChange}
 				/>
-
-				<label htmlFor='file-upload' id='file-drag'>
-					<div id='start'>
-						<i className='fa fa-download' aria-hidden='true'></i>
-						<div>Select a file</div>
+				<label htmlFor='file-upload'>
+					<div className='upload-btn-container pointer'>
+						<i className='fa fa-download'></i>
+						<p>{File ? File.name : 'Select a file'}</p>
 						<span id='file-upload-btn' className='btn btn-primary'>
 							Select a file
 						</span>
