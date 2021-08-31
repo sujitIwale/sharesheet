@@ -36,8 +36,8 @@ const Upload = ({ closeModal }) => {
 				<label htmlFor='file-upload'>
 					<div className='upload-btn-container pointer'>
 						<i className='fa fa-download'></i>
-						<p>{File ? File.name : 'Select a file'}</p>
-						<span id='file-upload-btn' className='btn btn-primary'>
+						<p>{File && File.name}</p>
+						<span id='file-upload-btn' className='btn-primary'>
 							Select a file
 						</span>
 					</div>
