@@ -5,6 +5,7 @@ import {
 	SET_SORT_BY,
 	SET_FILE_DATA,
 	SET_FILE_TYPE,
+	SET_ERROR,
 } from '../types';
 import FileContext from './FileContext';
 import FileReducer from './FileReducer';
@@ -18,11 +19,18 @@ const FileState = (props) => {
 			item: 'Sr.No.',
 		},
 		modalOpen: false,
+		error: null,
 	};
 
 	const [state, dispatch] = useReducer(FileReducer, initialState);
 	const setModalOpen = () => {
 		dispatch({ type: SET_MODAL_OPEN });
+	};
+	const setError = (error) => {
+		dispatch({ type: SET_ERROR, payload: error });
+		setTimeout(() => {
+			dispatch({ type: SET_ERROR, payload: null });
+		}, 2000);
 	};
 
 	const sendFileData = (data) => {
@@ -72,7 +80,9 @@ const FileState = (props) => {
 				FileData: state.FileData,
 				fileType: state.fileType,
 				sortBy: state.sortBy,
+				error: state.error,
 				setModalOpen,
+				setError,
 				sendFileData,
 				setFileType,
 				setFileData,

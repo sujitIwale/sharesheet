@@ -31,8 +31,6 @@ const ModalOverlay = ({ closeModal, children }) => {
 	return ReactDOM.createPortal(content, document.getElementById('modal'));
 };
 
-
-
 function Modal(props) {
 	return <ModalOverlay {...props} />;
 }

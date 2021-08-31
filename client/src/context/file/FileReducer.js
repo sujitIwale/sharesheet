@@ -3,6 +3,7 @@ import {
 	SET_SORT_BY,
 	SET_FILE_DATA,
 	SET_FILE_TYPE,
+	SET_ERROR,
 } from '../types';
 
 const FileReducer = (state, action) => {
@@ -11,6 +12,11 @@ const FileReducer = (state, action) => {
 			return {
 				...state,
 				modalOpen: !state.modalOpen,
+			};
+		case SET_ERROR:
+			return {
+				...state,
+				error: action.payload,
 			};
 		case SET_FILE_TYPE:
 			return {

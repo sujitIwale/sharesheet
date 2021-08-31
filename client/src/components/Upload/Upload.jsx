@@ -7,7 +7,7 @@ const Upload = ({ closeModal }) => {
 	const [File, setFile] = useState(null);
 	const [uploadStatus, setuploadStatus] = useState(false);
 	const fileContext = useContext(FileContext);
-	const { sendFileData } = fileContext;
+	const { sendFileData, setError } = fileContext;
 	const onChange = (e) => {
 		setFile(e.target.files[0]);
 		console.log(e.target.files[0]);
@@ -15,7 +15,7 @@ const Upload = ({ closeModal }) => {
 	};
 	const onUpload = () => {
 		if (File === null || uploadStatus) {
-			alert('Please Select a file');
+			setError({ msg: 'Please Select a file', type: 'danger' });
 			return;
 		}
 		setuploadStatus(true);
