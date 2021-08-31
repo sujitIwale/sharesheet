@@ -14,7 +14,9 @@
 	border-radius: 5px;
 	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
 	padding: 25px;
 	top: 0;
 	position: fixed;
@@ -25,6 +27,10 @@
 }
 .success {
 	background-color: #6bc75f;
+}
+
+.popupContainer .popup-text {
+	margin-left: 10px;
 }
 
 .popupContainer .title {
