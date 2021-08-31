@@ -8,9 +8,28 @@ const Upload = ({ closeModal }) => {
 	const [uploadStatus, setuploadStatus] = useState(false);
 	const fileContext = useContext(FileContext);
 	const { sendFileData, setError } = fileContext;
+
+	const dragOver = (e) => {
+		e.preventDefault();
+	};
+
+	const dragEnter = (e) => {
+		e.preventDefault();
+	};
+
+	const dragLeave = (e) => {
+		e.preventDefault();
+	};
+
+	const fileDrop = (e) => {
+		e.preventDefault();
+		const file = e.dataTransfer.files[0];
+		setFile(file);
+		setuploadStatus(false);
+	};
+
 	const onChange = (e) => {
 		setFile(e.target.files[0]);
-		console.log(e.target.files[0]);
 		setuploadStatus(false);
 	};
 	const onUpload = () => {
@@ -26,7 +45,12 @@ const Upload = ({ closeModal }) => {
 	};
 	return (
 		<div className='upload-main'>
-			<form className='upload-form'>
+			<form
+				className='upload-form'
+				onDragOver={dragOver}
+				onDragEnter={dragEnter}
+				onDragLeave={dragLeave}
+				onDrop={fileDrop}>
 				<input
 					id='file-upload'
 					type='file'

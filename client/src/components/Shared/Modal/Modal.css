@@ -6,10 +6,10 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	z-index: 100;
 }
 
 .modalContainer {
-	z-index: 1;
 	width: 600px;
 	margin: 20px;
 	border-radius: 5px;

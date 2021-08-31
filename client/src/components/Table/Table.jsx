@@ -18,36 +18,34 @@ const Table = () => {
 							)}
 						</th>
 						{Object.keys(FileData[0]).map((header, key) => (
-							<Fragment>
-								<th
-									className='pointer'
-									onClick={() => {
-										setSortBy(header);
-										sortData(FileData, header);
-									}}
-									key={++key}>
-									{header}
-									{sortBy.item === header && sortBy.ASC && (
-										<i className='fas fa-arrow-up sort-arrow'></i>
-									)}
-									{sortBy.item === header && !sortBy.ASC && (
-										<i className='fas fa-arrow-down sort-arrow'></i>
-									)}
-								</th>
-							</Fragment>
+							<th
+								className='pointer'
+								onClick={() => {
+									setSortBy(header);
+									sortData(FileData, header);
+								}}
+								key={++key}>
+								{header}
+								{sortBy.item === header && sortBy.ASC && (
+									<i className='fas fa-arrow-up sort-arrow'></i>
+								)}
+								{sortBy.item === header && !sortBy.ASC && (
+									<i className='fas fa-arrow-down sort-arrow'></i>
+								)}
+							</th>
 						))}
 					</tr>
 					<tbody>
 						{FileData.map((row, i) => {
 							return (
 								<tr key={i}>
-									<td key={i} data-th='Sr.No.'>
+									<td
+										key={i * Math.random()}
+										data-th='Sr.No.'>
 										{++i}
 									</td>
-									{Object.keys(row).map((header) => (
-										<td
-											key={i * Math.random()}
-											data-th={header}>
+									{Object.keys(row).map((header, j) => (
+										<td key={j} data-th={header}>
 											{row[header]}
 										</td>
 									))}
