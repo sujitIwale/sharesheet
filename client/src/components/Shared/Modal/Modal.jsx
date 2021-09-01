@@ -5,8 +5,16 @@ import './Modal.css';
 
 const ModalOverlay = ({ closeModal, children }) => {
 	const content = (
-		<div className='modalBackground'>
-			<div className='modalContainer'>
+		<div
+			className='modalBackground'
+			onClick={() => {
+				closeModal();
+			}}>
+			<div
+				className='modalContainer'
+				onClick={(e) => {
+					e.stopPropagation();
+				}}>
 				<div className='titleCloseBtn'>
 					<button
 						onClick={() => {
