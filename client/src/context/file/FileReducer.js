@@ -4,6 +4,7 @@ import {
 	SET_FILE_DATA,
 	SET_FILE_TYPE,
 	SET_ERROR,
+	SET_LOADING,
 } from '../types';
 
 const FileReducer = (state, action) => {
@@ -12,6 +13,11 @@ const FileReducer = (state, action) => {
 			return {
 				...state,
 				modalOpen: !state.modalOpen,
+			};
+		case SET_LOADING:
+			return {
+				...state,
+				loading: !state.loading,
 			};
 		case SET_ERROR:
 			return {

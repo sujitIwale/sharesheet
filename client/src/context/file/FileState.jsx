@@ -6,6 +6,7 @@ import {
 	SET_FILE_DATA,
 	SET_FILE_TYPE,
 	SET_ERROR,
+	SET_LOADING,
 } from '../types';
 import FileContext from './FileContext';
 import FileReducer from './FileReducer';
@@ -19,6 +20,7 @@ const FileState = (props) => {
 			item: 'Sr.No.',
 		},
 		modalOpen: false,
+		loading: false,
 		error: null,
 	};
 
@@ -33,9 +35,14 @@ const FileState = (props) => {
 		}, 2000);
 	};
 
+	const setLoading = () => {
+		dispatch({ type: SET_LOADING });
+	};
 	const sendFileData = (data) => {
+		setLoading();
 		apiRequest('/upload/csv?headers=true', data).then((res) => {
 			if (res && res.status === 'success') {
+				setLoading();
 				setFileData(res.data);
 			}
 		});
@@ -80,6 +87,7 @@ const FileState = (props) => {
 				FileData: state.FileData,
 				fileType: state.fileType,
 				sortBy: state.sortBy,
+				loading: state.loading,
 				error: state.error,
 				setModalOpen,
 				setError,
@@ -88,6 +96,7 @@ const FileState = (props) => {
 				setFileData,
 				sortData,
 				setSortBy,
+				setLoading,
 			}}>
 			{props.children}
 		</FileContext.Provider>

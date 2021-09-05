@@ -1,11 +1,12 @@
-import React, { Fragment, useContext } from 'react';
+import React, { useContext } from 'react';
 import FileContext from '../../context/file/FileContext';
+import Loading from '../Shared/Loading/Loading';
 import './Table.css';
 
 const Table = () => {
 	const fileContext = useContext(FileContext);
-	const { FileData, sortData, sortBy, setSortBy } = fileContext;
-
+	const { FileData, sortData, sortBy, setSortBy, loading } = fileContext;
+	if (loading) return <Loading />;
 	if (FileData.length > 0)
 		return (
 			<div className='table-main customize-scrollbar'>

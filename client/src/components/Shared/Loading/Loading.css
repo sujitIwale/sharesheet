@@ -1,0 +1,10 @@
+.loading-main {
+    height: 30vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.loading-main img {
+    height: 50px;
+    width: 50px;
+}
