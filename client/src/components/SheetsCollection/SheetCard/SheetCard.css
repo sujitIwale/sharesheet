@@ -1,0 +1,9 @@
+.sheet-card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.sheet-card >div{
+    margin: 10px;
+}

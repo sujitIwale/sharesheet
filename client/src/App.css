@@ -1,10 +1,10 @@
-/* .container {
-    margin: 0 auto;
-} */
+.container {
+    height: 100vh;
+}
 
 .base-layout {
-     width: 1200px;
-    max-width: 90%;
-    margin: 0 auto;
+     /* width: 1200px;
+    max-width: 90%; */
+    /* width: 100%; */
 }
 

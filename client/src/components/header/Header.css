@@ -4,17 +4,20 @@
     top: 0;
     position: sticky;
     z-index: 1;
+    padding: 0 30px;
 }
 .header-content {
     display: flex;
     padding: 15px 0;
     justify-content: space-between;
+    align-items: center;
 }
 .header-content li{
     display: flex;
     list-style: none;
     align-items: center;
     flex-direction:row;
+    justify-content: center;
 }
 
 .header-content .search-bar input{
