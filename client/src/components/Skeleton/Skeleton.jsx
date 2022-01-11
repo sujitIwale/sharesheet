@@ -69,8 +69,22 @@ const TableSkeleton = () => (
 	</table>
 );
 
+const SelectionSkeleton = () => (
+	<div className='selectionSk'>
+		{Array(2).fill(
+			<div className='selectionSkCard'>
+				<div className='selectionSkTitle'>
+					<div className='selectionSkImg'></div>
+					<span className='sub-temp sub-temp-three'></span>
+				</div>
+			</div>
+		)}
+	</div>
+);
+
 const Skeleton = ({ type }) => {
 	if (type === 'table') return <TableSkeleton />;
+	if (type === 'selection') return <SelectionSkeleton />;
 };
 
 export default Skeleton;
