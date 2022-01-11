@@ -4,11 +4,12 @@ import Loading from '../Shared/Loading/Loading';
 import Skeleton from '../Skeleton/Skeleton';
 import './Table.css';
 
-const Table = () => {
-	const fileContext = useContext(FileContext);
-	const { FileData, sortData, sortBy, setSortBy, loading } = fileContext;
-	if (true) return <Skeleton type='table' />;
-	if (FileData.length > 0)
+const Table = ({ sheetData, sortData, sortBy, setSortBy, loading }) => {
+	console.log(sortBy);
+	// const fileContext = useContext(FileContext);
+	// const { sheetData, sortData, sortBy, setSortBy, loading } = ;
+	if (loading) return <Skeleton type='table' />;
+	if (sheetData.length > 0)
 		return (
 			<div className='table-main customize-scrollbar'>
 				<table className='rwd-table'>
@@ -19,12 +20,12 @@ const Table = () => {
 								<i className='fas fa-arrow-up'></i>
 							)}
 						</th>
-						{Object.keys(FileData[0]).map((header, key) => (
+						{Object.keys(sheetData[0]).map((header, key) => (
 							<th
 								className='pointer'
 								onClick={() => {
 									setSortBy(header);
-									sortData(FileData, header);
+									sortData(sheetData, header);
 								}}
 								key={++key}>
 								{header}
@@ -38,7 +39,7 @@ const Table = () => {
 						))}
 					</tr>
 					<tbody>
-						{FileData.map((row, i) => {
+						{sheetData.map((row, i) => {
 							return (
 								<tr key={i}>
 									<td

@@ -1,12 +1,27 @@
-const SheetReducer = (action, state) => {
+import { SET_LOADING, SET_SHEET_DATA, SET_SORT_BY } from '../types';
+
+const SheetReducer = (state, action) => {
 	switch (action.type) {
-		case 'value':
+		case SET_SHEET_DATA:
 			return {
 				...state,
+				sheetData: action.payload,
 			};
-
+		case SET_SORT_BY:
+			return {
+				...state,
+				sortBy: {
+					ASC: !state.sortBy.ASC,
+					item: action.payload,
+				},
+			};
+		case SET_LOADING:
+			return {
+				...state,
+				loading: !state.loading,
+			};
 		default:
-			break;
+			return state;
 	}
 };
 

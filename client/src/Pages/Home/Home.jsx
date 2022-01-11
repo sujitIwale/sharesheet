@@ -18,7 +18,7 @@ const Home = () => {
 			)}
 			{error && <Popup error={error}></Popup>}
 			<UploadSection />
-			<Table />
+			{/* <Table /> */}
 		</Fragment>
 	);
 };
