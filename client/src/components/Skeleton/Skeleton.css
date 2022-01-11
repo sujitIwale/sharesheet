@@ -7,13 +7,13 @@
 .tableSk th{
     background: #08031a;
     border-top: 1px solid #08031a;
-    border-bottom: 1px solid #08031a;
+    border-bottom: 1px solid #1e124b;
     padding: 12px 10px;
 	text-align: left;
 }
 .tableSk td{
       border-top: 0px solid #08031a;
-      border-bottom: 1px solid #08031a;
+      border-bottom: 1px solid #1e124b;
       padding: 12px 10px;
 	  vertical-align: top;
 }

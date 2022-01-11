@@ -3,8 +3,10 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Header from './components/header/Header';
 import FileState from './context/file/FileState';
+import { SheetState } from './context/sheet/SheetState';
 import About from './Pages/About/About';
 import Home from './Pages/Home/Home';
+import Sheet from './Pages/Sheet/Sheet';
 
 function App() {
 	return (
@@ -15,6 +17,11 @@ function App() {
 					<div className='base-layout'>
 						<Switch>
 							<Route exact path='/' component={Home}></Route>
+							<Route exact path='/sheet/:id'>
+								<SheetState>
+									<Sheet />
+								</SheetState>
+							</Route>
 							<Route exact path='/about'>
 								{About}
 							</Route>

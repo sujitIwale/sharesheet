@@ -7,7 +7,7 @@ import './Table.css';
 const Table = () => {
 	const fileContext = useContext(FileContext);
 	const { FileData, sortData, sortBy, setSortBy, loading } = fileContext;
-	if (loading) return <Skeleton type='table' />;
+	if (true) return <Skeleton type='table' />;
 	if (FileData.length > 0)
 		return (
 			<div className='table-main customize-scrollbar'>
