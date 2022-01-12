@@ -5,6 +5,7 @@ import Header from './components/header/Header';
 import FileState from './context/file/FileState';
 import { SheetState } from './context/sheet/SheetState';
 import About from './Pages/About/About';
+import Edit from './Pages/Edit/Edit';
 import Home from './Pages/Home/Home';
 import Sheet from './Pages/Sheet/Sheet';
 
@@ -14,19 +15,20 @@ function App() {
 			<BrowserRouter>
 				<div className='container'>
 					<Header />
-					<div className='base-layout'>
-						<Switch>
-							<Route exact path='/' component={Home}></Route>
+					<Switch>
+						<Route exact path='/' component={Home}></Route>
+						<SheetState>
 							<Route exact path='/sheet/:id'>
-								<SheetState>
-									<Sheet />
-								</SheetState>
+								<Sheet />
 							</Route>
-							<Route exact path='/about'>
-								{About}
+							<Route exact path='/sheet/edit/:id'>
+								<Edit />
 							</Route>
-						</Switch>
-					</div>
+						</SheetState>
+						<Route exact path='/about'>
+							{About}
+						</Route>
+					</Switch>
 				</div>
 			</BrowserRouter>
 		</FileState>

@@ -1,0 +1,17 @@
+.edit-container {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background-color: aliceblue;
+}
+.edit-sheet {
+    margin: 0 30px;
+    overflow: scroll;
+    height: calc(100% - 60px);
+}
+
+.edit-table {
+}
+.edit-table input{
+    font-size: medium;
+}
