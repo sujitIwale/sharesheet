@@ -8,6 +8,12 @@ const liveSite = 'https://file-visualizer.netlify.app/';
 
 app.use(cors());
 
+// database connection
+const connectDB = require('./db/db');
+
+connectDB();
+
+
 app.get('/', (req, res) => {
 	// const data = fs.readFileSync('rawdata/data.json', 'utf-8');
 	res.send(`Welcome to file-upload api try to visit ${liveSite}`);

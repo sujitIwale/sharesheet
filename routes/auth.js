@@ -18,7 +18,7 @@ const {
 const { runValidation } = require('../validators');
 const auth = require('../middleware/auth');
 
-router.post('/google', googleAuth);
+// router.post('/google', googleAuth);
 
 router.post('/signup', userSignupValidator, runValidation, signup);
 
