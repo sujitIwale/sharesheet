@@ -29,10 +29,8 @@ const SheetState = (props) => {
 		// logic for fetching
 		setLoading();
 		const data = rawData;
-		setTimeout(() => {
-			setSheetData(data);
-			setLoading();
-		}, 3000);
+		setSheetData(data);
+		setLoading();
 	};
 	const setSortBy = (value) => {
 		dispatch({ type: SET_SORT_BY, payload: value });
