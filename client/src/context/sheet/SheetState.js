@@ -4,6 +4,7 @@ import { rawData } from './rawData';
 import SheetReducer from './SheetReducer';
 
 const SheetContext = createContext();
+SheetContext.displayName = 'SheetContext';
 
 const SheetState = (props) => {
 	const initialState = {
