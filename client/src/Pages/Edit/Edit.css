@@ -1,13 +1,13 @@
 .edit-container {
     height: 100%;
     width: 100%;
-    overflow: hidden;
+    overflow-y: hidden;
     background-color: aliceblue;
 }
 .edit-sheet {
     margin: 0 30px;
     overflow: scroll;
-    height: calc(100% - 60px);
+    height: 100%;
 }
 
 .edit-table {

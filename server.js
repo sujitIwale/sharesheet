@@ -14,6 +14,7 @@ app.get('/', (req, res) => {
 });
 
 // Routes
+app.use('/auth/', require('./Routes/auth'));
 app.use('/upload/img', require('./routes/imageUpload'));
 app.use('/upload/csv', require('./routes/csvUpload'));
 

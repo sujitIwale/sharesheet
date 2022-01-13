@@ -17,6 +17,7 @@ function App() {
 					<Header />
 					<Switch>
 						<Route exact path='/' component={Home}></Route>
+						<Route exact path='/about' component={About}></Route>
 						<SheetState>
 							<Route exact path='/sheet/:id'>
 								<Sheet />
@@ -25,9 +26,6 @@ function App() {
 								<Edit />
 							</Route>
 						</SheetState>
-						<Route exact path='/about'>
-							{About}
-						</Route>
 					</Switch>
 				</div>
 			</BrowserRouter>

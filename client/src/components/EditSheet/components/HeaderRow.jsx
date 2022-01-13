@@ -2,7 +2,6 @@ import React from 'react';
 import SheetInput from '../../Shared/SheetInput/SheetInput';
 
 const HeaderRow = ({ headerRowData }) => {
-	console.log(headerRowData);
 	return (
 		<tr className='edit-sheet-row'>
 			{Array(26)
@@ -19,11 +18,5 @@ const HeaderRow = ({ headerRowData }) => {
 		</tr>
 	);
 };
-
-{
-	/* <td className='edit-sheet-header_el'>
-					<SheetInput value={val} />
-				</td> */
-}
 
 export default HeaderRow;

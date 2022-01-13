@@ -14,7 +14,6 @@ const EditSheetRowList = ({ sheetData }) => {
 		if (!sheetData[i]) return [];
 		console.log(Object.keys(sheetData[i]));
 		return Object.keys(sheetData[i]).map((key) => {
-			// console.log(sheetData[i][key]);
 			return sheetData[i][key];
 		});
 	};
@@ -27,7 +26,6 @@ const EditSheetRowList = ({ sheetData }) => {
 					return (
 						<SheetRow
 							sheetData={sheetData}
-							index={i}
 							sheetRowValues={getSheetRowValues(i)}
 						/>
 					);
