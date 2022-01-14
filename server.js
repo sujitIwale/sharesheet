@@ -26,6 +26,7 @@ app.get('/', (req, res) => {
 app.use('/auth/', require('./Routes/auth'));
 app.use('/upload/img', require('./routes/imageUpload'));
 app.use('/upload/csv', require('./routes/csvUpload'));
+app.use('/sheet', require('./routes/api/sheet'));
 
 app.listen(PORT, () => {
 	console.log(`server is runnig on port ${PORT}`);
