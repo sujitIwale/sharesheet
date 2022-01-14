@@ -1,12 +1,11 @@
-const { json } = require('express');
 const UserSchema = require('../models/UserSchema');
 const Sheet = require('../models/SheetSchema');
 
 module.exports.addSheet = async (userId, data) => {
-	if (!userId || !results) return;
+	if (!userId || !data) return { error: 'User Id or data not found' };
 	try {
 		const user = await UserSchema.findById(userId);
-		if (!user) return;
+		if (!user) return { error: `No User Found` };
 		data = JSON.stringify(data);
 		const sheet = new Sheet({
 			ownerId: userId,
@@ -14,7 +13,9 @@ module.exports.addSheet = async (userId, data) => {
 			data,
 		});
 		await sheet.save();
+		return sheet;
 	} catch (error) {
-		console.log('error');
+		console.log(error);
+		return { error: 'Server Error' };
 	}
 };

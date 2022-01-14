@@ -9,14 +9,15 @@ module.exports = function (req, res, next) {
 	}
 	try {
 		const decoded = jwt.verify(token, process.env.JWTSECRET);
+		console.log(token);
 		if (!decoded)
 			return res
 				.status(401)
-				.json({ error: { message: 'invalid token' } });
+				.json({ error: { message: 'Invalid token' } });
 		req.user = decoded.user;
 		next();
 	} catch (error) {
 		console.error(error.message);
-		res.status(400).json('Server Error');
+		res.status(400).json({ error: 'Invalid Token' });
 	}
 };
