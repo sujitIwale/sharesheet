@@ -6,7 +6,10 @@ const PORT = process.env.PORT || 3001;
 const liveSite = 'https://file-visualizer.netlify.app/';
 // fs.rmdirSync('./uploads/img', { recursive: true });
 
+// middlewares
 app.use(cors());
+app.use(express.json({ extended: false }));
+
 
 // database connection
 const connectDB = require('./db/db');

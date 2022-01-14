@@ -2,11 +2,12 @@ const express = require('express');
 const fs = require('fs');
 const csv = require('fast-csv');
 const { csvUpload } = require('../middleware/upload');
+const { addSheet } = require('../controllers/sheet');
 const router = express.Router();
 
 router.post('/', csvUpload, (req, res) => {
-	const { headers } = req.query;
-	console.log(headers);
+	const { user } = req.query;
+
 	const data = [];
 	// fs.createReadStream(path.resolve('uploads/csv', req.file.filename))
 	// 	.pipe(csv.parse({ headers: true }))
@@ -31,6 +32,9 @@ router.post('/', csvUpload, (req, res) => {
 					data,
 				};
 				res.send(results);
+				if (user) {
+					addSheet(req.body.userId, results);
+				}
 				fs.unlinkSync(
 					`${process.env.CSV_FILE_STORE_PATH}/` + req.file.filename
 				);
