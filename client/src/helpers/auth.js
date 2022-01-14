@@ -1,6 +1,7 @@
 import axios from 'axios';
 import cookie from 'js-cookie';
-import setAuthToken from '../Utils/setAuthToken';
+import setAuthToken from '../utils/setAuthToken';
+
 
 export const setCookie = (key, value) => {
 	if (window !== 'undefined') {

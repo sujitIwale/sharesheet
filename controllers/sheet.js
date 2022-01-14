@@ -37,3 +37,22 @@ module.exports.getSheet = async (req, res) => {
 		res.status(400).send({ error: error });
 	}
 };
+
+module.exports.getUserSheets = async (req, res) => {
+	try {
+		const userId = req.user.id;
+		const user = await UserSchema.findById(userId);
+		if (!user) return res.status(400).send({ error: `No User Found` });
+
+		const sheets = await SheetSchema.find({ ownerId: userId });
+
+		if (!sheets) {
+			res.status(400).send({ error: 'Sheets Not Found' });
+			return;
+		}
+		res.status(200).send(sheets);
+	} catch (error) {
+		console.log(error);
+		res.status(400).send({ error: error });
+	}
+};
