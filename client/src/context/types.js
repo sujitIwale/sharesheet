@@ -5,3 +5,7 @@ export const SET_FILE_DATA = 'SET_FILE_DATA';
 export const SET_FILE_TYPE = 'SET_FILE_TYPE';
 export const SET_SORT_BY = 'SET_SORT_BY';
 export const SET_SHEET_DATA = 'SET_SHEET_DATA';
+export const USER_SIGNUP = 'USER_SIGNUP';
+export const USER_SIGNIN = 'USER_SIGNIN';
+export const GET_USER = 'GET_USER';
+export const USER_SIGNOUT = 'USER_SIGNOUT';

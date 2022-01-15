@@ -4,23 +4,27 @@ import { Link } from 'react-router-dom';
 import styles from './Auth.module.css';
 // import AuthContext from '../../context/auth/AuthContext';
 import Auth from './Auth';
+import { AuthContext } from '../../context/auth/AuthState';
 
 const Signup = () => {
 	const [User, setUser] = useState({
 		name: '',
 		email: '',
 		password: '',
-		username: '',
 	});
+	const authContext = useContext(AuthContext);
+	const { signUp } = authContext;
 	const [SubmitButton, setSubmitButton] = useState({
 		ButtonText: 'Sign Up',
 		clicked: false,
 		disabled: false,
 	});
-	const [newUserName, setnewUserName] = useState({
-		available: true,
-	});
-
+	const onInputChange = (e) => {
+		setUser({ ...User, [e.target.name]: e.target.value });
+	};
+	const onFormSubmit = (e) => {
+		signUp(User);
+	};
 	// const authContext = useContext(AuthContext);
 	// const { register } = authContext;
 
@@ -89,7 +93,7 @@ const Signup = () => {
 						type='text'
 						placeholder='Enter your Name'
 						name='name'
-						// onChange={onInputChange}
+						onChange={onInputChange}
 					/>
 				</div>
 				<div className='input-group'>
@@ -98,7 +102,7 @@ const Signup = () => {
 						type='email'
 						placeholder='Enter your Email'
 						name='email'
-						// onChange={onInputChange}
+						onChange={onInputChange}
 					/>
 				</div>
 				<div className='input-group'>
@@ -107,15 +111,14 @@ const Signup = () => {
 						type='password'
 						placeholder='Enter Password'
 						name='password'
-						// onChange={onInputChange}
+						onChange={onInputChange}
 					/>
 				</div>
 				<div className='input-group submit'>
 					<button
 						className='submit-btn'
 						disabled={SubmitButton.disabled}
-						// onClick={onFormSubmit}
-					>
+						onClick={onFormSubmit}>
 						<span>{SubmitButton.ButtonText}</span>
 						{SubmitButton.clicked && (
 							<img src='/images/tenor.gif' alt='dotdot' />

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { BASE_API_URL } from './apiEndPoints';
+import { BASE_API_URL, signUp } from './apiEndPoints';
 
 export const apiRequest = async (path, data) => {
 	try {
@@ -11,4 +11,13 @@ export const apiRequest = async (path, data) => {
 	}
 };
 
+export const signUpRequest = async (data) => {
+	try {
+		const res = await axios.post(signUp, data);
+		return res;
+	} catch (error) {
+		console.log('Error in Api Request: ' + error);
+		return { error };
+	}
+};
 
