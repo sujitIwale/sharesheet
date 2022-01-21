@@ -17,11 +17,9 @@ module.exports.verifyToken = async (req, res) => {
 };
 
 module.exports.signup = async (req, res) => {
-	const { name, email, username, password } = req.body;
+	const { name, email, password } = req.body;
 	try {
-		let user = await User.findOne({
-			$or: [{ username: username }, { email: email }],
-		});
+		let user = await User.findOne({ email: email });
 
 		if (user) {
 			return res
@@ -29,7 +27,7 @@ module.exports.signup = async (req, res) => {
 				.json({ error: `User with email: ${email} already exists` });
 		}
 
-		user = new User({ name, email, username, password });
+		user = new User({ name, email, password });
 
 		user.password = await hashPassword(password);
 

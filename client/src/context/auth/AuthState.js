@@ -1,7 +1,14 @@
 import axios from 'axios';
 import { createContext, useReducer } from 'react';
+import {
+	authenticate,
+	getCookie,
+	setCookie,
+	unAuthenticate,
+} from '../../helpers/auth';
 import { signUpRequest } from '../../utils/apiRequests';
-import { USER_SIGNUP } from '../types';
+import setAuthToken from '../../utils/setAuthToken';
+import { GET_USER, USER_SIGNUP } from '../types';
 import AuthReducer from './AuthReducer';
 
 const AuthContext = createContext();
@@ -15,25 +22,33 @@ const AuthState = (props) => {
 		loading: false,
 	};
 	const [state, dispatch] = useReducer(AuthReducer, initialState);
+	const loadUser = async () => {
+		const token = getCookie('token');
+		if (token) {
+			setAuthToken(token);
+			try {
+				const res = await axios.get('http://localhost:3001/auth/');
+				authenticate(res);
+				if (res.data) {
+					dispatch({ type: GET_USER, payload: res.data });
+				}
+			} catch (error) {
+				console.log(error);
+				unAuthenticate();
+				document.location.assign('/signin');
+			}
+		}
+	};
 	const signUp = async (data) => {
 		try {
-			const config = {
-				headers: {
-					'Content-Type': 'application/json',
-				},
-			};
+			const res = await signUpRequest(data);
 
-			const res = await axios.post(
-				'http://localhost:3001/auth/signup/',
-				data,
-				config
-			);
-
-			if (res.data.error) {
+			if (res.error) {
 				console.log(res);
 				return;
 			}
-			dispatch({ type: USER_SIGNUP, payload: res.data });
+			dispatch({ type: USER_SIGNUP, payload: res });
+			setCookie('token', res.token);
 		} catch (error) {
 			console.log(error);
 		}

@@ -13,10 +13,22 @@ export const apiRequest = async (path, data) => {
 
 export const signUpRequest = async (data) => {
 	try {
-		const res = await axios.post(signUp, data);
-		return res;
+		const config = {
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		};
+		// const res = await axios.post(signUp, data, config);
+		const res = await fetch(signUp, {
+			method: 'post',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body:JSON.stringify(data)
+		})
+		return res.json();
 	} catch (error) {
-		console.log('Error in Api Request: ' + error);
+		console.log('Error in SignUp Request : ' + error);
 		return { error };
 	}
 };

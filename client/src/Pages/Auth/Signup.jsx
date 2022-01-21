@@ -5,6 +5,7 @@ import styles from './Auth.module.css';
 // import AuthContext from '../../context/auth/AuthContext';
 import Auth from './Auth';
 import { AuthContext } from '../../context/auth/AuthState';
+import { signUpRequest } from '../../utils/apiRequests';
 
 const Signup = () => {
 	const [User, setUser] = useState({
