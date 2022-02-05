@@ -1,4 +1,16 @@
+
+:root {
+  --main-bg-color: #FAEDF0;
+  --main-text-color:#10002b;
+  --main-btn-color:#10002B;
+  --main-header-color:#240046;
+  --main-header-text-color:#e9ecef;
+  --option-section-bg-color:#ebd4f5;
+}
+
 .container {
+    background-color:var(--main-bg-color);
+    color:var(--main-text-color);
     height: calc(100vh - 60px);
 }
 
