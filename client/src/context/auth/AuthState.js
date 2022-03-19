@@ -62,6 +62,7 @@ const AuthState = (props) => {
 				token: state.token,
 				loading: state.loading,
 				signUp,
+				loadUser,
 			}}>
 			{props.children}
 		</AuthContext.Provider>

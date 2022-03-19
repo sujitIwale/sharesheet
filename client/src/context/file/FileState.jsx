@@ -44,7 +44,7 @@ const FileState = (props) => {
 			if (res && res.status === 'success') {
 				setLoading();
 				setFileData(res.data);
-				document.location.assign(`/sheet/123`);
+				// document.location.assign(`/sheet/123`);
 			}
 		});
 	};

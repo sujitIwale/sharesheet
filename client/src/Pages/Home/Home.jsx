@@ -4,7 +4,6 @@ import Modal from '../../components/Shared/Modal/Modal';
 import Table from '../../components/Table/Table';
 import Upload from '../../components/Upload/Upload';
 import FileContext from '../../context/file/FileContext';
-import Sheets from '../../components/SheetsCollection/SheetsCollection';
 import Skeleton from '../../components/Skeleton/Skeleton';
 
 const UploadSection = lazy(() =>
@@ -14,78 +13,7 @@ const UploadSection = lazy(() =>
 const Home = () => {
 	const fileContext = useContext(FileContext);
 	const { setModalOpen, modalOpen, error } = fileContext;
-	const sheets = [
-		{
-			id: 1,
-			name: 'first sheet',
-			owner: 'sujit',
-		},
-		{
-			id: 1,
-			name: 'first sheet',
-			owner: 'sujit',
-		},
-		{
-			id: 1,
-			name: 'first sheet',
-			owner: 'sujit',
-		},
-		{
-			id: 1,
-			name: 'first sheet',
-			owner: 'sujit',
-		},
-		{
-			id: 1,
-			name: 'first sheet',
-			owner: 'sujit',
-		},
-		{
-			id: 1,
-			name: 'first sheet',
-			owner: 'sujit',
-		},
-		{
-			id: 1,
-			name: 'first sheet',
-			owner: 'sujit',
-		},
-		{
-			id: 1,
-			name: 'first sheet',
-			owner: 'sujit',
-		},
-		{
-			id: 1,
-			name: 'first sheet',
-			owner: 'sujit',
-		},
-		{
-			id: 1,
-			name: 'first sheet',
-			owner: 'sujit',
-		},
-		{
-			id: 1,
-			name: 'first sheet',
-			owner: 'sujit',
-		},
-		{
-			id: 1,
-			name: 'first sheet',
-			owner: 'sujit',
-		},
-		{
-			id: 1,
-			name: 'first sheet',
-			owner: 'sujit',
-		},
-		{
-			id: 1,
-			name: 'first sheet',
-			owner: 'sujit',
-		},
-	];
+
 	return (
 		<Fragment>
 			{modalOpen && (
@@ -97,8 +25,7 @@ const Home = () => {
 			<Suspense fallback={<Skeleton type='selection' />}>
 				<UploadSection />
 			</Suspense>
-			{/* <Table /> */}
-			<Sheets sheets={sheets} />
+			<Table />
 		</Fragment>
 	);
 };

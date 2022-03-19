@@ -1,15 +1,13 @@
 import React, { useContext } from 'react';
 import FileContext from '../../context/file/FileContext';
-import Loading from '../Shared/Loading/Loading';
 import Skeleton from '../Skeleton/Skeleton';
 import './Table.css';
 
-const Table = ({ sheetData, sortData, sortBy, setSortBy, loading }) => {
-	console.log(sortBy);
-	// const fileContext = useContext(FileContext);
-	// const { sheetData, sortData, sortBy, setSortBy, loading } = ;
+const Table = () => {
+	const fileContext = useContext(FileContext);
+	const { FileData, sortData, sortBy, setSortBy, loading } = fileContext;
 	if (loading) return <Skeleton type='table' />;
-	if (sheetData.length > 0)
+	if (FileData.length > 0)
 		return (
 			<div className='table-main customize-scrollbar'>
 				<table className='rwd-table'>
@@ -20,12 +18,12 @@ const Table = ({ sheetData, sortData, sortBy, setSortBy, loading }) => {
 								<i className='fas fa-arrow-up'></i>
 							)}
 						</th>
-						{Object.keys(sheetData[0]).map((header, key) => (
+						{Object.keys(FileData[0]).map((header, key) => (
 							<th
 								className='pointer'
 								onClick={() => {
 									setSortBy(header);
-									sortData(sheetData, header);
+									sortData(FileData, header);
 								}}
 								key={++key}>
 								{header}
@@ -39,7 +37,7 @@ const Table = ({ sheetData, sortData, sortBy, setSortBy, loading }) => {
 						))}
 					</tr>
 					<tbody>
-						{sheetData.map((row, i) => {
+						{FileData.map((row, i) => {
 							return (
 								<tr key={i}>
 									<td

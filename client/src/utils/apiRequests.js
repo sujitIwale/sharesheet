@@ -13,19 +13,19 @@ export const apiRequest = async (path, data) => {
 
 export const signUpRequest = async (data) => {
 	try {
-		const config = {
-			headers: {
-				'Content-Type': 'application/json',
-			},
-		};
+		// const config = {
+		// 	headers: {
+		// 		'Content-Type': 'application/json',
+		// 	},
+		// };
 		// const res = await axios.post(signUp, data, config);
 		const res = await fetch(signUp, {
 			method: 'post',
 			headers: {
 				'Content-Type': 'application/json',
 			},
-			body:JSON.stringify(data)
-		})
+			body: JSON.stringify(data),
+		});
 		return res.json();
 	} catch (error) {
 		console.log('Error in SignUp Request : ' + error);

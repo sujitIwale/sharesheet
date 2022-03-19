@@ -11,9 +11,6 @@ const Header = () => {
 						<h3 className='logo-text'>File Upload</h3>
 					</Link>
 				</li>
-				{/* <li className='search-bar'>
-					<input type='text' placeholder='Search' />
-				</li> */}
 				<div>
 					<li>
 						<Link to='/about'>About</Link>

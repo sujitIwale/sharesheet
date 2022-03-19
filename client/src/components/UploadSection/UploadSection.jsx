@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import FileContext from '../../context/file/FileContext';
-import Skeleton from '../Skeleton/Skeleton';
+// import Skeleton from '../Skeleton/Skeleton';
 import './UploadSection.css';
 
 const UploadSection = () => {
