@@ -12,3 +12,8 @@ body {
   color: var(--text-primary-color);
 }
 
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
