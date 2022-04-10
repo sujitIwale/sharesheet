@@ -1,4 +1,6 @@
-html {
+* {
+	margin: 0;
+	padding: 0;
 	box-sizing: border-box;
 }
 
@@ -21,7 +23,6 @@ ul {
 
 a {
 	text-decoration: none;
-	color: #fff;
 }
 
 ol,
@@ -35,9 +36,8 @@ img {
 }
 
 body {
-	background-color: #0a1525;
+	background-color: F7F7F7;
 	font-family: 'Nunito', sans-serif;
-	color: rgb(255, 255, 255);
 }
 
 .pa-10 {
@@ -76,4 +76,10 @@ body {
 
 .btn-primary:hover {
 	border: 2px solid #0aa037;
+}
+
+
+.btn {
+	border: none;
+	outline: none;
 }

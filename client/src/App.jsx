@@ -1,24 +1,22 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Header from './components/header/Header';
-import FileState from './context/file/FileState';
-import About from './Pages/About/About';
-import Home from './Pages/Home/Home';
+import Landing from './pages/Landing/Landing';
 
 function App() {
 	return (
-		<BrowserRouter>
-			<div className='container'>
-				<Header />
-				<FileState>
-					<Switch>
-						<Route exact path='/' component={Home}></Route>
-						<Route exact path='/about' component={About}></Route>
-					</Switch>
-				</FileState>
-			</div>
-		</BrowserRouter>
+		<Router>
+			<Header />
+			<Switch>
+				<Route exact path='/'>
+				<Landing />
+				</Route>
+				<Route exact path='/signin'>
+				{/* < /> */}
+				</Route>
+			</Switch>
+		</Router>
 	);
 }
 
