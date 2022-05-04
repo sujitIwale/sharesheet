@@ -10,7 +10,7 @@ const Sheet = () => {
 
   useEffect(() => {
     fetchSheetData(sheetId)
-  },[])
+  },[sheetId])
 
   return (
     <div className='sheet-page-main'>

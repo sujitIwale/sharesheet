@@ -1,5 +1,4 @@
 import React from "react";
-import { rawData } from "../../context/sheet/rawData";
 import { useSheet } from "../../hooks/sheet";
 import SheeTableHeader from "./SheeTableHeader";
 import SheetRow from "./SheetRow";

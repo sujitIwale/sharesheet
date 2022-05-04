@@ -7,7 +7,7 @@ const ListOptionBar = () => {
         <h4>Title</h4>
         <h4>Owner</h4>
         <h4>Last opened</h4>
-        <h4></h4>
+        <span></span>
     </div>
   )
 }

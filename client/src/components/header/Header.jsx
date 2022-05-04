@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { isAuth, unAuthenticate } from "../../helpers/auth";
+import { isAuth } from "../../helpers/auth";
 import { useAuth } from "../../hooks/auth";
 import Logo from "../shared/Logo/Logo";
 import "./Header.css";
