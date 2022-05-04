@@ -1,22 +1,22 @@
 
 :root {
-  /* --main-bg-color: #FAEDF0;
-  --main-text-color:#10002b;
-  --main-btn-color:#10002B;
-  --main-header-color:#240046;
-  --main-header-text-color:#e9ecef;
-  --option-section-bg-color:#ebd4f5; */
+  --background-color: white;
+  --secondary-background-color:grey;
+  --border-radius:4px;
+  --text-primary-color: #0F044C;
+  --text-secondary-color: #141E61;
+  --border-color:rgb(230, 227, 227);
+  --accent: purple;
 }
 
-.container {
-    background-color:var(--main-bg-color);
-    color:var(--main-text-color);
-    height: calc(100vh - 60px);
+body {
+  background-color: var(--background-color);
+  color: var(--text-primary-color);
+  overflow: hidden;
 }
 
-.base-layout {
-     /* width: 1200px;
-    max-width: 90%; */
-    /* width: 100%; */
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
-

@@ -1,7 +1,12 @@
-import { SET_LOADING, SET_SHEET_DATA, SET_SORT_BY } from '../types';
+import { SET_LOADING, SET_SHEETS, SET_SHEET_DATA, SET_SORT_BY } from '../types';
 
 const SheetReducer = (state, action) => {
 	switch (action.type) {
+		case SET_SHEETS:
+			return {
+				...state,
+				sheets: action.payload,
+			};
 		case SET_SHEET_DATA:
 			return {
 				...state,

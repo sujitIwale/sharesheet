@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
 });
 
 // Routes
-app.use('/auth/', require('./Routes/auth'));
+app.use('/auth/', require('./routes/auth'));
 app.use('/upload/img', require('./routes/imageUpload'));
 app.use('/upload/csv', require('./routes/csvUpload'));
 app.use('/sheet', require('./routes/api/sheet'));

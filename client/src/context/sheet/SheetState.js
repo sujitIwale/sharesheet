@@ -1,6 +1,7 @@
 import { createContext, useReducer } from 'react';
-import { SET_LOADING, SET_SHEET_DATA, SET_SORT_BY } from '../types';
-import { rawData } from './rawData';
+import { createSheet_Url, getSheet_Url, getUsersSheets_Url } from '../../utils/apiEndPoints';
+import { getRequest, postRequest } from '../../utils/apiRequests';
+import { SET_LOADING, SET_SHEET_DATA, SET_SORT_BY,SET_SHEETS } from '../types';
 import SheetReducer from './SheetReducer';
 
 const SheetContext = createContext();
@@ -8,6 +9,7 @@ SheetContext.displayName = 'SheetContext';
 
 const SheetState = (props) => {
 	const initialState = {
+		sheets:[],
 		sheetData: [],
 		sortBy: {
 			ASC: true,
@@ -25,11 +27,24 @@ const SheetState = (props) => {
 		dispatch({ type: SET_LOADING });
 	};
 
-	const fetchSheetData = (id) => {
+	const fetchSheets = async() => {
+		const res =await getRequest(getUsersSheets_Url)
+		dispatch({type:SET_SHEETS,payload:res.data})
+	}
+
+	const createNewSheet = async () => {
+		const res = await postRequest(createSheet_Url)
+		console.log(res.data)
+		return res.data
+	}
+
+	const fetchSheetData = async (sheetId) => {
 		// logic for fetching
 		setLoading();
-		const data = rawData;
-		setSheetData(data);
+
+		const res = await getRequest(getSheet_Url+`${sheetId}`);
+		setSheetData(res.data);
+		// console.log(res.data)
 		setLoading();
 	};
 	const setSortBy = (value) => {
@@ -61,9 +76,12 @@ const SheetState = (props) => {
 	return (
 		<SheetContext.Provider
 			value={{
+				sheets:state.sheets,
 				sheetData: state.sheetData,
 				loading: state.loading,
 				sortBy: state.sortBy,
+				fetchSheets,
+				createNewSheet,
 				fetchSheetData,
 				setSortBy,
 				sortData,

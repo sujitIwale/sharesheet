@@ -6,8 +6,8 @@ const { addSheet } = require('../controllers/sheet');
 const auth = require('../middleware/auth');
 const router = express.Router();
 
-router.post('/', csvUpload, (req, res) => {
-	const { user } = req.query;
+router.post('/', auth, csvUpload, (req, res) => {
+	const userId = req.user.id;
 
 	const data = [];
 	// fs.createReadStream(path.resolve('uploads/csv', req.file.filename))
@@ -26,16 +26,18 @@ router.post('/', csvUpload, (req, res) => {
 		)
 			.on('error', (error) => console.log(error))
 			.on('data', (row) => data.push(row))
-			.on('end', (rowCount) => {
+			.on('end', async(rowCount) => {
 				const results = {
 					status: 'success',
 					rowCount,
 					data,
 				};
-				res.send(results);
-				if (user) {
-					addSheet(req.body.userId, results);
+				if (userId) {
+					const sheet = await addSheet(userId, data);
+					res.status(200).send(sheet)
+					return
 				}
+				res.send(results);
 				fs.unlinkSync(
 					`${process.env.CSV_FILE_STORE_PATH}/` + req.file.filename
 				);

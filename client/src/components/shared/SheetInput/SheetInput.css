@@ -1,0 +1,10 @@
+.sheet-input {
+    padding: 1px 2px;
+    font-size: medium;
+    outline: none;
+    border: 0.5px solid grey;
+}
+
+.sheet-input:focus {
+    border: 1.2px solid rgb(0, 174, 255);
+}

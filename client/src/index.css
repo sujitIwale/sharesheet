@@ -1,4 +1,6 @@
-html {
+* {
+	margin: 0;
+	padding: 0;
 	box-sizing: border-box;
 }
 
@@ -21,7 +23,7 @@ ul {
 
 a {
 	text-decoration: none;
-	color: #fff;
+	color: inherit;
 }
 
 ol,
@@ -30,14 +32,28 @@ ul {
 }
 
 img {
-	max-width: 100%;
-	height: auto;
+	/* height: auto; */
 }
 
 body {
-	background-color: #0a1525;
+	background-color: F7F7F7;
 	font-family: 'Nunito', sans-serif;
-	color: rgb(255, 255, 255);
+}
+
+.flex {
+	display: flex;
+}
+
+.row {
+	flex-direction: row;
+}
+
+.column {
+	flex-direction: column;
+}
+
+.space-btn {
+	justify-content: space-between;
 }
 
 .pa-10 {
@@ -76,4 +92,11 @@ body {
 
 .btn-primary:hover {
 	border: 2px solid #0aa037;
+}
+
+
+.btn {
+	border: none;
+	outline: none;
+	cursor: pointer;
 }

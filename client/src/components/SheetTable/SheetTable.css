@@ -1,0 +1,14 @@
+.sheet-table-container {
+    margin: 10px;
+}
+
+.sheet-header-row-element {
+    border: 0.5px solid grey;
+    text-align: center;
+}
+
+.left-index-element {
+    border: 0.5px solid grey;
+    text-align: center;
+    padding: 0 8px;
+}
