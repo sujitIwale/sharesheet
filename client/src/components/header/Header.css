@@ -1,11 +1,14 @@
 .header-main {
     display: flex;
     flex-direction: row;
+    background-color: var(--background-color);
     padding: 10px;
     width: 100%;
     border-bottom: 0.7px solid var(--border-color);
     justify-content: space-between;
     align-items: center;
+    top: 0;
+    position: sticky;
 }
 
 .signin-btn {

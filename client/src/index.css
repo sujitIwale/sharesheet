@@ -23,6 +23,7 @@ ul {
 
 a {
 	text-decoration: none;
+	color: inherit;
 }
 
 ol,
@@ -31,13 +32,28 @@ ul {
 }
 
 img {
-	max-width: 100%;
-	height: auto;
+	/* height: auto; */
 }
 
 body {
 	background-color: F7F7F7;
 	font-family: 'Nunito', sans-serif;
+}
+
+.flex {
+	display: flex;
+}
+
+.row {
+	flex-direction: row;
+}
+
+.column {
+	flex-direction: column;
+}
+
+.space-btn {
+	justify-content: space-between;
 }
 
 .pa-10 {
@@ -82,4 +98,5 @@ body {
 .btn {
 	border: none;
 	outline: none;
+	cursor: pointer;
 }

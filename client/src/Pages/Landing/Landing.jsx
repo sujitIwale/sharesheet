@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import {useAuth} from '../../hooks/auth'
 
 const Landing = () => {
+  console.log('landing');
   return (
     <div>Landing</div>
   )

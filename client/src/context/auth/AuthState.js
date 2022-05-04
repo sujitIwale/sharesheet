@@ -1,14 +1,12 @@
-import axios from 'axios';
 import { createContext, useReducer } from 'react';
 import {
-	authenticate,
-	getCookie,
-	setCookie,
-	unAuthenticate,
+	authenticate,	unAuthenticate,
+	verifyToken,
 } from '../../helpers/auth';
-import { signUpRequest } from '../../utils/apiRequests';
+import { postRequest } from '../../utils/apiRequests';
+import { signIn_Url, signUp_Url } from '../../utils/apiEndPoints';
 import setAuthToken from '../../utils/setAuthToken';
-import { GET_USER, USER_SIGNUP } from '../types';
+import { GET_USER, SET_AUTH_ERROR, USER_SIGNIN, USER_SIGNOUT, USER_SIGNUP } from '../types';
 import AuthReducer from './AuthReducer';
 
 const AuthContext = createContext();
@@ -20,38 +18,42 @@ const AuthState = (props) => {
 		user: null,
 		token: localStorage.getItem('token'),
 		loading: false,
+		authError:null
 	};
 	const [state, dispatch] = useReducer(AuthReducer, initialState);
 	const loadUser = async () => {
-		const token = getCookie('token');
-		if (token) {
-			setAuthToken(token);
-			try {
-				const res = await axios.get('http://localhost:3001/auth/');
-				authenticate(res);
-				if (res.data) {
-					dispatch({ type: GET_USER, payload: res.data });
-				}
-			} catch (error) {
-				console.log(error);
-				unAuthenticate();
-				document.location.assign('/signin');
-			}
+		const res = await verifyToken()
+		if(res) {
+			dispatch({type:GET_USER})
 		}
 	};
+	const setError = (error) => {
+		dispatch({type:SET_AUTH_ERROR,payload:error})
+	}
 	const signUp = async (data) => {
-		try {
-			const res = await signUpRequest(data);
-
-			if (res.error) {
-				console.log(res);
-				return;
-			}
-			dispatch({ type: USER_SIGNUP, payload: res });
-			setCookie('token', res.token);
-		} catch (error) {
-			console.log(error);
+		const res = await postRequest(signUp_Url,data)
+		if(res.error) {
+			setError(res.error)
+			return false;
 		}
+
+		dispatch({type:USER_SIGNUP,payload:res.data.token})
+		return true;
+	};
+	const signIn = async (data) => {
+		const res = await postRequest(signIn_Url,data)
+		if(res.error) {
+			setError(res.error)
+			return false;
+		}
+
+		dispatch({type:USER_SIGNIN,payload:res.data.token})
+		return true;
+	};
+
+	const signOut = () => {
+		dispatch({type:USER_SIGNOUT})
+		unAuthenticate()
 	};
 
 	return (
@@ -61,7 +63,10 @@ const AuthState = (props) => {
 				user: state.user,
 				token: state.token,
 				loading: state.loading,
+				authError:state.authError,
 				signUp,
+				signIn,
+				signOut,
 				loadUser,
 			}}>
 			{props.children}

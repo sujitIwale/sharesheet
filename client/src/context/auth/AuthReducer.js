@@ -1,21 +1,35 @@
-import { GET_USER, USER_SIGNIN, USER_SIGNOUT, USER_SIGNUP } from '../types';
+import { getLocalStorage, setLocalStorage } from '../../helpers/auth';
+import { GET_USER, SET_AUTH_ERROR, USER_SIGNIN, USER_SIGNOUT, USER_SIGNUP } from '../types';
 
 const AuthReducer = (state, action) => {
 	switch (action.type) {
 		case USER_SIGNUP:
 		case USER_SIGNIN:
+			setLocalStorage('token',action.payload)
 			return {
 				...state,
-				...action.payload,
+				token:action.payload,
 				isAuthenticated: true,
 				loading: false,
+			};
+		case USER_SIGNOUT:
+			return {
+				...state,
+				token:null,
+				isAuthenticated: false,
+				user:null
 			};
 		case GET_USER:
 			return {
 				...state,
-				user: action.payload,
+				user: getLocalStorage('user'),
 				isAuthenticated: true,
 				loading: false,
+			};
+		case SET_AUTH_ERROR:
+			return {
+				...state,
+				authError:action.payload
 			};
 		case USER_SIGNOUT:
 			return {

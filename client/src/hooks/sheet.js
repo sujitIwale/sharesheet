@@ -1,6 +1,8 @@
 import { useContext } from 'react';
 import { SheetContext } from '../context/sheet/SheetState';
 
-export const useSheetContext = () => {
-	return useContext(SheetContext);
+export const useSheet= () => {
+	const sheetContext = useContext(SheetContext)
+
+	return sheetContext
 };

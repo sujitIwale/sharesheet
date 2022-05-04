@@ -1,0 +1,30 @@
+.sheet-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    background-color: rgb(244, 241, 241);
+}
+
+.menu-options {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    grid-gap: 30px;
+}
+
+.option-card {
+    border: 0.7px solid var(--border-color);
+    background-color: var(--background-color);
+    border-radius: var(--border-radius);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 110px;
+    width: 210px;
+}
+
+.option-card img {
+    width: 100%;
+    height: 100%;
+}

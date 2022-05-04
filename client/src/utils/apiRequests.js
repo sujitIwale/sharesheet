@@ -1,35 +1,31 @@
 import axios from 'axios';
-import { BASE_API_URL, signUp } from './apiEndPoints';
+import { getLocalStorage } from '../helpers/auth';
+import setAuthToken from './setAuthToken';
 
-export const apiRequest = async (path, data) => {
+export const postRequest = async (url, data) => {
 	try {
-		const res = await axios.post(`${BASE_API_URL}${path}`, data);
-		return res.data;
+		const res = await axios.post(url, data);
+		// console.log(res)
+		return res;
 	} catch (error) {
-		console.log('Error in Api Request: ' + error);
-		return false;
+		console.log(`Error in Api Request: ${url}` + error);
+		if(error.message === 'Network Error') return {error:'Network Error'} 
+		return {error:error?.response?.data?.error};
 	}
 };
 
-export const signUpRequest = async (data) => {
+export const getRequest = async (url,options=undefined) => {
 	try {
-		// const config = {
-		// 	headers: {
-		// 		'Content-Type': 'application/json',
-		// 	},
-		// };
-		// const res = await axios.post(signUp, data, config);
-		const res = await fetch(signUp, {
-			method: 'post',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify(data),
-		});
-		return res.json();
+		const token = getLocalStorage('token')
+		setAuthToken(token)
+		const res = await axios.get(url,options);
+		// console.log(res)
+		return res;
 	} catch (error) {
-		console.log('Error in SignUp Request : ' + error);
-		return { error };
+		console.log(`Error in Api Request: ${url}` + error);
+
+		return {error:error.response.data.error};
 	}
 };
+
 
