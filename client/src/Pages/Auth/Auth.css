@@ -88,3 +88,30 @@
     color:rgb(46, 224, 255);
     cursor: pointer;
   }
+
+
+
+  @media only screen and (max-width:1200px) {
+    .auth-card {
+      width: 65%;
+    }
+  }
+  
+  @media only screen and (max-width:800px) {
+    .auth-card {
+      width: 80%;
+    }
+  }
+  
+  @media only screen and (max-width:550px) {
+  
+    .auth-card {
+      width: 70%;
+    }
+  }
+  
+  @media only screen and (max-width:400px) {
+    .auth-card {
+      width: 80%;
+    }
+  }
