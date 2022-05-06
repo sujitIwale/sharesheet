@@ -1,78 +1,106 @@
-const UserSchema = require('../models/UserSchema');
-const Sheet = require('../models/SheetSchema');
-const SheetSchema = require('../models/SheetSchema');
-
-
+const UserSchema = require("../models/UserSchema");
+const Sheet = require("../models/SheetSchema");
+const SheetSchema = require("../models/SheetSchema");
+const { JsonWebTokenError } = require("jsonwebtoken");
 
 module.exports.createSheet = async (req, res) => {
-	const userId = req.user.id;
+  const userId = req.user.id;
 
-	if (!userId) {
-		res.status(400).send({ error: 'User Id or data not found' })
-		return
-	}
+  if (!userId) {
+    res.status(400).send({ error: "User Id or data not found" });
+    return;
+  }
 
-	const result = await this.addSheet(userId)
-	
-		if (!result || result.error) {
-			res.status(400).send(result)
-			return
-		}
-		res.status(200).send(result)
+  const result = await this.addSheet(userId);
+
+  if (!result || result.error) {
+    res.status(400).send(result);
+    return;
+  }
+  res.status(200).send(result);
 };
 
-module.exports.addSheet = async (userId,data=[]) => {
-	try {
-		const user = await UserSchema.findById(userId);
-		if (!user) {
-			return { error: 'User not found' }
-		}
-		data = JSON.stringify(data)
-		const sheet = new Sheet({
-			ownerId: userId,
-			ownerName: user.name,
-			data
-		});
-		await sheet.save();
-		return sheet
-	} catch (error) {
-		console.log(error);
-		return { error: 'Server Error' };
-	}
-} 
+module.exports.addSheet = async (userId, data = []) => {
+  try {
+    const user = await UserSchema.findById(userId);
+    if (!user) {
+      return { error: "User not found" };
+    }
+    data = JSON.stringify(data);
+    const sheet = new Sheet({
+      ownerId: userId,
+      ownerName: user.name,
+      data,
+    });
+    await sheet.save();
+    return sheet;
+  } catch (error) {
+    console.log(error);
+    return { error: "Server Error" };
+  }
+};
 
 module.exports.getSheet = async (req, res) => {
-	try {
-		const sheetId = req.params.sheetId;
-		console.log(sheetId);
-		const sheet = await SheetSchema.findById(sheetId);
+  try {
+    const sheetId = req.params.sheetId;
+    console.log(sheetId);
+    const sheet = await SheetSchema.findById(sheetId);
 
-		if (!sheet) {
-			res.status(400).send({ error: 'Sheet Not Found' });
-			return;
-		}
-		res.status(200).send(sheet);
-	} catch (error) {
-		console.log(error);
-		res.status(400).send({ error: error });
-	}
+    if (!sheet) {
+      res.status(400).send({ error: "Sheet Not Found" });
+      return;
+    }
+    res.status(200).send(sheet);
+  } catch (error) {
+    console.log(error);
+    res.status(400).send({ error: error });
+  }
+};
+
+module.exports.updateSheet = async (req, res) => {
+  try {
+    const ownerId = req.user.id;
+    const { sheetId, data } = req.body;
+    console.log(sheetId);
+    if (!sheetId || !data) {
+      res.status(400).send({ error: "Sheet Id not provided Found" });
+      return;
+    }
+    // if (!Array.isArray(data)) {
+    // let dataString = JSON.stringify(data);
+    // // }
+    // console.log(dataString);
+    const sheet = await SheetSchema.findOneAndUpdate(
+      { _id: sheetId, ownerId: ownerId },
+      { data: data }
+    );
+
+    if (!sheet) {
+      res.status(400).send({ error: "Sheet Not Found" });
+      return;
+    }
+    res.status(200).send(sheet);
+  } catch (error) {
+    console.log(error);
+    res.status(400).send({ error: error });
+  }
 };
 
 module.exports.getUserSheets = async (req, res) => {
-	try {
-		const userId = req.user.id;
-		const user = await UserSchema.findById(userId);
-		if (!user) return res.status(400).send({ error: `No User Found` });
+  try {
+    const userId = req.user.id;
+    const user = await UserSchema.findById(userId);
+    if (!user) return res.status(400).send({ error: `No User Found` });
 
-		const sheets = await SheetSchema.find({ ownerId: userId });
+    const sheets = await SheetSchema.find({ ownerId: userId });
 
-		if (!sheets) {
-			res.status(400).send({ error: 'Sheets Not Found' });
-			return;
-		}
-		res.status(200).send(sheets);
-	} catch (error) {
-		console.log(error);
-		res.status(400).send({ error: error });
-	}
+    if (!sheets) {
+      res.status(400).send({ error: "Sheets Not Found" });
+      return;
+    }
+    res.status(200).send(sheets);
+  } catch (error) {
+    console.log(error);
+    res.status(400).send({ error: error });
+  }
 };

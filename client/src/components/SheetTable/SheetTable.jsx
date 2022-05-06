@@ -1,36 +1,65 @@
 import React from "react";
-import { rawData } from "../../context/sheet/rawData";
 import { useSheet } from "../../hooks/sheet";
 import SheeTableHeader from "./SheeTableHeader";
 import SheetRow from "./SheetRow";
 import "./SheetTable.css";
 
 const SheetTable = () => {
-  const { sheetData } = useSheet();
-  console.log(sheetData.data);
-  if(sheetData.data && !Array.isArray(sheetData.data)) {
+  const { sheetData, setSheetData } = useSheet();
+
+  const onSheetDataChange = (rowId, attribute, newData) => {
     try {
-      console.log(JSON.parse(sheetData.data))
-    sheetData.data = JSON.parse(sheetData.data)
+      console.log(sheetData.data[rowId], attribute, newData);
+      sheetData.data[rowId][attribute] = newData;
+      console.log(sheetData.data);
+      setSheetData({ ...sheetData, data: JSON.stringify(sheetData.data) });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  // console.log(sheetData.data);
+  if (sheetData.data && !Array.isArray(sheetData.data)) {
+    try {
+      sheetData.data = JSON.parse(sheetData.data);
     } catch (error) {
       console.log(error);
     }
   }
-  if(Array.isArray(sheetData.data)) return (
-    <div className="sheet-table-container">
-      <table>
-        <SheeTableHeader />
-        <SheetRow rowIndex={0} data={sheetData.data[0]} type='header' key={-1}/>
-        {Array(50)
-          .fill("")
-          .map((row, rowIndex) => <>
-            <SheetRow rowIndex={rowIndex} data={sheetData.data[rowIndex]} type='row' key={rowIndex}/>
-          </>)}
-      </table>
-    </div>
-  ) 
-  return <h2>Something went wrong</h2>
-  
+  let attributes;
+  if (sheetData.data[0]) {
+    attributes = Object.keys(sheetData.data[0]);
+  }
+  if (Array.isArray(sheetData.data))
+    return (
+      <div className="sheet-table-container">
+        <table>
+          <SheeTableHeader />
+          <SheetRow
+            rowIndex={0}
+            data={sheetData.data[0]}
+            type="header"
+            key={-1}
+            onSheetDataChange={onSheetDataChange}
+            attributes={attributes}
+          />
+          {Array(50)
+            .fill("")
+            .map((row, rowIndex) => (
+              <>
+                <SheetRow
+                  rowIndex={rowIndex}
+                  data={sheetData.data[rowIndex]}
+                  type="row"
+                  key={rowIndex}
+                  onSheetDataChange={onSheetDataChange}
+                  attributes={attributes}
+                />
+              </>
+            ))}
+        </table>
+      </div>
+    );
+  return <h2>Something went wrong</h2>;
 };
 
 export default SheetTable;

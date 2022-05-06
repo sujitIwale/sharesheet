@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react'
-import {useAuth} from '../../hooks/auth'
+import React from 'react'
 
 const Landing = () => {
   console.log('landing');

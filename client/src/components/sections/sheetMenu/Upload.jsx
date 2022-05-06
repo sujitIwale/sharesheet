@@ -51,8 +51,9 @@ const Upload = () => {
     // closeModal();
     const data = new FormData();
     data.append("csvdata", File);
+    console.log(data);
     const res = await sendFileData(data);
-	console.log(res._id);
+    console.log(res._id);
     if (res) {
       history.push(`sheet/${res._id}`);
       closeModal();

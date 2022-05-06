@@ -12,13 +12,6 @@ const AuthReducer = (state, action) => {
 				isAuthenticated: true,
 				loading: false,
 			};
-		case USER_SIGNOUT:
-			return {
-				...state,
-				token:null,
-				isAuthenticated: false,
-				user:null
-			};
 		case GET_USER:
 			return {
 				...state,
@@ -37,6 +30,7 @@ const AuthReducer = (state, action) => {
 				user: null,
 				isAuthenticated: false,
 				loading: false,
+				token:null
 			};
 		default:
 			return state;
