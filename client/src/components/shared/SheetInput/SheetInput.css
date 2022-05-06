@@ -2,9 +2,11 @@
     padding: 1px 2px;
     font-size: medium;
     outline: none;
-    border: 0.5px solid grey;
+    border: 0.5px solid rgb(206, 206, 206);
+    /* border: none; */
 }
 
 .sheet-input:focus {
-    border: 1.2px solid rgb(0, 174, 255);
+    padding: 0.5px 1px;
+    border: 2px solid rgb(0, 174, 255);
 }

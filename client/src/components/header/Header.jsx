@@ -21,32 +21,24 @@ const Header = () => {
   };
 
   return (
-    <header className="header-main">
+    <header className='header-main'>
       <Logo />
-      <div className="header-right">
+      <div className='header-right'>
         {!isAuth() ? (
           <Fragment>
-            <Link to="/signin">
+            <Link to='/signin'>
               {" "}
-              <button className="btn signin-btn pointer">Sign In</button>
+              <button className='btn signin-btn pointer'>Sign In</button>
             </Link>
-            <Link to="/signup">
-              <button className="btn signup-btn pointer">Sign Up</button>
+            <Link to='/signup'>
+              <button className='btn signup-btn pointer'>Sign Up</button>
             </Link>
           </Fragment>
         ) : (
           <Fragment>
-            {
-              <button
-                className="btn signin-btn pointer"
-                onClick={signOutClickHandler}
-              >
-                Save
-              </button>
-            }
             <span>{isAuth().name}</span>
             <button
-              className="btn signin-btn pointer"
+              className='btn signin-btn pointer'
               onClick={signOutClickHandler}
             >
               Sign Out

@@ -1,26 +1,30 @@
 const UserSchema = require("../models/UserSchema");
 const Sheet = require("../models/SheetSchema");
 const SheetSchema = require("../models/SheetSchema");
-const { JsonWebTokenError } = require("jsonwebtoken");
 
 module.exports.createSheet = async (req, res) => {
-  const userId = req.user.id;
+  try {
+    const userId = req.user.id;
+    let { fileText } = req.body;
+    if (!fileText) fileText = "";
+    if (!userId) {
+      res.status(400).send({ error: "User Id or data not found" });
+      return;
+    }
 
-  if (!userId) {
-    res.status(400).send({ error: "User Id or data not found" });
-    return;
+    const result = await this.addSheet(userId, fileText);
+
+    if (!result || result.error) {
+      res.status(400).send(result);
+      return;
+    }
+    res.status(200).send(result);
+  } catch (error) {
+    res.status(500).send({ error });
   }
-
-  const result = await this.addSheet(userId);
-
-  if (!result || result.error) {
-    res.status(400).send(result);
-    return;
-  }
-  res.status(200).send(result);
 };
 
-module.exports.addSheet = async (userId, data = []) => {
+module.exports.addSheet = async (userId, data = "") => {
   try {
     const user = await UserSchema.findById(userId);
     if (!user) {
@@ -43,7 +47,7 @@ module.exports.addSheet = async (userId, data = []) => {
 module.exports.getSheet = async (req, res) => {
   try {
     const sheetId = req.params.sheetId;
-    console.log(sheetId);
+    console.log("sheetId", sheetId);
     const sheet = await SheetSchema.findById(sheetId);
 
     if (!sheet) {
@@ -60,10 +64,14 @@ module.exports.getSheet = async (req, res) => {
 module.exports.updateSheet = async (req, res) => {
   try {
     const ownerId = req.user.id;
+    console.log(req.body);
     const { sheetId, data } = req.body;
-    console.log(sheetId);
+    console.log("sheetId", sheetId);
+    // console.log(data);
     if (!sheetId || !data) {
-      res.status(400).send({ error: "Sheet Id not provided Found" });
+      res
+        .status(400)
+        .send({ error: `${!sheetId ? "Sheet Id" : "Data"} not provided` });
       return;
     }
     // if (!Array.isArray(data)) {

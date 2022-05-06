@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const myParser = require("body-parser");
 const app = express();
 require("dotenv").config();
 const PORT = process.env.PORT || 3001;
@@ -8,8 +9,9 @@ const liveSite = "https://file-visualizer.netlify.app/";
 
 // middlewares
 app.use(cors());
-app.use(express.json({ extended: false }));
-
+// app.use(express.json({ extended: false }));
+app.use(myParser.json({ limit: "200mb" }));
+app.use(myParser.urlencoded({ limit: "200mb", extended: true }));
 // database connection
 const connectDB = require("./db/db");
 

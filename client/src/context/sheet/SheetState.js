@@ -1,4 +1,5 @@
 import { createContext, useReducer } from "react";
+import { parse } from "../../helpers/csvParser";
 import {
   createSheet_Url,
   getSheet_Url,
@@ -47,19 +48,50 @@ const SheetState = (props) => {
     // logic for fetching
     // setLoading();
 
-    const res = await getRequest(getSheet_Url + `${sheetId}`);
-    setSheetData(res.data);
-    cb();
+    try {
+      const res = await getRequest(getSheet_Url + `${sheetId}`);
+      res.data.data = parse(res.data.data);
+      setSheetData(res.data);
+      cb();
+    } catch (error) {
+      console.log(error);
+    }
     // console.log(res.data)
     // setLoading();
   };
   const updateSheetData = async () => {
-    const res = await putRequest(updateSheet_Url, {
-      sheetId: state.sheetData._id,
-      data: JSON.stringify(state.sheetData.data),
-    });
-    console.log(res.data);
-    if (res && res.data) setSheetData(res.data);
+    try {
+      let dataString = "";
+
+      state.sheetData.data.forEach((row) => {
+        if (Array.isArray(row)) {
+          row.forEach((v, i) => {
+            if (!v) v = "";
+            if (i === 0) {
+              dataString = dataString + v;
+            } else dataString = dataString + "," + v;
+          });
+        }
+        dataString = dataString + "\n";
+      });
+      console.log(dataString);
+      // const blob = new Blob([JSON.stringify(dataString)], {
+      //   type: "text/plain;charset=utf-8",
+      // });
+      console.log(state.sheetData._id);
+
+      const res = await putRequest(updateSheet_Url, {
+        sheetId: state.sheetData._id,
+        data: JSON.stringify(dataString),
+      });
+      if (res && res.data) {
+        console.log(res.data);
+        res.data.data = parse(res.data.data);
+        setSheetData(res.data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
   const setSortBy = (value) => {
     dispatch({ type: SET_SORT_BY, payload: value });

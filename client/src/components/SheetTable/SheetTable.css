@@ -1,7 +1,10 @@
+
 .sheet-table-container {
     margin: 10px;
 }
-
+.table {
+    border-collapse: collapse;
+}
 .sheet-header-row-element {
     border: 0.5px solid grey;
     text-align: center;
