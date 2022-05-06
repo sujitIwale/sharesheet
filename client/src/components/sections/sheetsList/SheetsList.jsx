@@ -9,6 +9,7 @@ const SheetsList = () => {
 
   useEffect(() => {
     fetchSheets();
+    // eslint-disable-next-line
   }, []);
   return (
     <section className="sheet-list-collection project-page-container">

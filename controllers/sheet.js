@@ -72,7 +72,8 @@ module.exports.updateSheet = async (req, res) => {
     // console.log(dataString);
     const sheet = await SheetSchema.findOneAndUpdate(
       { _id: sheetId, ownerId: ownerId },
-      { data: data }
+      { data: data },
+      { new: true }
     );
 
     if (!sheet) {

@@ -12,6 +12,7 @@ const Header = () => {
   useEffect(() => {
     console.log("header");
     loadUser();
+    // eslint-disable-next-line
   }, [token]);
 
   const signOutClickHandler = () => {

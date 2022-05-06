@@ -58,6 +58,7 @@ const SheetState = (props) => {
       sheetId: state.sheetData._id,
       data: JSON.stringify(state.sheetData.data),
     });
+    console.log(res.data);
     if (res && res.data) setSheetData(res.data);
   };
   const setSortBy = (value) => {

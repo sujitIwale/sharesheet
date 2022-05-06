@@ -4,16 +4,15 @@ import SheetTable from "../../components/SheetTable/SheetTable";
 import { useSheet } from "../../hooks/sheet";
 import "./Sheet.css";
 
-let temp;
-
 const Sheet = () => {
   const [Loading, setLoading] = useState(false);
   const sheetId = useParams().sheetId;
   const { fetchSheetData, sheetData, updateSheetData } = useSheet();
-  temp = fetchSheetData;
+
   useEffect(() => {
     setLoading(true);
     fetchSheetData(sheetId, () => setLoading(false));
+    // eslint-disable-next-line
   }, [sheetId]);
   console.log(sheetData.data);
   return (
