@@ -5,14 +5,29 @@ import SheetRow from "./SheetRow";
 import "./SheetTable.css";
 
 const SheetTable = () => {
-  const { sheetData } = useSheet();
-  console.log(sheetData.data);
+  const { sheetData, setSheetData } = useSheet();
+
+  const onSheetDataChange = (rowId, attribute, newData) => {
+    try {
+      console.log(sheetData.data[rowId], attribute, newData);
+      sheetData.data[rowId][attribute] = newData;
+      console.log(sheetData.data);
+      setSheetData({ ...sheetData, data: JSON.stringify(sheetData.data) });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  // console.log(sheetData.data);
   if (sheetData.data && !Array.isArray(sheetData.data)) {
     try {
       sheetData.data = JSON.parse(sheetData.data);
     } catch (error) {
       console.log(error);
     }
+  }
+  let attributes;
+  if (sheetData.data[0]) {
+    attributes = Object.keys(sheetData.data[0]);
   }
   if (Array.isArray(sheetData.data))
     return (
@@ -24,6 +39,8 @@ const SheetTable = () => {
             data={sheetData.data[0]}
             type="header"
             key={-1}
+            onSheetDataChange={onSheetDataChange}
+            attributes={attributes}
           />
           {Array(50)
             .fill("")
@@ -34,6 +51,8 @@ const SheetTable = () => {
                   data={sheetData.data[rowIndex]}
                   type="row"
                   key={rowIndex}
+                  onSheetDataChange={onSheetDataChange}
+                  attributes={attributes}
                 />
               </>
             ))}

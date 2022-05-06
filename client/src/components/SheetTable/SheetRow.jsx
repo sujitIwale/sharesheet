@@ -1,7 +1,31 @@
 import React from "react";
 import SheetInput from "../shared/SheetInput/SheetInput";
 
-const SheetRow = ({ rowIndex, data, type }) => {
+const getRow = (
+  rowIndex,
+  columnIndex,
+  dataArray,
+  onSheetDataChange,
+  attribute
+) => {
+  // console.log(columnIndex);
+  if (dataArray[columnIndex]) {
+    const value = dataArray[columnIndex];
+    // console.log(value);
+    return (
+      <SheetInput
+        rowIndex={rowIndex}
+        columnIndex={columnIndex}
+        attribute={attribute}
+        value={value}
+        key={columnIndex}
+        onSheetDataChange={onSheetDataChange}
+      />
+    );
+  }
+};
+
+const SheetRow = ({ rowIndex, data, attributes, type, onSheetDataChange }) => {
   // console.log(data);
   let dataArray;
   if (data) {
@@ -9,29 +33,6 @@ const SheetRow = ({ rowIndex, data, type }) => {
       ? (dataArray = Object.keys(data))
       : (dataArray = Object.values(data));
   }
-  const getRow = (columnIndex) => {
-    if (data) {
-      if (dataArray[columnIndex]) {
-        const value = dataArray[columnIndex];
-        console.log(value);
-        return (
-          <SheetInput
-            rowIndex={rowIndex}
-            columnIndex={columnIndex}
-            value={value}
-            key={columnIndex}
-          />
-        );
-      }
-    }
-    return (
-      <SheetInput
-        rowIndex={rowIndex}
-        columnIndex={columnIndex}
-        key={columnIndex}
-      />
-    );
-  };
   return (
     <tr>
       <td className="left-index-element" key={Math.random()}>
@@ -41,7 +42,23 @@ const SheetRow = ({ rowIndex, data, type }) => {
         .fill("")
         .map((el, columnIndex) => (
           <>
-            <td key={columnIndex}>{getRow(columnIndex)}</td>
+            <td key={columnIndex}>
+              {data && dataArray && dataArray[columnIndex] && attributes ? (
+                getRow(
+                  rowIndex,
+                  columnIndex,
+                  dataArray,
+                  onSheetDataChange,
+                  attributes[columnIndex]
+                )
+              ) : (
+                <SheetInput
+                  rowIndex={rowIndex}
+                  columnIndex={columnIndex}
+                  key={columnIndex}
+                />
+              )}
+            </td>
           </>
         ))}
     </tr>

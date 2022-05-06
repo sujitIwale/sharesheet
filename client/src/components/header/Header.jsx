@@ -6,18 +6,18 @@ import Logo from "../shared/Logo/Logo";
 import "./Header.css";
 
 const Header = () => {
-  const history = useHistory()
-  const { token,loadUser,signOut } = useAuth();
+  const history = useHistory();
+  const { token, loadUser, signOut } = useAuth();
 
   useEffect(() => {
-    console.log('header');
-    loadUser()
-  }, [token])
+    console.log("header");
+    loadUser();
+  }, [token]);
 
   const signOutClickHandler = () => {
-    signOut()
-    history.push('/about')
-  }
+    signOut();
+    history.push("/about");
+  };
 
   return (
     <header className="header-main">
@@ -33,10 +33,25 @@ const Header = () => {
               <button className="btn signup-btn pointer">Sign Up</button>
             </Link>
           </Fragment>
-        ):<Fragment>
+        ) : (
+          <Fragment>
+            {
+              <button
+                className="btn signin-btn pointer"
+                onClick={signOutClickHandler}
+              >
+                Save
+              </button>
+            }
             <span>{isAuth().name}</span>
-            <button className="btn signin-btn pointer" onClick={signOutClickHandler}>Sign Out</button>
-          </Fragment>}
+            <button
+              className="btn signin-btn pointer"
+              onClick={signOutClickHandler}
+            >
+              Sign Out
+            </button>
+          </Fragment>
+        )}
       </div>
     </header>
   );
