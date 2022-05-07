@@ -4,6 +4,7 @@ import setAuthToken from "./setAuthToken";
 
 export const postRequest = async (url, data) => {
   try {
+    console.log(data);
     const res = await axios.post(url, data);
     // console.log(res)
     return res;
@@ -37,7 +38,7 @@ export const putRequest = async (url, data) => {
     // console.log(res)
     return res;
   } catch (error) {
-    console.log(`Error in Api Request: ${url}` + error);
+    console.log(`Error in Api Request: ${url} ` + error.response.data.error);
 
     return { error: error.response.data.error };
   }

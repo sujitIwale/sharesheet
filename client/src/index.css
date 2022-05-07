@@ -21,6 +21,7 @@ ul {
 	overflow: auto;
 }
 
+
 a {
 	text-decoration: none;
 	color: inherit;
@@ -98,5 +99,18 @@ body {
 .btn {
 	border: none;
 	outline: none;
+	cursor: pointer;
+}
+
+.customized-scrollbar::-webkit-scrollbar {
+	background-color: #e9eaed;
+	/* border-radius: 15px; */
+	width: 11px
+}
+
+.customized-scrollbar::-webkit-scrollbar-thumb {
+	background-color: rgb(187, 188, 190);
+	border-radius: 15px;
+	width: 12px;
 	cursor: pointer;
 }

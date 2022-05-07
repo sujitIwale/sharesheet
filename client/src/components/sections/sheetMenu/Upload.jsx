@@ -4,6 +4,8 @@ import { useFile } from "../../../hooks/file";
 import Modal from "../../shared/Modal/Modal";
 import Loader from "../../shared/Loader/Loader";
 import "./Upload.css";
+import { postRequest } from "../../../utils/apiRequests";
+import { createSheet_Url } from "../../../utils/apiEndPoints";
 
 const Upload = () => {
   const history = useHistory();
@@ -48,10 +50,10 @@ const Upload = () => {
       return;
     }
     setuploadStatus(true);
-    // closeModal();
     const data = new FormData();
     data.append("csvdata", File);
-    console.log(data);
+    // const fileText = await File.text();
+    // console.log(fileText);
     const res = await sendFileData(data);
     console.log(res._id);
     if (res) {
@@ -64,44 +66,43 @@ const Upload = () => {
       {ModalOpen && (
         <Modal
           closeModal={() => setModalOpen(false)}
-          modalTitle="Upload a Csv File"
+          modalTitle='Upload a Csv File'
         >
           {!loading ? (
-            <div className="upload-main">
+            <div className='upload-main'>
               <form
-                className="upload-form"
+                className='upload-form'
                 onDragOver={dragOver}
                 onDragEnter={dragEnter}
                 onDragLeave={dragLeave}
                 onDrop={fileDrop}
               >
                 <input
-                  id="file-upload"
-                  type="file"
-                  name="file"
+                  id='file-upload'
+                  type='file'
+                  name='file'
                   onChange={onChange}
                 />
-                <label htmlFor="file-upload">
-                  <div className="upload-btn-container pointer">
-                    <i className="fa fa-download"></i>
+                <label htmlFor='file-upload'>
+                  <div className='upload-btn-container pointer'>
+                    <i className='fa fa-download'></i>
                     <p>{File && File.name}</p>
-                    <span id="file-upload-btn" className="btn-primary">
+                    <span id='file-upload-btn' className='btn-primary'>
                       Select a file
                     </span>
                   </div>
                 </label>
               </form>
-              <button onClick={onUpload} bgColor="#454cad">
-                Upload
-              </button>
+              <button onClick={onUpload}>Upload</button>
             </div>
           ) : (
             <Loader />
           )}
         </Modal>
       )}
-      <div className="option-card btn" onClick={openModal}>
-        Upload Csv File
+      <div className='option-card upload btn' onClick={openModal}>
+        <i class='fa-solid fa-upload'></i>
+        <h2>Upload Csv File</h2>
       </div>
     </>
   );

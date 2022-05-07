@@ -1,0 +1,14 @@
+.search-user {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-user input {
+    width: 60%;
+    padding: 3px;
+    border: none;
+    outline: none;
+}

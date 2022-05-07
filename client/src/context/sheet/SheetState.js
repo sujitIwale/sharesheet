@@ -1,12 +1,20 @@
 import { createContext, useReducer } from "react";
+import { parse } from "../../helpers/csvParser";
 import {
   createSheet_Url,
   getSheet_Url,
   getUsersSheets_Url,
+  searchUsers_Url,
   updateSheet_Url,
 } from "../../utils/apiEndPoints";
 import { getRequest, postRequest, putRequest } from "../../utils/apiRequests";
-import { SET_LOADING, SET_SHEET_DATA, SET_SORT_BY, SET_SHEETS } from "../types";
+import {
+  SET_LOADING,
+  SET_SHEET_DATA,
+  SET_SORT_BY,
+  SET_SHEETS,
+  UPDATE_SHEET_NAME,
+} from "../types";
 import SheetReducer from "./SheetReducer";
 
 const SheetContext = createContext();
@@ -47,20 +55,82 @@ const SheetState = (props) => {
     // logic for fetching
     // setLoading();
 
-    const res = await getRequest(getSheet_Url + `${sheetId}`);
-    setSheetData(res.data);
-    cb();
+    try {
+      const res = await getRequest(getSheet_Url + `${sheetId}`);
+      if (res.data) {
+        res.data.data = parse(res.data.data);
+        setSheetData(res.data);
+      }
+      cb();
+    } catch (error) {
+      console.log(error);
+    }
     // console.log(res.data)
     // setLoading();
   };
   const updateSheetData = async () => {
-    const res = await putRequest(updateSheet_Url, {
-      sheetId: state.sheetData._id,
-      data: JSON.stringify(state.sheetData.data),
-    });
-    console.log(res.data);
-    if (res && res.data) setSheetData(res.data);
+    try {
+      let dataString = "";
+
+      state.sheetData.data.forEach((row) => {
+        if (Array.isArray(row)) {
+          row.forEach((v, i) => {
+            if (!v) v = "";
+            if (i === 0) {
+              dataString = dataString + v;
+            } else dataString = dataString + "," + v;
+          });
+        }
+        dataString = dataString + "\n";
+      });
+      console.log(dataString);
+      // const blob = new Blob([JSON.stringify(dataString)], {
+      //   type: "text/plain;charset=utf-8",
+      // });
+      console.log(state.sheetData._id);
+
+      const res = await putRequest(updateSheet_Url, {
+        sheetId: state.sheetData._id,
+        data: JSON.stringify(dataString),
+      });
+      if (res && res.data) {
+        console.log(res.data);
+        res.data.data = parse(res.data.data);
+        setSheetData(res.data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
+
+  const updateSheetName = async (name) => {
+    try {
+      if (state.sheetData.name === name) return;
+      const res = await putRequest(updateSheet_Url, {
+        sheetId: state.sheetData._id,
+        name,
+      });
+      if (res && res.data) {
+        console.log(res.data);
+        dispatch({ type: UPDATE_SHEET_NAME, payload: res.data.name });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const searchUsers = async (query) => {
+    try {
+      const res = await getRequest(`${searchUsers_Url}?email=${query}`);
+      if (res.data) {
+        return res.data;
+      }
+      return [];
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const setSortBy = (value) => {
     dispatch({ type: SET_SORT_BY, payload: value });
   };
@@ -98,6 +168,8 @@ const SheetState = (props) => {
         createNewSheet,
         fetchSheetData,
         updateSheetData,
+        updateSheetName,
+        searchUsers,
         setSheetData,
         setSortBy,
         sortData,

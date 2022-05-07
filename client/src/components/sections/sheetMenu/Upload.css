@@ -6,6 +6,16 @@
 	margin: 10px;
 }
 
+.option-card.upload {
+	display: flex;
+	flex-direction: column;
+}
+
+.option-card.upload i {
+	font-size: xx-large;
+	margin: 5px 0;
+}
+
 .upload-form {
 	margin: 0 auto;
 	width: 100%;
