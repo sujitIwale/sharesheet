@@ -35,6 +35,7 @@ module.exports.addSheet = async (userId, data = "") => {
       ownerId: userId,
       ownerName: user.name,
       data,
+      users: [],
     });
     await sheet.save();
     return sheet;
@@ -65,22 +66,24 @@ module.exports.updateSheet = async (req, res) => {
   try {
     const ownerId = req.user.id;
     console.log(req.body);
-    const { sheetId, data } = req.body;
+    const { sheetId, data, name } = req.body;
     console.log("sheetId", sheetId);
     // console.log(data);
-    if (!sheetId || !data) {
+    if (!sheetId && (!data || !name)) {
       res
         .status(400)
         .send({ error: `${!sheetId ? "Sheet Id" : "Data"} not provided` });
       return;
     }
+    let updates;
+    data ? (updates = { data }) : (updates = { name });
     // if (!Array.isArray(data)) {
     // let dataString = JSON.stringify(data);
     // // }
     // console.log(dataString);
     const sheet = await SheetSchema.findOneAndUpdate(
       { _id: sheetId, ownerId: ownerId },
-      { data: data },
+      updates,
       { new: true }
     );
 
@@ -108,6 +111,36 @@ module.exports.getUserSheets = async (req, res) => {
       return;
     }
     res.status(200).send(sheets);
+  } catch (error) {
+    console.log(error);
+    res.status(400).send({ error: error });
+  }
+};
+
+module.exports.addUser = async (req, res) => {
+  try {
+    const ownerId = req.user.id;
+    const { sheetId, userId } = req.body;
+    console.log("sheetId", sheetId);
+    // console.log(data);
+    if (!sheetId || !userId) {
+      res
+        .status(400)
+        .send({ error: `${!sheetId ? "Sheet Id" : "User"} not provided` });
+      return;
+    }
+
+    const sheet = await SheetSchema.findByIdAndUpdate(
+      { _id: sheetId, ownerId: ownerId },
+      { $addToSet: { users: userId } },
+      { new: true }
+    );
+
+    if (!sheet) {
+      res.status(400).send({ error: "Sheet Not Found" });
+      return;
+    }
+    res.status(200).send(sheet);
   } catch (error) {
     console.log(error);
     res.status(400).send({ error: error });

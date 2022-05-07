@@ -7,7 +7,13 @@ import {
   updateSheet_Url,
 } from "../../utils/apiEndPoints";
 import { getRequest, postRequest, putRequest } from "../../utils/apiRequests";
-import { SET_LOADING, SET_SHEET_DATA, SET_SORT_BY, SET_SHEETS } from "../types";
+import {
+  SET_LOADING,
+  SET_SHEET_DATA,
+  SET_SORT_BY,
+  SET_SHEETS,
+  UPDATE_SHEET_NAME,
+} from "../types";
 import SheetReducer from "./SheetReducer";
 
 const SheetContext = createContext();
@@ -50,8 +56,10 @@ const SheetState = (props) => {
 
     try {
       const res = await getRequest(getSheet_Url + `${sheetId}`);
-      res.data.data = parse(res.data.data);
-      setSheetData(res.data);
+      if (res.data) {
+        res.data.data = parse(res.data.data);
+        setSheetData(res.data);
+      }
       cb();
     } catch (error) {
       console.log(error);
@@ -93,6 +101,23 @@ const SheetState = (props) => {
       console.log(error);
     }
   };
+
+  const updateSheetName = async (name) => {
+    try {
+      if (state.sheetData.name === name) return;
+      const res = await putRequest(updateSheet_Url, {
+        sheetId: state.sheetData._id,
+        name,
+      });
+      if (res && res.data) {
+        console.log(res.data);
+        dispatch({ type: UPDATE_SHEET_NAME, payload: res.data.name });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const setSortBy = (value) => {
     dispatch({ type: SET_SORT_BY, payload: value });
   };
@@ -130,6 +155,7 @@ const SheetState = (props) => {
         createNewSheet,
         fetchSheetData,
         updateSheetData,
+        updateSheetName,
         setSheetData,
         setSortBy,
         sortData,

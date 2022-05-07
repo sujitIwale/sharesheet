@@ -100,8 +100,9 @@ const Upload = () => {
           )}
         </Modal>
       )}
-      <div className='option-card btn' onClick={openModal}>
-        Upload Csv File
+      <div className='option-card upload btn' onClick={openModal}>
+        <i class='fa-solid fa-upload'></i>
+        <h2>Upload Csv File</h2>
       </div>
     </>
   );

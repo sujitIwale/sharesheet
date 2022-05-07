@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import SheetHeader from "../../components/SheetHeader/SheetHeader";
 import SheetTable from "../../components/SheetTable/SheetTable";
 import { useSheet } from "../../hooks/sheet";
 import "./Sheet.css";
@@ -7,7 +8,7 @@ import "./Sheet.css";
 const Sheet = () => {
   const [Loading, setLoading] = useState(false);
   const sheetId = useParams().sheetId;
-  const { fetchSheetData, sheetData, updateSheetData } = useSheet();
+  const { fetchSheetData, sheetData } = useSheet();
 
   useEffect(() => {
     setLoading(true);
@@ -16,8 +17,8 @@ const Sheet = () => {
   }, [sheetId]);
   console.log(sheetData.data);
   return (
-    <div className="sheet-page-main">
-      <button onClick={updateSheetData}>save</button>
+    <div className='sheet-page-main customized-scrollbar'>
+      <SheetHeader />
       {Loading || !sheetData.data ? <h2>Loading ....</h2> : <SheetTable />}
     </div>
   );

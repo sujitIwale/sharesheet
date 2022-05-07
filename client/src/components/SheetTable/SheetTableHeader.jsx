@@ -3,7 +3,7 @@ import React from "react";
 const SheeTableHeader = () => {
   return (
     <tr className='sheet-header-row'>
-      <td className='sheet-header-row-element' key={-1}></td>
+      <td className='sheet-header-row-element top' key={-1}></td>
       {Array(26)
         .fill("")
         .map((d, i) => (
