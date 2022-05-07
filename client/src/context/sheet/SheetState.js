@@ -4,6 +4,7 @@ import {
   createSheet_Url,
   getSheet_Url,
   getUsersSheets_Url,
+  searchUsers_Url,
   updateSheet_Url,
 } from "../../utils/apiEndPoints";
 import { getRequest, postRequest, putRequest } from "../../utils/apiRequests";
@@ -118,6 +119,18 @@ const SheetState = (props) => {
     }
   };
 
+  const searchUsers = async (query) => {
+    try {
+      const res = await getRequest(`${searchUsers_Url}?email=${query}`);
+      if (res.data) {
+        return res.data;
+      }
+      return [];
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const setSortBy = (value) => {
     dispatch({ type: SET_SORT_BY, payload: value });
   };
@@ -156,6 +169,7 @@ const SheetState = (props) => {
         fetchSheetData,
         updateSheetData,
         updateSheetName,
+        searchUsers,
         setSheetData,
         setSortBy,
         sortData,

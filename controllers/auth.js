@@ -1,86 +1,84 @@
-const jwt = require('jsonwebtoken');
+const jwt = require("jsonwebtoken");
 // const mongoose = require('mongoose');
 // const { OAuth2Client } = require('google-auth-library');
-const User = require('../models/UserSchema');
-const { hashPassword, checkPassword } = require('../services/hash');
+const User = require("../models/UserSchema");
+const { hashPassword, checkPassword } = require("../services/hash");
 
 // const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
 module.exports.verifyToken = async (req, res) => {
-	try {
-		const user = await User.findById(req.user.id).select('-password');
-		res.json(user);
-	} catch (err) {
-		console.error(err.message);
-		res.status(500).send('Server Error');
-	}
+  try {
+    const user = await User.findById(req.user.id).select("-password");
+    res.json(user);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
 };
 
 module.exports.signup = async (req, res) => {
-	const { name, email, password } = req.body;
-	try {
-		let user = await User.findOne({ email: email });
+  try {
+    const { name, email, password } = req.body;
+    let user = await User.findOne({ email: email });
 
-		if (user) {
-			return res
-				.status(404)
-				.json({ error: `User with email: ${email} already exists` });
-		}
+    if (user) {
+      return res
+        .status(404)
+        .json({ error: `User with email: ${email} already exists` });
+    }
 
-		user = new User({ name, email, password });
+    user = new User({ name, email, password });
 
-		user.password = await hashPassword(password);
+    user.password = await hashPassword(password);
 
-		await user.save();
+    await user.save();
 
-		const payload = {
-			user: {
-				id: user.id,
-			},
-		};
+    const payload = {
+      user: {
+        id: user.id,
+      },
+    };
 
-		const token = jwt.sign(payload, process.env.JWTSECRET, {
-			expiresIn: '7d',
-		});
+    const token = jwt.sign(payload, process.env.JWTSECRET, {
+      expiresIn: "7d",
+    });
 
-		return res.status(200).send({ token });
-	} catch (error) {
-		console.log(error.message);
-		res.status(500).send({ error: error.message });
-	}
+    return res.status(200).send({ token });
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).send({ error: error.message });
+  }
 };
 
 module.exports.signin = async (req, res) => {
-	const { email, password } = req.body;
-	try {
-		const user = await User.findOne({ email: email });
-		if (user === null) {
-			return res
-				.status(404)
-				.json({ error: `User with email: ${email} does not exists` });
-		}
+  const { email, password } = req.body;
+  try {
+    const user = await User.findOne({ email: email });
+    if (user === null) {
+      return res
+        .status(404)
+        .json({ error: `User with email: ${email} does not exists` });
+    }
 
-		const isCorrect = await checkPassword(password, user.password);
-		if (isCorrect === false) {
-			return res
-				.status(401)
-				.json({ error: `Wrong Password for ${email}` });
-		}
-		const payload = {
-			user: {
-				id: user.id,
-			},
-		};
+    const isCorrect = await checkPassword(password, user.password);
+    if (isCorrect === false) {
+      return res.status(401).json({ error: `Wrong Password for ${email}` });
+    }
+    const payload = {
+      user: {
+        id: user.id,
+      },
+    };
 
-		const token = jwt.sign(payload, process.env.JWTSECRET, {
-			expiresIn: '7d',
-		});
+    const token = jwt.sign(payload, process.env.JWTSECRET, {
+      expiresIn: "7d",
+    });
 
-		return res.status(200).send({ token });
-	} catch (error) {
-		console.log(error.message);
-		res.status(500).send({ error: error.message });
-	}
+    return res.status(200).send({ token });
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).send({ error: error.message });
+  }
 };
 
 // module.exports.googleAuth = async (req, res) => {

@@ -101,10 +101,12 @@ module.exports.updateSheet = async (req, res) => {
 module.exports.getUserSheets = async (req, res) => {
   try {
     const userId = req.user.id;
-    const user = await UserSchema.findById(userId);
-    if (!user) return res.status(400).send({ error: `No User Found` });
 
-    const sheets = await SheetSchema.find({ ownerId: userId });
+    let sheets = await SheetSchema.find({
+      $or: [{ users: { $elemMatch: { $eq: userId } } }, { ownerId: userId }],
+    });
+
+    // const sheets = await SheetSchema.find({ ownerId: userId });
 
     if (!sheets) {
       res.status(400).send({ error: "Sheets Not Found" });
