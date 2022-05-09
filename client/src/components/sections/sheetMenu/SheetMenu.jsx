@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useSheet } from "../../../hooks/sheet";
-import MainLoader from "../../shared/Loader/MainLoader";
+import LineLoader from "../../shared/Loader/LineLoader";
 
 import "./SheetMenu.css";
 import Upload from "./Upload";
@@ -16,7 +16,7 @@ const SheetMenu = () => {
     setLoading(false);
     history.push(`sheet/${sheetId._id}`);
   };
-  if (Loading) return <MainLoader />;
+  if (Loading) return <LineLoader />;
   return (
     <section className='sheet-menu'>
       <div className='menu-options project-page-container'>

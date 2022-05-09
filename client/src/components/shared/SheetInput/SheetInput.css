@@ -1,5 +1,5 @@
 .sheet-input {
-    width: 150px;
+    width: inherit;
     padding: 1px 2px;
     font-size: medium;
     outline: none;

@@ -4,8 +4,6 @@ import { useFile } from "../../../hooks/file";
 import Modal from "../../shared/Modal/Modal";
 import Loader from "../../shared/Loader/Loader";
 import "./Upload.css";
-import { postRequest } from "../../../utils/apiRequests";
-import { createSheet_Url } from "../../../utils/apiEndPoints";
 
 const Upload = () => {
   const history = useHistory();
@@ -55,7 +53,7 @@ const Upload = () => {
     // const fileText = await File.text();
     // console.log(fileText);
     const res = await sendFileData(data);
-    console.log(res._id);
+    // console.log(res._id);
     if (res) {
       history.push(`sheet/${res._id}`);
       closeModal();
@@ -87,13 +85,15 @@ const Upload = () => {
                   <div className='upload-btn-container pointer'>
                     <i className='fa fa-download'></i>
                     <p>{File && File.name}</p>
-                    <span id='file-upload-btn' className='btn-primary'>
+                    <span id='file-select-btn' className='btn-primary'>
                       Select a file
                     </span>
                   </div>
                 </label>
               </form>
-              <button onClick={onUpload}>Upload</button>
+              <button onClick={onUpload} className='btn upload-btn'>
+                Upload
+              </button>
             </div>
           ) : (
             <Loader />

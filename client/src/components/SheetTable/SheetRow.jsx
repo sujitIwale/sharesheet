@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import SheetInput from "../shared/SheetInput/SheetInput";
 
 const getRow = (rowIndex, columnIndex, dataArray, onSheetDataChange) => {
@@ -18,9 +18,11 @@ const getRow = (rowIndex, columnIndex, dataArray, onSheetDataChange) => {
   }
 };
 
-const SheetRow = ({ rowIndex, data, type, onSheetDataChange }) => {
+const SheetRow = ({ rowIndex, data, type, onSheetDataChange, tableRef }) => {
   // console.log(data);
-
+  useEffect(() => {
+    // resizer(tableRef.current, "td");
+  }, []);
   return (
     <tr>
       <td className='left-index-element' key={Math.random()}>
@@ -29,20 +31,18 @@ const SheetRow = ({ rowIndex, data, type, onSheetDataChange }) => {
       {Array(26)
         .fill("")
         .map((el, columnIndex) => (
-          <>
-            <td key={columnIndex}>
-              {data && data && data[columnIndex] ? (
-                getRow(rowIndex, columnIndex, data, onSheetDataChange)
-              ) : (
-                <SheetInput
-                  rowIndex={rowIndex}
-                  columnIndex={columnIndex}
-                  key={columnIndex}
-                  onSheetDataChange={onSheetDataChange}
-                />
-              )}
-            </td>
-          </>
+          <td key={columnIndex} id={`td${columnIndex}`}>
+            {data && data && data[columnIndex] ? (
+              getRow(rowIndex, columnIndex, data, onSheetDataChange)
+            ) : (
+              <SheetInput
+                rowIndex={rowIndex}
+                columnIndex={columnIndex}
+                key={columnIndex}
+                onSheetDataChange={onSheetDataChange}
+              />
+            )}
+          </td>
         ))}
     </tr>
   );

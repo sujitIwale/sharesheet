@@ -6,19 +6,18 @@ const SheetInput = ({ rowIndex, columnIndex, value, onSheetDataChange }) => {
   const timer = useRef();
 
   const changeHandler = (e) => {
-    console.log(timer.current);
     clearTimeout(timer.current);
     setValue(e.target.value);
     timer.current = setTimeout(() => {
       if (typeof onSheetDataChange === "function") {
         onSheetDataChange(rowIndex, columnIndex, e.target.value);
       }
-    }, 2000);
+    }, 500);
   };
   return (
     <input
       type='text'
-      id={`${rowIndex}*${columnIndex}`}
+      id={columnIndex}
       className='sheet-input'
       value={Value}
       onChange={changeHandler}

@@ -7,6 +7,7 @@ import SheetTable from "../../components/SheetTable/SheetTable";
 import { useSheet } from "../../hooks/sheet";
 import { useAuth } from "../../hooks/auth";
 import "./Sheet.css";
+import LineLoader from "../../components/shared/Loader/LineLoader";
 
 const Sheet = () => {
   const [Loading, setLoading] = useState(false);
@@ -20,7 +21,7 @@ const Sheet = () => {
     fetchSheetData(sheetId, () => setLoading(false));
     // eslint-disable-next-line
   }, [sheetId]);
-  if (!sheetData) return <></>;
+  if (!sheetData) return <LineLoader />;
   console.log(sheetData.data);
   const modalAction = () => {
     setModalOpen((state) => !state);
@@ -28,7 +29,7 @@ const Sheet = () => {
   return (
     <div className='sheet-page-main customized-scrollbar'>
       <SheetHeader openModal={modalAction} user={user} />
-      {Loading || !sheetData.data ? <h2>Loading ....</h2> : <SheetTable />}
+      {Loading || !sheetData.data ? <LineLoader /> : <SheetTable />}
       {ModalOpen && (
         <Modal closeModal={modalAction} modalTitle='Share with other users'>
           <SearchUser
