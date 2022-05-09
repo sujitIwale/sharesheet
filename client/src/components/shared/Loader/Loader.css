@@ -7,6 +7,12 @@
     z-index: 100;
 }
 
+.loader-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .loader-gif {
     width: 50px;
     height: 50x;

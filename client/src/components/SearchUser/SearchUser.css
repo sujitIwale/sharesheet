@@ -1,14 +1,128 @@
 .search-user {
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-    justify-content: center;
-    align-items: center;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
 }
 
-.search-user input {
-    width: 60%;
-    padding: 3px;
-    border: none;
-    outline: none;
+.search-form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.search-user .search-container {
+  width: 80%;
+  background-color: #f1f3f4;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid grey;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    flex-wrap: wrap;
+}
+
+.search-container .items {
+  margin-left: 4px;
+  font-size: x-small;
+  font-weight: lighter;
+  display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.search-container .items .item{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  color: black;
+  background-color: #FFF;
+  padding: 4px;
+  border-radius: 16px;
+  font-weight: bold;
+  font-size: medium;
+}
+
+.search-container .items .item .item-user-profile{
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  margin-right: 3px;
+}
+
+.search-container .items .item .remove-btn {
+  padding: 2px;
+  margin: 0 2px;
+  border-radius: 50%;
+  text-align: center;
+  cursor: pointer;
+}
+
+.search-container .items .item .remove-btn:hover {
+  background-color: rgb(215, 215, 215);
+}
+
+.search-user .search-container input {
+  padding: 5px 3px;
+  border: none;
+  outline: none;
+  font-size: large;
+  background-color: #f1f3f4;
+  width: 100%;
+}
+
+.users-list {
+  margin-top: 10px;
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.users-list-element {
+  width: 100%;
+  padding: 3px 8px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.users-list-element:hover {
+  background-color: rgb(247, 247, 247);
+}
+
+.user-profile {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+input[type='checkbox'] {
+  padding: 4px;
+  width: 1.4em;
+    height: 1.4em;
+}
+
+.footer {
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.footer button {
+  padding: 5px 9px;
+  font-size: 18px;
+  color: #f1f1f1;
+  cursor: pointer;
+  background-color: green;
+  border-radius: 4px;
+  font-weight: bold;
 }

@@ -1,6 +1,7 @@
 const UserSchema = require("../models/UserSchema");
 const Sheet = require("../models/SheetSchema");
 const SheetSchema = require("../models/SheetSchema");
+const { use } = require("express/lib/application");
 
 module.exports.createSheet = async (req, res) => {
   try {
@@ -122,19 +123,28 @@ module.exports.getUserSheets = async (req, res) => {
 module.exports.addUser = async (req, res) => {
   try {
     const ownerId = req.user.id;
-    const { sheetId, userId } = req.body;
+    const { sheetId, data } = req.body;
     console.log("sheetId", sheetId);
     // console.log(data);
-    if (!sheetId || !userId) {
-      res
-        .status(400)
-        .send({ error: `${!sheetId ? "Sheet Id" : "User"} not provided` });
+    if (!sheetId || !data || !Array.isArray(data)) {
+      res.status(400).send({
+        error: `${!sheetId ? "Sheet Id" : "User id"} not provided`,
+      });
       return;
     }
 
-    const sheet = await SheetSchema.findByIdAndUpdate(
+    // const user = await UserSchema.findOne({ _id: userEmail });
+
+    // if (!user) {
+    //   res.status(400).send({
+    //     error: `User with ${userEmail} not exists.`,
+    //   });
+    //   return;
+    // }
+
+    const sheet = await SheetSchema.findOneAndUpdate(
       { _id: sheetId, ownerId: ownerId },
-      { $addToSet: { users: userId } },
+      { $addToSet: { users: { $each: data } } },
       { new: true }
     );
 
@@ -142,7 +152,10 @@ module.exports.addUser = async (req, res) => {
       res.status(400).send({ error: "Sheet Not Found" });
       return;
     }
-    res.status(200).send(sheet);
+    res.status(200).send({
+      sheet,
+      usersAdded: true,
+    });
   } catch (error) {
     console.log(error);
     res.status(400).send({ error: error });

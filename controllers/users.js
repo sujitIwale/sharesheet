@@ -13,7 +13,7 @@ module.exports.searchUsers = async (req, res) => {
 
     console.log(email, username, search, searchBy);
     const users = await UserSchema.find({
-      [searchBy]: search,
+      $or: [{ [searchBy]: { $regex: search, $options: "i" } }],
     }).select("-password");
 
     // const sheets = await SheetSchema.find({ ownerId: userId });

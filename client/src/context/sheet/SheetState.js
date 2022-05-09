@@ -1,6 +1,7 @@
 import { createContext, useReducer } from "react";
 import { parse } from "../../helpers/csvParser";
 import {
+  addUserToSheet_Url,
   createSheet_Url,
   getSheet_Url,
   getUsersSheets_Url,
@@ -14,6 +15,7 @@ import {
   SET_SORT_BY,
   SET_SHEETS,
   UPDATE_SHEET_NAME,
+  UPDATE_SHEET_USERS,
 } from "../types";
 import SheetReducer from "./SheetReducer";
 
@@ -23,7 +25,7 @@ SheetContext.displayName = "SheetContext";
 const SheetState = (props) => {
   const initialState = {
     sheets: [],
-    sheetData: [],
+    sheetData: null,
     sortBy: {
       ASC: true,
       item: "Sr.No.",
@@ -131,6 +133,21 @@ const SheetState = (props) => {
     }
   };
 
+  const addUserToSheet = async (data) => {
+    try {
+      const res = await putRequest(addUserToSheet_Url, {
+        sheetId: state.sheetData._id,
+        data,
+      });
+      console.log(res);
+      if (res.error) return { usersAdded: false };
+      dispatch({ type: UPDATE_SHEET_USERS, payload: res.data.sheet.users });
+      if (res.data) return res.data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const setSortBy = (value) => {
     dispatch({ type: SET_SORT_BY, payload: value });
   };
@@ -170,6 +187,7 @@ const SheetState = (props) => {
         updateSheetData,
         updateSheetName,
         searchUsers,
+        addUserToSheet,
         setSheetData,
         setSortBy,
         sortData,
