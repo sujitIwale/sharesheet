@@ -7,6 +7,7 @@ export const SET_SORT_BY = "SET_SORT_BY";
 export const SET_SHEETS = "SET_SHEETS";
 export const SET_SHEET_DATA = "SET_SHEET_DATA";
 export const UPDATE_SHEET_NAME = "UPDATE_SHEET_NAME";
+export const UPDATE_SHEET_USERS = "UPDATE_SHEET_USERS";
 export const USER_SIGNUP = "USER_SIGNUP";
 export const USER_SIGNIN = "USER_SIGNIN";
 export const GET_USER = "GET_USER";

@@ -4,6 +4,7 @@ import {
   SET_SHEET_DATA,
   SET_SORT_BY,
   UPDATE_SHEET_NAME,
+  UPDATE_SHEET_USERS,
 } from "../types";
 
 const SheetReducer = (state, action) => {
@@ -22,6 +23,11 @@ const SheetReducer = (state, action) => {
       return {
         ...state,
         sheetData: { ...state.sheetData, name: action.payload },
+      };
+    case UPDATE_SHEET_USERS:
+      return {
+        ...state,
+        sheetData: { ...state.sheetData, users: action.payload },
       };
     case SET_SORT_BY:
       return {

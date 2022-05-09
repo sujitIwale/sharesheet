@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSheet } from "../../hooks/sheet";
 import "./SheetHeader.css";
 
-const SheetHeader = ({ openModal }) => {
+const SheetHeader = ({ openModal, user }) => {
   const { sheetData, updateSheetData, updateSheetName } = useSheet();
   console.log(sheetData);
   const [SheetName, setSheetName] = useState(
@@ -15,6 +15,7 @@ const SheetHeader = ({ openModal }) => {
   const onChangeHandler = (e) => {
     setSheetName(e.target.value);
   };
+  if (!user) return <></>;
   return (
     <div className='sheet-header'>
       <input
@@ -24,12 +25,16 @@ const SheetHeader = ({ openModal }) => {
         onBlurCapture={() => updateSheetName(SheetName)}
       />
       <div>
-        <button className='btn save-btn' onClick={updateSheetData}>
-          Save
-        </button>
-        <button className='btn share-btn' onClick={openModal}>
-          Share
-        </button>
+        {user._id === sheetData.ownerId && (
+          <>
+            <button className='btn save-btn' onClick={updateSheetData}>
+              Save
+            </button>
+            <button className='btn share-btn' onClick={openModal}>
+              Share
+            </button>
+          </>
+        )}
       </div>
     </div>
   );
