@@ -53,7 +53,7 @@ const SearchUser = ({ searchUsers, addUserToSheet, sheetData, user }) => {
       return;
     }
     timer.current = setTimeout(() => {
-      console.log("making request", value);
+      // console.log("making request", value);
       search(value);
     }, 2000);
   };
@@ -64,7 +64,7 @@ const SearchUser = ({ searchUsers, addUserToSheet, sheetData, user }) => {
   };
 
   const checkBoxChangeHandler = (e, user) => {
-    console.log(e);
+    // console.log(e);
     if (e.target.checked) {
       SelectedUsers.add(user);
       setSelectedUsers(new Set(SelectedUsers));
@@ -104,7 +104,6 @@ const SearchUser = ({ searchUsers, addUserToSheet, sheetData, user }) => {
       {Users && Array.isArray(Users) && (
         <ul className='users-list'>
           {Users.map((u, i) => {
-            console.log(user, sheetData);
             if (
               sheetData.users.includes(u._id) ||
               sheetData.ownerId === u._id

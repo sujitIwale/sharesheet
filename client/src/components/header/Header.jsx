@@ -10,7 +10,7 @@ const Header = () => {
   const { token, loadUser, signOut } = useAuth();
 
   useEffect(() => {
-    console.log("header");
+    // console.log("header");
     loadUser();
     // eslint-disable-next-line
   }, [token]);
@@ -25,7 +25,7 @@ const Header = () => {
       <Logo />
       <div className='header-right'>
         {!isAuth() ? (
-          <Fragment>
+          <div className='flex row'>
             <Link to='/signin'>
               {" "}
               <button className='btn signin-btn pointer'>Sign In</button>
@@ -33,7 +33,7 @@ const Header = () => {
             <Link to='/signup'>
               <button className='btn signup-btn pointer'>Sign Up</button>
             </Link>
-          </Fragment>
+          </div>
         ) : (
           <Fragment>
             <span>{isAuth().name}</span>

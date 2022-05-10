@@ -4,7 +4,7 @@ import "./SheetHeader.css";
 
 const SheetHeader = ({ openModal, user }) => {
   const { sheetData, updateSheetData, updateSheetName } = useSheet();
-  console.log(sheetData);
+  // console.log(sheetData);
   const [SheetName, setSheetName] = useState(
     sheetData && sheetData.name ? sheetData.name : ""
   );

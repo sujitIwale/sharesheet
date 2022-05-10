@@ -1,17 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { resizer } from "./resizer";
 
-const SheeTableHeader = () => {
+const SheeTableHeader = ({ tableRef }) => {
+  useEffect(() => {
+    resizer(tableRef.current, "th");
+    // eslint-disable-next-line
+  }, []);
   return (
-    <tr className='sheet-header-row'>
-      <td className='sheet-header-row-element top' key={-1}></td>
-      {Array(26)
-        .fill("")
-        .map((d, i) => (
-          <td className='sheet-header-row-element' key={i}>
-            {String.fromCharCode(64 + i + 1)}
-          </td>
-        ))}
-    </tr>
+    <thead key={Math.random()}>
+      <tr className='sheet-header-row' key={5}>
+        <th className='sheet-header-row-element top' key={-1}></th>
+        {Array(26)
+          .fill("")
+          .map((d, i) => (
+            <th
+              className='sheet-header-row-element'
+              key={String.fromCharCode(64 + i + 1)}
+              id={i}
+            >
+              {String.fromCharCode(64 + i + 1)}
+            </th>
+          ))}
+      </tr>
+    </thead>
   );
 };
 

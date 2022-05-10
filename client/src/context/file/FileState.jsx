@@ -1,5 +1,5 @@
 import React, { useReducer, createContext } from "react";
-import { createSheet_Url, uploadFile_Url } from "../../utils/apiEndPoints";
+import { uploadFile_Url } from "../../utils/apiEndPoints";
 import { postRequest } from "../../utils/apiRequests";
 import {
   SET_MODAL_OPEN,
@@ -45,7 +45,7 @@ const FileState = (props) => {
     setLoading();
     const res = await postRequest(uploadFile_Url, data);
     if (res && res.data) {
-      console.log(res.data);
+      // console.log(res.data);
       // setFileData(res.data);
       setLoading();
       return res.data;

@@ -6,15 +6,47 @@ const SheetInput = ({ rowIndex, columnIndex, value, onSheetDataChange }) => {
   const timer = useRef();
 
   const changeHandler = (e) => {
-    console.log(timer.current);
-    clearTimeout(timer.current);
     setValue(e.target.value);
+    clearTimeout(timer.current);
+
+    const v = e.target.value.trim();
+    if (v === "" || v === Value.trim()) {
+      return;
+    }
     timer.current = setTimeout(() => {
       if (typeof onSheetDataChange === "function") {
         onSheetDataChange(rowIndex, columnIndex, e.target.value);
       }
-    }, 2000);
+    }, 500);
   };
+
+  // const changeFocus = useCallback(
+  //   (e) => {
+  //     let targetId;
+  //     switch (e.key) {
+  //       case "ArrowUp":
+  //         targetId = `${rowIndex - 1}*${columnIndex}`;
+  //         break;
+  //       case "ArrowDown":
+  //         targetId = `${rowIndex + 1}*${columnIndex}`;
+  //         break;
+  //       case "ArrowLeft":
+  //         targetId = `${rowIndex}*${columnIndex - 1}`;
+  //         break;
+  //       case "ArrowRight":
+  //         targetId = `${rowIndex}*${columnIndex + 1}`;
+  //         break;
+
+  //       default:
+  //         break;
+  //     }
+  //     let el = document.getElementById(targetId);
+  //     if (el) {
+  //       el.focus();
+  //     }
+  //   },
+  //   [rowIndex, columnIndex]
+  // );
   return (
     <input
       type='text'
@@ -22,6 +54,7 @@ const SheetInput = ({ rowIndex, columnIndex, value, onSheetDataChange }) => {
       className='sheet-input'
       value={Value}
       onChange={changeHandler}
+      // onKeyDown={changeFocus}
     />
   );
 };

@@ -1,9 +1,16 @@
 .project-page-container {
-    width: 70%;
-    margin: 0 auto;
+  width: 70%;
+  margin: 0 auto;
 }
 
 .project-page-main {
-    overflow: auto;
-    height: 100%;
+  overflow: auto;
+  height: 100%;
+}
+
+@media only screen and (max-width: 500px) {
+  .project-page-container {
+    width: 90%;
+    margin: 0 auto;
+  }
 }

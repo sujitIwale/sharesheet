@@ -24,7 +24,7 @@ SheetContext.displayName = "SheetContext";
 
 const SheetState = (props) => {
   const initialState = {
-    sheets: [],
+    sheets: null,
     sheetData: null,
     sortBy: {
       ASC: true,
@@ -49,7 +49,7 @@ const SheetState = (props) => {
 
   const createNewSheet = async () => {
     const res = await postRequest(createSheet_Url);
-    console.log(res.data);
+    // console.log(res.data);
     return res.data;
   };
 
@@ -85,18 +85,18 @@ const SheetState = (props) => {
         }
         dataString = dataString + "\n";
       });
-      console.log(dataString);
+      // console.log(dataString);
       // const blob = new Blob([JSON.stringify(dataString)], {
       //   type: "text/plain;charset=utf-8",
       // });
-      console.log(state.sheetData._id);
+      // console.log(state.sheetData._id);
 
       const res = await putRequest(updateSheet_Url, {
         sheetId: state.sheetData._id,
         data: JSON.stringify(dataString),
       });
       if (res && res.data) {
-        console.log(res.data);
+        // console.log(res.data);
         res.data.data = parse(res.data.data);
         setSheetData(res.data);
       }
@@ -113,7 +113,7 @@ const SheetState = (props) => {
         name,
       });
       if (res && res.data) {
-        console.log(res.data);
+        // console.log(res.data);
         dispatch({ type: UPDATE_SHEET_NAME, payload: res.data.name });
       }
     } catch (error) {
@@ -139,7 +139,7 @@ const SheetState = (props) => {
         sheetId: state.sheetData._id,
         data,
       });
-      console.log(res);
+      // console.log(res);
       if (res.error) return { usersAdded: false };
       dispatch({ type: UPDATE_SHEET_USERS, payload: res.data.sheet.users });
       if (res.data) return res.data;

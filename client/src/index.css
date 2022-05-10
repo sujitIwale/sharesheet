@@ -1,7 +1,7 @@
 * {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body,
@@ -14,107 +14,107 @@ h6,
 p,
 ol,
 ul {
-	margin: 0;
-	padding: 0;
-	font-weight: normal;
-	-webkit-font-smoothing: antialiased;
-	overflow: auto;
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  overflow: auto;
 }
 
-
 a {
-	text-decoration: none;
-	color: inherit;
+  text-decoration: none;
+  color: inherit;
 }
 
 ol,
 ul {
-	list-style: none;
+  list-style: none;
 }
 
 img {
-	/* height: auto; */
+  /* height: auto; */
 }
 
 body {
-	background-color: F7F7F7;
-	font-family: 'Nunito', sans-serif;
+  background-color: F7F7F7;
+  font-family: "Nunito", sans-serif;
 }
 
 .flex {
-	display: flex;
+  display: flex;
 }
 
 .row {
-	flex-direction: row;
+  flex-direction: row;
 }
 
 .align-center {
-	align-items: center;
+  align-items: center;
 }
 
 .column {
-	flex-direction: column;
+  flex-direction: column;
 }
 
 .space-btn {
-	justify-content: space-between;
+  justify-content: space-between;
 }
 
 .pa-10 {
-	padding: 10px;
+  padding: 10px;
 }
 .pointer {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 /*Customize Scrollbar*/
 
 .customize-scrollbar::-webkit-scrollbar {
-	background-color: rgb(17, 17, 17);
-	width: 15px;
+  background-color: rgb(17, 17, 17);
+  width: 15px;
 }
 .customize-scrollbar::-webkit-scrollbar-thumb {
-	cursor: pointer;
-	background-color: rgb(219, 219, 219);
-	border-radius: 2px;
+  cursor: pointer;
+  background-color: rgb(219, 219, 219);
+  border-radius: 2px;
 }
 
 /* Buttton */
 .white {
-	color: white;
+  color: white;
 }
 
 .btn-primary {
-	margin: 5px;
+  margin: 5px;
   padding: 5px 9px;
   font-size: 14px;
-  color: #fff;
+  color: black;
   cursor: pointer;
-	background-color: transparent;
-	border: 2px solid #22af39;
+  font-weight: bold;
+  background-color: transparent;
+  border: 2px solid #22af39;
 }
 
 .btn-primary:hover {
-	border: 2px solid #0aa037;
+  border: 2px solid #0aa037;
 }
 
-
 .btn {
-	border: none;
-	outline: none;
-	cursor: pointer;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-weight: bold;
 }
 
 .customized-scrollbar::-webkit-scrollbar {
-	background-color: #e9eaed;
-	/* border-radius: 15px; */
-	width: 11px
+  background-color: #e9eaed;
+  /* border-radius: 15px; */
+  width: 11px;
 }
 
 .customized-scrollbar::-webkit-scrollbar-thumb {
-	background-color: rgb(187, 188, 190);
-	border-radius: 15px;
-	width: 12px;
-	cursor: pointer;
+  background-color: rgb(187, 188, 190);
+  border-radius: 15px;
+  width: 12px;
+  cursor: pointer;
 }

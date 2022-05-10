@@ -4,7 +4,6 @@ import setAuthToken from "./setAuthToken";
 
 export const postRequest = async (url, data) => {
   try {
-    console.log(data);
     const res = await axios.post(url, data);
     // console.log(res)
     return res;
@@ -30,7 +29,6 @@ export const getRequest = async (url, options = undefined) => {
 };
 
 export const putRequest = async (url, data) => {
-  console.log(data);
   try {
     const token = getLocalStorage("token");
     setAuthToken(token);

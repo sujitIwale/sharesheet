@@ -20,6 +20,10 @@
 }
 
 .sheet-header-row-element.top {
+    padding: 3px 6px;
+    left: 0;
+    position: sticky;
+    z-index: 10;
     border-right: 3px solid rgb(160, 160, 160);
     border-bottom: 3px solid rgb(160, 160, 160);
 }
@@ -31,4 +35,31 @@
     padding: 0 12px;
     background-color: rgb(241, 241, 241);
     font-size:x-small;
+    left: 0;
+    top: 56px;
+    position: sticky;
+}
+
+.table td {
+    width: 150px;
+}
+
+.table th {
+    position: relative;
+}
+
+.resizer {
+    /* Displayed at the right side of column */
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 5px;
+    cursor: col-resize;
+    user-select: none;
+}
+
+
+.resizer:hover,
+.resizing {
+    border-right: 2px solid blue;
 }
