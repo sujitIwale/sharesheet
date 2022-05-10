@@ -8,33 +8,33 @@ import { FileState } from "./context/file/FileState";
 import { SheetState } from "./context/sheet/SheetState";
 import SignIn from "./pages/auth/SignIn";
 import SignUp from "./pages/auth/SignUp";
-import Landing from "./pages/Landing/Landing";
+import Landing from "./pages/landing/Landing";
 import Project from "./pages/project/Project";
 import Sheet from "./pages/sheet/Sheet";
 
 function App() {
   return (
     <Router>
-      <div className="app">
+      <div className='app'>
         <AuthState>
           <Header />
           <Switch>
-            <Route exact path="/signin">
+            <Route exact path='/signin'>
               <SignIn />
             </Route>
-            <Route exact path="/signup">
+            <Route exact path='/signup'>
               <SignUp />
             </Route>
             <FileState>
               <SheetState>
-                <PrivateRoute exact path="/" component={Project} />
-                <PrivateRoute exact path="/sheet/:sheetId" component={Sheet} />
+                <PrivateRoute exact path='/' component={Project} />
+                <PrivateRoute exact path='/sheet/:sheetId' component={Sheet} />
               </SheetState>
             </FileState>
-            <Route exact path="/about">
+            <Route exact path='/about'>
               <Landing />
             </Route>
-            <Route path="*" element={<p>There's nothing here: 404!</p>} />
+            <Route path='*' element={<p>There's nothing here: 404!</p>} />
           </Switch>
         </AuthState>
       </div>
