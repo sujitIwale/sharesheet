@@ -40,9 +40,9 @@ const Upload = () => {
   const openModal = () => {
     setModalOpen(true);
   };
-  const closeModal = () => {
-    setModalOpen(false);
-  };
+  // const closeModal = () => {
+  //   setModalOpen(false);
+  // };
   const onUpload = async () => {
     if (
       !File ||
@@ -66,11 +66,14 @@ const Upload = () => {
     // console.log(fileText);
     const res = await sendFileData(data);
     // console.log(res._id);
-    console.log(res);
-    if (res) {
-      history.push(`sheet/${res._id}`);
+    setFile(null);
+    if (res && res.error) {
+      setError({
+        msg: "Some Error occurred please try again ",
+        type: "danger",
+      });
       // closeModal();
-    }
+    } else history.push(`sheet/${res._id}`);
   };
   return (
     <>

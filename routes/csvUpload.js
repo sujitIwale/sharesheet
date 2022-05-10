@@ -11,7 +11,7 @@ router.post("/", auth, csvUpload, (req, res) => {
 
   try {
     fs.readFile(
-      `${process.env.CSV_FILE_STORE_PATH}/${req.file.filename}`,
+      `${dir}${process.env.CSV_FILE_STORE_PATH}/${req.file.filename}`,
       "utf8",
       async function (err, data) {
         // Display the file content

@@ -44,12 +44,12 @@ const FileState = (props) => {
   const sendFileData = async (data) => {
     setLoading();
     const res = await postRequest(uploadFile_Url, data);
+    setLoading();
     if (res && res.data) {
       // console.log(res.data);
       // setFileData(res.data);
-      setLoading();
       return res.data;
-    } else return false;
+    } else return res;
   };
 
   const setFileType = (type) => {
