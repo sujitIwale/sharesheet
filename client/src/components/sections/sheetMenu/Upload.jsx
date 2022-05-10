@@ -45,12 +45,12 @@ const Upload = () => {
   };
   const onUpload = async () => {
     if (
-      File === null ||
+      !File ||
       uploadStatus ||
       File.type !== "text/csv" ||
       !(File.size < 17825792)
     ) {
-      if (!File.size < 17825792)
+      if (File && !File.size < 17825792)
         setError({ msg: "Please Select a smaller file", type: "danger" });
       else setError({ msg: "Please Select a csv file", type: "danger" });
       setTimeout(() => {
@@ -66,6 +66,7 @@ const Upload = () => {
     // console.log(fileText);
     const res = await sendFileData(data);
     // console.log(res._id);
+    console.log(res);
     if (res) {
       history.push(`sheet/${res._id}`);
       // closeModal();

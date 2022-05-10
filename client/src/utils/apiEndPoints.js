@@ -11,4 +11,4 @@ export const searchUsers_Url = `${BASE_API_URL}/user/searchUsers`;
 export const addUserToSheet_Url = `${BASE_API_URL}/sheet/addUser/`;
 export const createSheet_Url = `${BASE_API_URL}/sheet/createSheet/`;
 export const getUsersSheets_Url = `${BASE_API_URL}/sheet/userSheets/`;
-export const uploadFile_Url = `${BASE_API_URL}/upload/csv?headers=true`;
+export const uploadFile_Url = `${BASE_API_URL}/upload/csv`;

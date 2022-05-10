@@ -7,6 +7,8 @@ const PORT = process.env.PORT || 3001;
 const liveSite = "https://sharesheet.netlify.app/";
 // fs.rmdirSync('./uploads/img', { recursive: true });
 
+module.exports.dir = __dirname;
+
 // middlewares
 app.use(cors());
 // app.use(express.json({ extended: false }));
