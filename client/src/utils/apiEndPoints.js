@@ -1,4 +1,4 @@
-export const BASE_API_URL = "https://sharesheet.herokuapp.com/";
+export const BASE_API_URL = "https://sharesheet.herokuapp.com";
 // export const BASE_API_URL = "http://localhost:3001";
 
 export const signIn_Url = `${BASE_API_URL}/auth/signin/`;
