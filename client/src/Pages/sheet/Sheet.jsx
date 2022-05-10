@@ -22,7 +22,7 @@ const Sheet = () => {
     // eslint-disable-next-line
   }, [sheetId]);
   if (!sheetData) return <LineLoader />;
-  console.log(sheetData.data);
+  // console.log(sheetData.data);
   const modalAction = () => {
     setModalOpen((state) => !state);
   };

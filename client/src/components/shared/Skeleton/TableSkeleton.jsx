@@ -5,125 +5,32 @@ const TableSkeleton = () => {
   return (
     <div className='table-skeleton-container'>
       <table className='tg'>
-        <tr>
-          <th className='tg-cly1'>
-            <div className='line'></div>
-          </th>
-          <th className='tg-cly1'>
-            <div className='line'></div>
-          </th>
-          <th className='tg-cly1'>
-            <div className='line'></div>
-          </th>
-          <th className='tg-cly1'>
-            <div className='line'></div>
-          </th>
-          <th className='tg-cly1'>
-            <div className='line'></div>
-          </th>
-        </tr>
-        <tr>
-          <td className='tg-cly1'>
-            <div className='line'></div>
-          </td>
-          <td className='tg-cly1'>
-            <div className='line'></div>
-          </td>
-          <td className='tg-cly1'>
-            <div className='line'></div>
-          </td>
-          <td className='tg-cly1'>
-            <div className='line'></div>
-          </td>
-          <td className='tg-cly1'>
-            <div className='line'></div>
-          </td>
-        </tr>
-        <tr>
-          <td className='tg-cly1'>
-            <div className='line'></div>
-          </td>
-          <td className='tg-cly1'>
-            <div className='line'></div>
-          </td>
-          <td className='tg-cly1'>
-            <div className='line'></div>
-          </td>
-          <td className='tg-cly1'>
-            <div className='line'></div>
-          </td>
-          <td className='tg-cly1'>
-            <div className='line'></div>
-          </td>
-        </tr>
-        <tr>
-          <td className='tg-cly1'>
-            <div className='line'></div>
-          </td>
-          <td className='tg-cly1'>
-            <div className='line'></div>
-          </td>
-          <td className='tg-cly1'>
-            <div className='line'></div>
-          </td>
-          <td className='tg-cly1'>
-            <div className='line'></div>
-          </td>
-          <td className='tg-cly1'>
-            <div className='line'></div>
-          </td>
-        </tr>
-        <tr>
-          <td className='tg-cly1'>
-            <div className='line'></div>
-          </td>
-          <td className='tg-cly1'>
-            <div className='line'></div>
-          </td>
-          <td className='tg-cly1'>
-            <div className='line'></div>
-          </td>
-          <td className='tg-cly1'>
-            <div className='line'></div>
-          </td>
-          <td className='tg-cly1'>
-            <div className='line'></div>
-          </td>
-        </tr>
-        <tr>
-          <td className='tg-cly1'>
-            <div className='line'></div>
-          </td>
-          <td className='tg-cly1'>
-            <div className='line'></div>
-          </td>
-          <td className='tg-cly1'>
-            <div className='line'></div>
-          </td>
-          <td className='tg-cly1'>
-            <div className='line'></div>
-          </td>
-          <td className='tg-cly1'>
-            <div className='line'></div>
-          </td>
-        </tr>
-        <tr>
-          <td className='tg-cly1'>
-            <div className='line'></div>
-          </td>
-          <td className='tg-cly1'>
-            <div className='line'></div>
-          </td>
-          <td className='tg-cly1'>
-            <div className='line'></div>
-          </td>
-          <td className='tg-cly1'>
-            <div className='line'></div>
-          </td>
-          <td className='tg-cly1'>
-            <div className='line'></div>
-          </td>
-        </tr>
+        <thead>
+          <tr>
+            {Array(5)
+              .fill("")
+              .map((v, i) => (
+                <th className='tg-cly1' key={i}>
+                  <div className='line'></div>
+                </th>
+              ))}
+          </tr>
+        </thead>
+        <tbody>
+          {Array(6)
+            .fill("")
+            .map((v, i) => (
+              <tr key={i}>
+                {Array(5)
+                  .fill("")
+                  .map((v, j) => (
+                    <td className='tg-cly1' key={j}>
+                      <div className='line'></div>
+                    </td>
+                  ))}
+              </tr>
+            ))}
+        </tbody>
       </table>
     </div>
   );

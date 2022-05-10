@@ -10,8 +10,9 @@ const Upload = () => {
   const [ModalOpen, setModalOpen] = useState(false);
   const [File, setFile] = useState(null);
   const [uploadStatus, setuploadStatus] = useState(false);
+  const [Error, setError] = useState(null);
 
-  const { sendFileData, setError, loading } = useFile();
+  const { sendFileData, loading } = useFile();
 
   const dragOver = (e) => {
     e.preventDefault();
@@ -43,10 +44,21 @@ const Upload = () => {
     setModalOpen(false);
   };
   const onUpload = async () => {
-    if (File === null || uploadStatus) {
-      setError({ msg: "Please Select a file", type: "danger" });
+    if (
+      File === null ||
+      uploadStatus ||
+      File.type !== "text/csv" ||
+      !(File.size < 17825792)
+    ) {
+      if (!File.size < 17825792)
+        setError({ msg: "Please Select a smaller file", type: "danger" });
+      else setError({ msg: "Please Select a csv file", type: "danger" });
+      setTimeout(() => {
+        setError(null);
+      }, 2000);
       return;
     }
+    // return;
     setuploadStatus(true);
     const data = new FormData();
     data.append("csvdata", File);
@@ -56,7 +68,7 @@ const Upload = () => {
     // console.log(res._id);
     if (res) {
       history.push(`sheet/${res._id}`);
-      closeModal();
+      // closeModal();
     }
   };
   return (
@@ -91,6 +103,7 @@ const Upload = () => {
                   </div>
                 </label>
               </form>
+              {Error && <h3>{Error.msg}</h3>}
               <button onClick={onUpload} className='btn upload-btn'>
                 Upload
               </button>
@@ -101,7 +114,7 @@ const Upload = () => {
         </Modal>
       )}
       <div className='option-card upload btn' onClick={openModal}>
-        <i class='fa-solid fa-upload'></i>
+        <i className='fa-solid fa-upload'></i>
         <h2>Upload Csv File</h2>
       </div>
     </>
