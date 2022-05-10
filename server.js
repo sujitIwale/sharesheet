@@ -4,7 +4,7 @@ const myParser = require("body-parser");
 const app = express();
 require("dotenv").config();
 const PORT = process.env.PORT || 3001;
-const liveSite = "https://file-visualizer.netlify.app/";
+const liveSite = "https://sharesheet.netlify.app/";
 // fs.rmdirSync('./uploads/img', { recursive: true });
 
 // middlewares
@@ -19,7 +19,7 @@ connectDB();
 
 app.get("/", (req, res) => {
   // const data = fs.readFileSync('rawdata/data.json', 'utf-8');
-  res.send(`Welcome to file-upload api try to visit ${liveSite}`);
+  res.send(`Welcome to Sharesheet api try to visit ${liveSite}`);
 });
 
 // Routes
