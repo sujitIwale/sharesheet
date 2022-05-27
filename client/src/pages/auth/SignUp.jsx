@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
+import { isAuth } from "../../helpers/auth";
 import { useAuth } from "../../hooks/auth";
 import Auth from "./Auth";
 
@@ -13,7 +14,7 @@ const SignUp = () => {
     email: "",
     password: "",
   });
-
+  if (isAuth()) return <Redirect to='/' />;
   const inputChangeController = (e) => {
     setUser({ ...User, [e.target.name]: e.target.value });
   };

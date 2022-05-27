@@ -1,65 +1,63 @@
-
 .sheet-table-container {
-    margin: 0 0;
+  margin: 0 0;
 }
 .table {
-    border-collapse: collapse;
+  border-collapse: collapse;
 }
 
 .sheet-header-row {
-    top: 41px;
-        position: sticky;
+  top: 45px;
+  position: sticky;
 }
 
 .sheet-header-row-element {
-    border-right: 0.3px solid rgb(160, 160, 160);
-    border-left: 0.3px solid rgb(160, 160, 160);
-    text-align: center;
-    background-color: rgb(241, 241, 241);
-    font-size: smaller;
+  border-right: 0.3px solid rgb(160, 160, 160);
+  border-left: 0.3px solid rgb(160, 160, 160);
+  text-align: center;
+  background-color: rgb(241, 241, 241);
+  font-size: smaller;
 }
 
 .sheet-header-row-element.top {
-    padding: 3px 6px;
-    left: 0;
-    position: sticky;
-    z-index: 10;
-    border-right: 3px solid rgb(160, 160, 160);
-    border-bottom: 3px solid rgb(160, 160, 160);
+  padding: 3px 6px;
+  left: 0;
+  position: sticky;
+  z-index: 10;
+  border-right: 3px solid rgb(160, 160, 160);
+  border-bottom: 3px solid rgb(160, 160, 160);
 }
 
 .left-index-element {
-    border-top: 0.3px solid rgb(160, 160, 160);
-    border-bottom: 0.3px solid rgb(160, 160, 160);
-    text-align: center;
-    padding: 0 12px;
-    background-color: rgb(241, 241, 241);
-    font-size:x-small;
-    left: 0;
-    top: 56px;
-    position: sticky;
+  border-top: 0.3px solid rgb(160, 160, 160);
+  border-bottom: 0.3px solid rgb(160, 160, 160);
+  text-align: center;
+  padding: 0 12px;
+  background-color: rgb(241, 241, 241);
+  font-size: x-small;
+  left: 0;
+  top: 56px;
+  position: sticky;
 }
 
 .table td {
-    width: 150px;
+  width: 150px;
 }
 
 .table th {
-    position: relative;
+  position: relative;
 }
 
 .resizer {
-    /* Displayed at the right side of column */
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 5px;
-    cursor: col-resize;
-    user-select: none;
+  /* Displayed at the right side of column */
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 5px;
+  cursor: col-resize;
+  user-select: none;
 }
-
 
 .resizer:hover,
 .resizing {
-    border-right: 2px solid blue;
+  border-right: 2px solid blue;
 }
