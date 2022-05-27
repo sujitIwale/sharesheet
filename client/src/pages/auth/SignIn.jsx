@@ -5,6 +5,7 @@ import Auth from "./Auth";
 
 const SignIn = () => {
   console.log("signin");
+  const [Submitted, setSubmitted] = useState(false);
   const { signIn } = useAuth();
   const history = useHistory();
   const [User, setUser] = useState({
@@ -18,6 +19,7 @@ const SignIn = () => {
 
   const formSubmitHandler = async (e) => {
     e.preventDefault();
+    setSubmitted(true);
     const res = await signIn(User);
     if (res) {
       history.push("/");
@@ -25,20 +27,22 @@ const SignIn = () => {
   };
 
   return (
-    <Auth type="signin">
+    <Auth type='signin'>
       <form onSubmit={formSubmitHandler}>
         <label>Email</label>
-        <input type="text" name="email" onChange={inputChangeHandler} />
+        <input type='text' name='email' onChange={inputChangeHandler} />
         <label>Password</label>
-        <div className="password-container">
-          <span className="forgot-pass">Forgot Password?</span>
+        <div className='password-container'>
+          <span className='forgot-pass'>Forgot Password?</span>
           <input
-            type="password"
-            name="password"
+            type='password'
+            name='password'
             onChange={inputChangeHandler}
           />
         </div>
-        <button type="submit">Sign In</button>
+        <button type='submit' disabled={Submitted}>
+          Sign In
+        </button>
       </form>
     </Auth>
   );

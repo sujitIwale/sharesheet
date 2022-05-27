@@ -8,7 +8,7 @@ import { FileState } from "./context/file/FileState";
 import { SheetState } from "./context/sheet/SheetState";
 import SignIn from "./pages/auth/SignIn";
 import SignUp from "./pages/auth/SignUp";
-import Landing from "./pages/Landing/Landing";
+import Landing from "./pages/landing/Landing";
 import Project from "./pages/project/Project";
 import Sheet from "./pages/sheet/Sheet";
 // App
