@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import SheetMenu from "../../components/sections/sheetMenu/SheetMenu";
 import SheetsList from "../../components/sections/sheetsList/SheetsList";
 import "./Project.css";
 
 const Project = () => {
   console.log("project");
+  useEffect(() => {
+    document.title = "SpreadSheet";
+  }, []);
   return (
     <main className='project-page-main'>
       <SheetMenu />

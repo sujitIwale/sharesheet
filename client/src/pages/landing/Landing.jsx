@@ -1,15 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
-// import { isAuth } from "../../helpers/auth";
+import { Link, Redirect } from "react-router-dom";
+import { isAuth } from "../../helpers/auth";
 import "./Landing.css";
 
 const Landing = () => {
-  // if (isAuth()) return <Redirect to='/' />;
-  console.log("landing");
+  console.log("landing", isAuth());
+  if (isAuth()) return <Redirect to='/' />;
 
   return (
-    <div class='landing-page'>
-      <div class='landing-page-container'>
+    <div className='landing-page'>
+      <div className='landing-page-container'>
         <div className='flex center info'>
           <div>
             <h1>Upload and Edit Csv Files </h1>

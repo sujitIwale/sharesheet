@@ -34,6 +34,32 @@
   margin-top: 15px;
 }
 
+.landing-page-container .landing-btns .signin-btn {
+  border: 1px solid var(--text-secondary-color);
+  padding: 7px 9px;
+  background-color: white;
+  margin: 0 10px;
+  font-size: large;
+  border-radius: 3px;
+}
+
+.landing-page-container .landing-btns .signin-btn:hover {
+  background-color: #edf4fc;
+}
+
+.landing-page-container .landing-btns .signup-btn {
+  padding: 7px 9px;
+  background-color: #2f81ec;
+  color: #fff;
+  margin: 0 10px;
+  font-size: large;
+  border-radius: 3px;
+}
+
+.landing-page-container .landing-btns .signup-btn:hover {
+  background-color: #137bf3;
+}
+
 .landing-img {
   width: 68%;
   height: 100%;

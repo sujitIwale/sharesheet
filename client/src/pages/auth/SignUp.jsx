@@ -10,7 +10,6 @@ const SignUp = () => {
   const [Submitted, setSubmitted] = useState(false);
   const [User, setUser] = useState({
     name: "",
-    username: "",
     email: "",
     password: "",
   });
@@ -31,10 +30,11 @@ const SignUp = () => {
   return (
     <Auth type='signup'>
       <form onSubmit={formSubmitHandler}>
+        <div className='flex center form-title'>
+          <span>Sign Up to ShareSheet</span>
+        </div>
         <label>Name</label>
         <input type='text' name='name' onChange={inputChangeController} />
-        <label>Username</label>
-        <input type='text' name='username' onChange={inputChangeController} />
         <label>Email</label>
         <input type='email' name='email' onChange={inputChangeController} />
         <label>Password</label>
@@ -45,9 +45,11 @@ const SignUp = () => {
             onChange={inputChangeController}
           />
         </div>
-        <button type='submit' disabled={Submitted}>
-          Sign Up
-        </button>
+        <div className='auth-btn-container'>
+          <button type='submit' disabled={Submitted}>
+            Sign Up
+          </button>
+        </div>
       </form>
     </Auth>
   );
