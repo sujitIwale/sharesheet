@@ -1,15 +1,16 @@
 import React from "react";
-import "./SheetsList.css";
 
 const ListOptionBar = () => {
   return (
-    <div className='list-option-bar'>
-      <h4>Sr No</h4>
-      <h4>Title</h4>
-      <h4>Owner</h4>
-      <h4>Last opened</h4>
-      <span></span>
-    </div>
+    <thead>
+      <tr>
+        <th>Sr No</th>
+        <th>Title</th>
+        <th>Owner</th>
+        <th>Last opened</th>
+        <th></th>
+      </tr>
+    </thead>
   );
 };
 
