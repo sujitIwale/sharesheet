@@ -21,7 +21,7 @@ const Sheet = () => {
     fetchSheetData(sheetId, () => setLoading(false));
     // eslint-disable-next-line
   }, [sheetId]);
-  if (!sheetData) return <LineLoader />;
+  if (!sheetData || !user) return <LineLoader />;
   // console.log(sheetData.data);
   const modalAction = () => {
     setModalOpen((state) => !state);

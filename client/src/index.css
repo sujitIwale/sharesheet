@@ -1,7 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300&family=Roboto:wght@100;400&display=swap");
+
+html,
+body {
+  font-family: "Roboto", sans-serif;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
 }
 
 body,
@@ -37,7 +45,6 @@ img {
 
 body {
   background-color: F7F7F7;
-  font-family: "Nunito", sans-serif;
 }
 
 .flex {
@@ -50,6 +57,11 @@ body {
 
 .align-center {
   align-items: center;
+}
+
+.center {
+  align-items: center;
+  justify-content: center;
 }
 
 .column {

@@ -10,6 +10,7 @@ const SheetHeader = ({ openModal, user }) => {
   );
   useEffect(() => {
     setSheetName(sheetData.name);
+    document.title = sheetData.name;
   }, [sheetData]);
 
   const onChangeHandler = (e) => {

@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
+import { isAuth } from "../../helpers/auth";
 import { useAuth } from "../../hooks/auth";
 import Auth from "./Auth";
 
 const SignIn = () => {
-  console.log("signin");
   const [Submitted, setSubmitted] = useState(false);
   const { signIn } = useAuth();
   const history = useHistory();
@@ -12,6 +12,8 @@ const SignIn = () => {
     email: "",
     password: "",
   });
+
+  if (isAuth()) return <Redirect to='/' />;
 
   const inputChangeHandler = (e) => {
     setUser({ ...User, [e.target.name]: e.target.value });
@@ -22,27 +24,35 @@ const SignIn = () => {
     setSubmitted(true);
     const res = await signIn(User);
     if (res) {
-      history.push("/");
+      setTimeout(() => {
+        history.push("/");
+      }, 500);
     }
   };
 
   return (
     <Auth type='signin'>
       <form onSubmit={formSubmitHandler}>
+        <div className='flex center form-title'>
+          <span>
+            Sign In to <span className='website-name'>ShareSheet</span>
+          </span>
+        </div>
         <label>Email</label>
         <input type='text' name='email' onChange={inputChangeHandler} />
         <label>Password</label>
         <div className='password-container'>
-          <span className='forgot-pass'>Forgot Password?</span>
           <input
             type='password'
             name='password'
             onChange={inputChangeHandler}
           />
         </div>
-        <button type='submit' disabled={Submitted}>
-          Sign In
-        </button>
+        <div className='auth-btn-container'>
+          <button type='submit' disabled={Submitted}>
+            Sign In
+          </button>
+        </div>
       </form>
     </Auth>
   );

@@ -21,7 +21,7 @@ const getRow = (rowIndex, columnIndex, dataArray, onSheetDataChange) => {
 const SheetRow = ({ rowIndex, data, type, onSheetDataChange, tableRef }) => {
   // console.log(data);
   useEffect(() => {
-    // resizer(tableRef.current, "td");
+    // resizer(tableRef.current, "th");
   }, []);
   return (
     <tbody>

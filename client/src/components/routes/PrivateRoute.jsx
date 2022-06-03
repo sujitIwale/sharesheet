@@ -1,14 +1,19 @@
 import React from "react";
 import { Redirect, Route } from "react-router-dom";
+import { useAuth } from "../../hooks/auth";
 import { isAuth } from "../../helpers/auth";
+import LineLoader from "../shared/Loader/LineLoader";
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
-  // console.log(isAuth());
+  const { loading } = useAuth();
+  console.log(isAuth(), loading);
+
+  if (loading) return <LineLoader />;
   return (
     <Route
       {...rest}
       render={(props) =>
-        isAuth() ? <Component {...props} /> : <Redirect to="/about" />
+        isAuth() ? <Component {...props} /> : <Redirect to='/about' />
       }
     />
   );
