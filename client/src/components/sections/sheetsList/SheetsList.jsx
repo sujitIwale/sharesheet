@@ -23,30 +23,54 @@ const SheetsList = () => {
     );
 
   return (
-    <section className='sheet-list-collection project-page-container'>
+    <table className='sheet-list-table project-page-container'>
       <ListOptionBar />
-      <div className='sheet-list'>
+      <tbody>
         {Array.isArray(sheets) && sheets.length > 0 && (
           <Fragment>
             {sheets.map((sheet, i) => (
-              <div className='sheet-list-item' key={i}>
-                <h4>{i + 1}</h4>
-                <h4>{sheet.name}</h4>
-                <h4>{sheet.ownerName}</h4>
-                <h4>{getPeriod(sheet.updatedAt)}</h4>
-                <h4 className='sheet-list-item-options'>
-                  <i className='fa-solid fa-ellipsis-vertical pointer'></i>
+              <tr className='sheet-list-item' key={i}>
+                <td>{i + 1}</td>
+
+                <td>{sheet.name}</td>
+                <td>{sheet.ownerName}</td>
+                <td>{getPeriod(sheet.updatedAt)}</td>
+                <td className='sheet-list-item-options'>
+                  {/* <i className='fa-solid fa-ellipsis-vertical pointer'></i> */}
                   <Link to={`/sheet/${sheet._id}`}>
                     <i className='fa-solid fa-arrow-up-right-from-square'></i>
                   </Link>
-                </h4>
-              </div>
+                </td>
+              </tr>
             ))}
           </Fragment>
         )}
-      </div>
-    </section>
+      </tbody>
+    </table>
   );
 };
 
 export default SheetsList;
+
+/* 
+<ListOptionBar />
+      {Array.isArray(sheets) && sheets.length > 0 && (
+        <Fragment>
+          {sheets.map((sheet, i) => (
+            <tr className='sheet-list-item' key={i}>
+              <td>{i + 1}</td>
+              <td>{sheet.name}</td>
+              <td>{sheet.ownerName}</td>
+              <td>{getPeriod(sheet.updatedAt)}</td>
+              <td className='sheet-list-item-options'>
+                <i className='fa-solid fa-ellipsis-vertical pointer'></i>
+                <Link to={`/sheet/${sheet._id}`}>
+                  <i className='fa-solid fa-arrow-up-right-from-square'></i>
+                </Link>
+              </td>
+            </tr>
+          ))}
+        </Fragment>
+      )}
+
+*/

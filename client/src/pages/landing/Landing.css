@@ -76,3 +76,29 @@
   margin-top: 10px;
   border-bottom: none;
 } */
+
+@media only screen and (max-width: 900px) {
+  .landing-page-container {
+    width: 95%;
+  }
+  .landing-img {
+    width: 55%;
+  }
+  .landing-page .info {
+    width: 40%;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .landing-page-container {
+    width: 95%;
+    flex-direction: column;
+  }
+  .landing-img {
+    width: 100%;
+    margin-top: 30px;
+  }
+  .landing-page .info {
+    width: 100%;
+  }
+}
