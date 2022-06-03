@@ -1,0 +1,78 @@
+.landing-page-container {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  margin-top: 80px;
+  flex-direction: row;
+}
+
+.landing-page {
+  position: relative;
+  background-color: #fff;
+}
+
+.landing-page .info {
+  width: 32%;
+  float: left;
+}
+
+.landing-page .info h1 {
+  font-size: 44px;
+  margin: 0 0 20px;
+  line-height: 1.4;
+  color: #5d5d5d;
+}
+
+.landing-page .info p {
+  margin: 0;
+  line-height: 1.6;
+  font-size: 15px;
+  color: #5d5d5d;
+}
+
+.landing-page-container .landing-btns {
+  margin-top: 15px;
+}
+
+.landing-page-container .landing-btns .signin-btn {
+  border: 1px solid var(--text-secondary-color);
+  padding: 7px 9px;
+  background-color: white;
+  margin: 0 10px;
+  font-size: large;
+  border-radius: 3px;
+}
+
+.landing-page-container .landing-btns .signin-btn:hover {
+  background-color: #edf4fc;
+}
+
+.landing-page-container .landing-btns .signup-btn {
+  padding: 7px 9px;
+  background-color: #2f81ec;
+  color: #fff;
+  margin: 0 10px;
+  font-size: large;
+  border-radius: 3px;
+}
+
+.landing-page-container .landing-btns .signup-btn:hover {
+  background-color: #137bf3;
+}
+
+.landing-img {
+  width: 68%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.landing-img img {
+  width: 95%;
+}
+
+/* .header-main {
+  margin-top: 10px;
+  border-bottom: none;
+} */

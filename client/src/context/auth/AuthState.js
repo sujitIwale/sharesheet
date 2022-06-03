@@ -4,7 +4,9 @@ import { postRequest } from "../../utils/apiRequests";
 import { signIn_Url, signUp_Url } from "../../utils/apiEndPoints";
 import {
   GET_USER,
+  REMOVE_LOADING,
   SET_AUTH_ERROR,
+  SET_LOADING,
   USER_SIGNIN,
   USER_SIGNOUT,
   USER_SIGNUP,
@@ -23,11 +25,18 @@ const AuthState = (props) => {
     authError: null,
   };
   const [state, dispatch] = useReducer(AuthReducer, initialState);
-  const loadUser = async () => {
+  const loadUser = async (option) => {
+    if (option !== "sheet") {
+      dispatch({ type: SET_LOADING });
+    }
     const res = await verifyToken();
+    console.log("load user");
     if (res) {
       dispatch({ type: GET_USER });
     }
+    setTimeout(() => {
+      dispatch({ type: REMOVE_LOADING });
+    }, 500);
   };
   const setError = (error) => {
     dispatch({ type: SET_AUTH_ERROR, payload: error });
@@ -40,6 +49,7 @@ const AuthState = (props) => {
     }
 
     dispatch({ type: USER_SIGNUP, payload: res.data.token });
+    loadUser();
     return true;
   };
   const signIn = async (data) => {
@@ -50,6 +60,7 @@ const AuthState = (props) => {
     }
 
     dispatch({ type: USER_SIGNIN, payload: res.data.token });
+    loadUser();
     return true;
   };
 

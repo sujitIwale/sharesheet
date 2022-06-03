@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import { isAuth } from "../../helpers/auth";
 import { useAuth } from "../../hooks/auth";
 import Logo from "../shared/Logo/Logo";
@@ -7,11 +7,12 @@ import "./Header.css";
 
 const Header = () => {
   const history = useHistory();
-  const { token, loadUser, signOut } = useAuth();
+  const path = useLocation().pathname;
+  const { loadUser, token, signOut } = useAuth();
 
   useEffect(() => {
-    // console.log("header");
-    loadUser();
+    console.log("header");
+    if (path.includes("sheet")) loadUser("sheet");
     // eslint-disable-next-line
   }, [token]);
 

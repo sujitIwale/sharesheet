@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 import Header from "./components/header/Header";
+import HiddenRoute from "./components/routes/HiddenRoute";
 import PrivateRoute from "./components/routes/PrivateRoute";
 import { AuthState } from "./context/auth/AuthState";
 import { FileState } from "./context/file/FileState";
@@ -25,15 +26,14 @@ function App() {
             <Route exact path='/signup'>
               <SignUp />
             </Route>
+            <HiddenRoute exact path='/about' component={Landing} />
             <FileState>
               <SheetState>
                 <PrivateRoute exact path='/' component={Project} />
                 <PrivateRoute exact path='/sheet/:sheetId' component={Sheet} />
               </SheetState>
             </FileState>
-            <Route exact path='/about'>
-              <Landing />
-            </Route>
+
             <Route path='*' element={<p>There's nothing here: 404!</p>} />
           </Switch>
         </AuthState>

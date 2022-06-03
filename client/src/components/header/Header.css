@@ -12,8 +12,8 @@
 }
 
 .signin-btn {
-  border: 1px solid var(--text-secondary-color);
-  padding: 6px;
+  /* border: 1px solid var(--text-secondary-color); */
+  padding: 7px 9px;
   background-color: white;
   margin: 0 10px;
   font-size: large;
@@ -25,7 +25,7 @@
 }
 
 .signup-btn {
-  padding: 6px;
+  padding: 7px 9px;
   background-color: #2f81ec;
   color: #fff;
   margin: 0 10px;
@@ -40,5 +40,17 @@
 @media only screen and (max-width: 500px) {
   .header-main {
     padding: 10px 1%;
+  }
+
+  .signin-btn,
+  .signup-btn {
+    padding: 4px;
+    font-size: medium;
+  }
+}
+@media only screen and (max-width: 410px) {
+  .signin-btn,
+  .signup-btn {
+    margin: 0 5px;
   }
 }

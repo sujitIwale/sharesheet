@@ -5,7 +5,7 @@ const SheeTableHeader = ({ tableRef }) => {
   useEffect(() => {
     resizer(tableRef.current, "th");
     // eslint-disable-next-line
-  }, []);
+  }, [tableRef.current]);
   return (
     <thead key={Math.random()}>
       <tr className='sheet-header-row' key={5}>
