@@ -6,8 +6,9 @@ import LineLoader from "../shared/Loader/LineLoader";
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const { loading } = useAuth();
-  console.log(isAuth(), loading);
 
+  
+  
   if (loading) return <LineLoader />;
   return (
     <Route

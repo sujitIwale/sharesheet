@@ -39,13 +39,11 @@ const AuthReducer = (state, action) => {
         token: null,
       };
     case SET_LOADING:
-      console.log(state.loading);
       return {
         ...state,
         loading: true,
       };
     case REMOVE_LOADING:
-      console.log(state.loading);
       return {
         ...state,
         loading: false,
