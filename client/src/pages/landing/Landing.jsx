@@ -15,7 +15,7 @@ const Landing = () => {
             <h3>Upload and Edit csv files and share with other users</h3>
             <div className='flex row landing-btns'>
               <Link to='/signup'>
-                <button className='btn btn-primary get-started-btn pointer'>Get Started</button>
+                <button className='btn btn-primary bg-1 get-started-btn pointer'>Get Started</button>
               </Link>
               <Link to='/signin'>
                 {" "}

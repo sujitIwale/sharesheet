@@ -108,7 +108,7 @@ const Upload = () => {
                 </label>
               </form>
               {Error && <h3>{Error.msg}</h3>}
-              <button onClick={onUpload} className='btn btn-primary upload-btn'>
+              <button onClick={onUpload} className='btn btn-primary bg-2 upload-btn'>
                 Upload
               </button>
             </div>

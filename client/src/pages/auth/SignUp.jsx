@@ -46,7 +46,7 @@ const SignUp = () => {
           />
         </div>
         <div className='auth-btn-container'>
-          <button className="btn btn-primary" type='submit' disabled={Submitted}>
+          <button className="btn btn-primary bg-1" type='submit' disabled={Submitted}>
             Sign Up
           </button>
         </div>

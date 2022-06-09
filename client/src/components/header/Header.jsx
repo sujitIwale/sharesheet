@@ -32,7 +32,7 @@ const Header = () => {
               <button className='btn btn-secondary signin-btn pointer'>Sign In</button>
             </Link>
             <Link to='/signup'>
-              <button className='btn btn-primary signup-btn pointer'>Sign Up</button>
+              <button className='btn btn-primary bg-1 signup-btn pointer'>Sign Up</button>
             </Link>
           </div>
         ) : (

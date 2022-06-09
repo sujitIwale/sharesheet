@@ -1,13 +1,20 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { useSheet } from "../../hooks/sheet";
 import SheetTableHeader from "./SheetTableHeader";
 import SheetRow from "./SheetRow";
 import "./SheetTable.css";
+import ChartSection from "../chart/ChartSection";
+import { sectionResizer } from "./sectionResizer";
 
-const SheetTable = () => {
+const SheetTable = ({chartOpened}) => {
   const { sheetData, setSheetData } = useSheet();
 
   const table = useRef();
+  const sectionResizerElement = useRef();
+
+  useEffect(() => {
+    if(chartOpened) sectionResizer(sectionResizerElement.current)
+  },[chartOpened])
 
   const onSheetDataChange = (rowId, columnId, newData) => {
     try {
@@ -34,8 +41,9 @@ const SheetTable = () => {
 
   if (Array.isArray(sheetData.data))
     return (
-      <div className='sheet-table-container'>
-        <table className='table' ref={table}>
+      <div className={`sheet-table-container ${chartOpened ? 'chart-opened' : ''}`}>
+        <div className="table-container customized-scrollbar" id="sheet">
+          <table className='table' ref={table}>
           <SheetTableHeader tableRef={table} />
           {Array(50)
             .fill("")
@@ -50,6 +58,12 @@ const SheetTable = () => {
               />
             ))}
         </table>
+        </div>
+            <div class="section-resizer" ref={sectionResizerElement} id="dragMe"></div>
+
+        {
+          chartOpened && <ChartSection />
+        }
       </div>
     );
   return <h2>Something went wrong</h2>;

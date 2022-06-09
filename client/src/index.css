@@ -87,6 +87,19 @@ body {
   border-radius: 2px;
 }
 
+/*Background Colors*/
+
+.bg {
+  background-color: var(--primary-color);
+}
+.bg-1 {
+  background-color: var(--primary-color-1);
+}
+
+.bg-2 {
+  background-color: var(--primary-color-2);
+}
+
 /* Buttton */
 
 
@@ -107,12 +120,11 @@ body {
   color: #ffffff;
   cursor: pointer;
   font-weight: bold;
-  background-color: var(--btn-primary-color);
   border-radius: 3px;
 }
 
 .btn-primary:hover {
-  background-color: var(--btn-hover-primary-color);
+  /* background-color: inherit - lightblue; */
 }
 
 .btn-secondary {
