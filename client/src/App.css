@@ -4,9 +4,12 @@
   --secondary-background-color:grey;
   --border-radius:4px;
   --text-primary-color: #0F044C;
+  --btn-primary-color: #5800FF;
+  --btn-hover-primary-color: #6b1bfe;
   --text-secondary-color: #141E61;
   --border-color:rgb(230, 227, 227);
   --accent: purple;
+  --box-shadow:1px 1px 4px 0px #0000001A;
 }
 
 body {

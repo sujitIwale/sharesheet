@@ -49,7 +49,7 @@ const SignIn = () => {
           />
         </div>
         <div className='auth-btn-container'>
-          <button type='submit' disabled={Submitted}>
+          <button className="btn btn-primary" type='submit' disabled={Submitted}>
             Sign In
           </button>
         </div>
