@@ -6,15 +6,15 @@ import "./SheetTable.css";
 import ChartSection from "../chart/ChartSection";
 import { sectionResizer } from "./sectionResizer";
 
-const SheetTable = ({chartOpened}) => {
+const SheetTable = ({ chartOpened }) => {
   const { sheetData, setSheetData } = useSheet();
 
   const table = useRef();
   const sectionResizerElement = useRef();
 
   useEffect(() => {
-    if(chartOpened) sectionResizer(sectionResizerElement.current)
-  },[chartOpened])
+    if (chartOpened) sectionResizer(sectionResizerElement.current)
+  }, [chartOpened])
 
   const onSheetDataChange = (rowId, columnId, newData) => {
     try {
@@ -44,22 +44,22 @@ const SheetTable = ({chartOpened}) => {
       <div className={`sheet-table-container ${chartOpened ? 'chart-opened' : ''}`}>
         <div className="table-container customized-scrollbar" id="sheet">
           <table className='table' ref={table}>
-          <SheetTableHeader tableRef={table} />
-          {Array(50)
-            .fill("")
-            .map((row, rowIndex) => (
-              <SheetRow
-                rowIndex={rowIndex}
-                data={sheetData.data[rowIndex]}
-                type='row'
-                key={rowIndex}
-                tableRef={table}
-                onSheetDataChange={onSheetDataChange}
-              />
-            ))}
-        </table>
+            <SheetTableHeader tableRef={table} />
+            {Array(50)
+              .fill("")
+              .map((row, rowIndex) => (
+                <SheetRow
+                  rowIndex={rowIndex}
+                  data={sheetData.data[rowIndex]}
+                  type='row'
+                  key={rowIndex}
+                  tableRef={table}
+                  onSheetDataChange={onSheetDataChange}
+                />
+              ))}
+          </table>
         </div>
-            <div class="section-resizer" ref={sectionResizerElement} id="dragMe"></div>
+        <div className="section-resizer" ref={sectionResizerElement} id="dragMe"></div>
 
         {
           chartOpened && <ChartSection />
