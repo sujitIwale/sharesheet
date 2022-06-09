@@ -1,3 +1,4 @@
 .sheet-page-main {
-    overflow: auto;
+    /* overflow: auto; */
+    width: 100%;
 }

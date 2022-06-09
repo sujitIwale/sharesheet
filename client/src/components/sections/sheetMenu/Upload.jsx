@@ -101,14 +101,14 @@ const Upload = () => {
                   <div className='upload-btn-container pointer'>
                     <i className='fa fa-download'></i>
                     <p>{File && File.name}</p>
-                    <span id='file-select-btn' className='btn-primary'>
+                    <span id='file-select-btn'>
                       Select a file
                     </span>
                   </div>
                 </label>
               </form>
               {Error && <h3>{Error.msg}</h3>}
-              <button onClick={onUpload} className='btn upload-btn'>
+              <button onClick={onUpload} className='btn btn-primary bg-2 upload-btn'>
                 Upload
               </button>
             </div>
@@ -117,7 +117,7 @@ const Upload = () => {
           )}
         </Modal>
       )}
-      <div className='option-card upload btn' onClick={openModal}>
+      <div className='option-card shadow upload btn' onClick={openModal}>
         <i className='fa-solid fa-upload'></i>
         <h2>Upload Csv File</h2>
       </div>
