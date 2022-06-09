@@ -11,8 +11,8 @@ const Header = () => {
   const { loadUser, token, signOut } = useAuth();
 
   useEffect(() => {
-    console.log("header");
-    if (path.includes("sheet")) loadUser("sheet");
+    if (path.includes("sheet")) loadUser("sheet")
+    else loadUser()
     // eslint-disable-next-line
   }, [token]);
 

@@ -1,7 +1,6 @@
 const UserSchema = require("../models/UserSchema");
 const Sheet = require("../models/SheetSchema");
 const SheetSchema = require("../models/SheetSchema");
-const { use } = require("express/lib/application");
 
 module.exports.createSheet = async (req, res) => {
   try {
@@ -105,8 +104,7 @@ module.exports.getUserSheets = async (req, res) => {
 
     let sheets = await SheetSchema.find({
       $or: [{ users: { $elemMatch: { $eq: userId } } }, { ownerId: userId }],
-    });
-
+    }).sort({updatedAt:-1})
     // const sheets = await SheetSchema.find({ ownerId: userId });
 
     if (!sheets) {

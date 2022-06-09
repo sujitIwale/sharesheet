@@ -26,18 +26,17 @@ const AuthState = (props) => {
   };
   const [state, dispatch] = useReducer(AuthReducer, initialState);
   const loadUser = async (option) => {
-    if (option !== "sheet") {
+    
       dispatch({ type: SET_LOADING });
-    }
     const res = await verifyToken();
-    console.log("load user");
     if (res) {
       dispatch({ type: GET_USER });
     }
-    setTimeout(() => {
+    // setTimeout(() => {
       dispatch({ type: REMOVE_LOADING });
-    }, 500);
+    // }, 5000);
   };
+
   const setError = (error) => {
     dispatch({ type: SET_AUTH_ERROR, payload: error });
   };

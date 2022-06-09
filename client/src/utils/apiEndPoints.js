@@ -1,5 +1,5 @@
-export const BASE_API_URL = "https://sharesheet.herokuapp.com";
-// export const BASE_API_URL = "http://localhost:3001";
+export const BASE_API_URL = process.env.NODE_ENV === 'development' ? "http://localhost:3001" : 'https://sharesheet.herokuapp.com';
+
 
 export const signIn_Url = `${BASE_API_URL}/auth/signin/`;
 export const signUp_Url = `${BASE_API_URL}/auth/signup/`;
