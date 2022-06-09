@@ -22,24 +22,24 @@ const Header = () => {
   };
 
   return (
-    <header className='header-main'>
+    <header className='header-main shadow'>
       <Logo />
       <div className='header-right'>
         {!isAuth() ? (
           <div className='flex row'>
             <Link to='/signin'>
               {" "}
-              <button className='btn signin-btn pointer'>Sign In</button>
+              <button className='btn btn-secondary signin-btn pointer'>Sign In</button>
             </Link>
             <Link to='/signup'>
-              <button className='btn signup-btn pointer'>Sign Up</button>
+              <button className='btn btn-primary bg-1 signup-btn pointer'>Sign Up</button>
             </Link>
           </div>
         ) : (
           <Fragment>
             <span>{isAuth().name}</span>
             <button
-              className='btn signin-btn pointer'
+              className='btn btn-secondary signin-btn pointer'
               onClick={signOutClickHandler}
             >
               Sign Out

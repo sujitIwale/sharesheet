@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useSheet } from "../../hooks/sheet";
 import "./SheetHeader.css";
 
-const SheetHeader = ({ openModal, user }) => {
+const SheetHeader = ({ openModal, user, openChart }) => {
+
   const { sheetData, updateSheetData, updateSheetName } = useSheet();
   // console.log(sheetData);
   const [SheetName, setSheetName] = useState(
@@ -26,6 +27,7 @@ const SheetHeader = ({ openModal, user }) => {
         onBlurCapture={() => updateSheetName(SheetName)}
       />
       <div>
+        <button className="btn btn-primary bg-2" onClick={openChart}>Visualize</button>
         {user._id === sheetData.ownerId && (
           <>
             <button className='btn save-btn' onClick={updateSheetData}>

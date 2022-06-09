@@ -39,10 +39,6 @@ ul {
   list-style: none;
 }
 
-img {
-  /* height: auto; */
-}
-
 body {
   background-color: F7F7F7;
 }
@@ -91,31 +87,62 @@ body {
   border-radius: 2px;
 }
 
+/*Background Colors*/
+
+.bg {
+  background-color: var(--primary-color);
+}
+.bg-1 {
+  background-color: var(--primary-color-1);
+}
+
+.bg-2 {
+  background-color: var(--primary-color-2);
+}
+
 /* Buttton */
+
+
+.btn {
+  padding: 7px 9px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: large;
+} 
+
 .white {
   color: white;
 }
 
 .btn-primary {
-  margin: 5px;
-  padding: 5px 9px;
-  font-size: 14px;
-  color: black;
+  color: #ffffff;
   cursor: pointer;
   font-weight: bold;
-  background-color: transparent;
-  border: 2px solid #22af39;
+  border-radius: 3px;
 }
 
 .btn-primary:hover {
-  border: 2px solid #0aa037;
+  /* background-color: inherit - lightblue; */
 }
 
-.btn {
-  border: none;
-  outline: none;
+.btn-secondary {
+  color: #000000;
   cursor: pointer;
   font-weight: bold;
+  background-color: inherit;
+  border: 0.7px solid grey;
+  border-radius: 3px;
+  background-color: var(white);
+}
+
+.btn-secondary:hover {
+  background-color: #edf4fc;
+}
+
+.shadow {
+  box-shadow: var(--box-shadow);
 }
 
 .customized-scrollbar::-webkit-scrollbar {
@@ -130,3 +157,16 @@ body {
   width: 12px;
   cursor: pointer;
 }
+
+
+
+
+
+@media only screen and (max-width: 500px) {
+  .btn {
+    padding: 4px;
+    font-size: medium;
+  }
+}
+
+

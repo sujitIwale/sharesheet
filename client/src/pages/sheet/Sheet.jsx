@@ -12,6 +12,7 @@ import LineLoader from "../../components/shared/Loader/LineLoader";
 const Sheet = () => {
   const [Loading, setLoading] = useState(false);
   const [ModalOpen, setModalOpen] = useState(false);
+  const [chartOpened, setchartOpened] = useState(false);
   const sheetId = useParams().sheetId;
   const { fetchSheetData, sheetData, searchUsers, addUserToSheet } = useSheet();
   const { user } = useAuth();
@@ -19,17 +20,35 @@ const Sheet = () => {
   useEffect(() => {
     setLoading(true);
     fetchSheetData(sheetId, () => setLoading(false));
+    return () => {
+      setLoading(false)
+    }
     // eslint-disable-next-line
   }, [sheetId]);
   if (!sheetData || !user) return <LineLoader />;
-  // console.log(sheetData.data);
+
+  const chartAction = () => {
+    setchartOpened((state) => {
+      const sheet = document.getElementById('sheet')
+      const chart = document.getElementById('chart')
+      if (state) {
+        if (sheet) sheet.style.width = '100%'
+      } else {
+        if (sheet) sheet.style.width = '60%'
+        if (chart) sheet.style.flex = 1
+      }
+
+      return !state
+    })
+  }
+
   const modalAction = () => {
     setModalOpen((state) => !state);
   };
   return (
     <div className='sheet-page-main customized-scrollbar'>
-      <SheetHeader openModal={modalAction} user={user} />
-      {Loading || !sheetData.data ? <LineLoader /> : <SheetTable />}
+      <SheetHeader openModal={modalAction} user={user} openChart={chartAction} />
+      {Loading || !sheetData.data ? <LineLoader /> : <SheetTable chartOpened={chartOpened} />}
       {ModalOpen && (
         <Modal closeModal={modalAction} modalTitle='Share with other users'>
           <SearchUser
