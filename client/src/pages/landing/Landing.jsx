@@ -4,7 +4,6 @@ import { isAuth } from "../../helpers/auth";
 import "./Landing.css";
 
 const Landing = () => {
-  console.log("landing", isAuth());
   if (isAuth()) return <Redirect to='/' />;
 
   return (
