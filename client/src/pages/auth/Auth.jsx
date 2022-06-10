@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Alert from "../../components/shared/Alert/Alert";
 import Logo from "../../components/shared/Logo/Logo";
 import { useAuth } from "../../hooks/auth";
 import "./Auth.css";
@@ -10,7 +11,7 @@ const Auth = (props) => {
   return (
     <div className='auth-page-main'>
       <Logo />
-      {authError && <h4>{authError}</h4>}
+      {authError && <Alert message={authError} type='danger' />}
       <div className='auth-card'>
         {props.children}
         <div className='auth-card-footer'>

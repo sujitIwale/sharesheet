@@ -3,6 +3,7 @@ import { Redirect, useHistory } from "react-router-dom";
 import { isAuth } from "../../helpers/auth";
 import { useAuth } from "../../hooks/auth";
 import Auth from "./Auth";
+import SubmitButton from "./SubmitButton";
 
 const SignIn = () => {
   const [Submitted, setSubmitted] = useState(false);
@@ -23,10 +24,9 @@ const SignIn = () => {
     e.preventDefault();
     setSubmitted(true);
     const res = await signIn(User);
+    setSubmitted(false)
     if (res) {
-      setTimeout(() => {
-        history.push("/");
-      }, 500);
+      history.push("/");
     }
   };
 
@@ -38,20 +38,19 @@ const SignIn = () => {
             Sign In to <span className='website-name'>ShareSheet</span>
           </span>
         </div>
-        <label>Email</label>
-        <input type='text' name='email' onChange={inputChangeHandler} />
-        <label>Password</label>
+        <label className="text-dark">Email</label>
+        <input type='text' name='email' className="bold" onChange={inputChangeHandler} />
+        <label className="text-dark">Password</label>
         <div className='password-container'>
           <input
+            className="bold"
             type='password'
             name='password'
             onChange={inputChangeHandler}
           />
         </div>
         <div className='auth-btn-container'>
-          <button className="btn btn-primary bg-1" type='submit' disabled={Submitted}>
-            Sign In
-          </button>
+          <SubmitButton Submitted={Submitted} />
         </div>
       </form>
     </Auth>

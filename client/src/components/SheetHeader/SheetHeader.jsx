@@ -27,7 +27,7 @@ const SheetHeader = ({ openModal, user, openChart }) => {
         onBlurCapture={() => updateSheetName(SheetName)}
       />
       <div>
-        <button className="btn btn-primary bg-2" onClick={openChart}>Visualize</button>
+        <button className="btn btn-primary bg-1" onClick={openChart}>Visualize</button>
         {user._id === sheetData.ownerId && (
           <>
             <button className='btn save-btn' onClick={updateSheetData}>

@@ -13,6 +13,15 @@ import Landing from "./pages/landing/Landing";
 import Project from "./pages/project/Project";
 import Sheet from "./pages/sheet/Sheet";
 
+(() => {
+  const temp = console.log
+  console.log = (...para) => {
+    if (process.env.NODE_ENV === 'development') {
+      temp(...para)
+    }
+  }
+})()
+
 function App() {
   return (
     <Router>
