@@ -1,0 +1,17 @@
+.alert {
+    min-width: 250px;
+    max-width: 400px;
+    padding: 8px;
+    text-align: center;
+    background-color: rgb(231, 229, 229);
+}
+
+.alert.danger {
+    border-left: 5px solid red;
+    background-color: rgb(246, 215, 215);
+}
+
+.alert.success {
+    border-left: 5px solid green;
+    background-color: rgb(162, 237, 162);
+}

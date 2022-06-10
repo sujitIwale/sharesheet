@@ -68,6 +68,10 @@ body {
   justify-content: space-between;
 }
 
+.pd-0 {
+  padding: 0 !important;
+}
+
 .pa-10 {
   padding: 10px;
 }
@@ -75,29 +79,54 @@ body {
   cursor: pointer;
 }
 
+/*Font */
+
+.bold {
+  font-weight: 600;
+}
+
 /*Customize Scrollbar*/
 
 .customize-scrollbar::-webkit-scrollbar {
-  background-color: rgb(17, 17, 17);
+  background-color: var(--background-color);
   width: 15px;
 }
 .customize-scrollbar::-webkit-scrollbar-thumb {
   cursor: pointer;
-  background-color: rgb(219, 219, 219);
+  background-color: rgb(177, 177, 177);
   border-radius: 2px;
 }
 
+/* Text Color*/
+
+.text-dark {
+  color: var(--text-color-dark) !important;
+}
+
+.white {
+  color: white;
+}
 /*Background Colors*/
+
 
 .bg {
   background-color: var(--primary-color);
 }
+
+.bg-green {
+  background-color: green;
+}
+
 .bg-1 {
   background-color: var(--primary-color-1);
 }
 
 .bg-2 {
   background-color: var(--primary-color-2);
+}
+
+.primary-light {
+  background-color: var(--primary-color-light);
 }
 
 /* Buttton */
@@ -112,9 +141,6 @@ body {
   font-size: large;
 } 
 
-.white {
-  color: white;
-}
 
 .btn-primary {
   color: #ffffff;
@@ -123,8 +149,8 @@ body {
   border-radius: 3px;
 }
 
-.btn-primary:hover {
-  /* background-color: inherit - lightblue; */
+.btn-primary.hover:hover {
+  background-color: var(--primary-btn-hover-color);
 }
 
 .btn-secondary {
@@ -134,26 +160,38 @@ body {
   background-color: inherit;
   border: 0.7px solid grey;
   border-radius: 3px;
-  background-color: var(white);
 }
 
 .btn-secondary:hover {
-  background-color: #edf4fc;
+  background-color: var(--secondary-btn-hover-color);
+}
+
+/*Border*/
+
+.round { 
+  border-radius: var(--border-radius);
+}
+
+.round-sm {
+  border-radius: 2px;
 }
 
 .shadow {
   box-shadow: var(--box-shadow);
 }
 
+.shadow.shadow-hover:hover {
+  box-shadow: 1px 4px 16px 0px #0000001A;
+}
+
 .customized-scrollbar::-webkit-scrollbar {
   background-color: #e9eaed;
-  /* border-radius: 15px; */
   width: 11px;
 }
 
 .customized-scrollbar::-webkit-scrollbar-thumb {
   background-color: rgb(187, 188, 190);
-  border-radius: 15px;
+  border-radius: 20px;
   width: 12px;
   cursor: pointer;
 }

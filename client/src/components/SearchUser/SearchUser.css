@@ -2,9 +2,10 @@
   margin-top: 10px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   padding: 10px;
-  justify-content: center;
   align-items: center;
+  min-height: 200px;
 }
 
 .search-form {
@@ -117,12 +118,3 @@ input[type='checkbox'] {
   justify-content: flex-end;
 }
 
-.footer button {
-  padding: 5px 9px;
-  font-size: 18px;
-  color: #f1f1f1;
-  cursor: pointer;
-  background-color: green;
-  border-radius: 4px;
-  font-weight: bold;
-}

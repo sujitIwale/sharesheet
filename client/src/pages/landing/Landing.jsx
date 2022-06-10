@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, Redirect } from "react-router-dom";
+import PrimaryButton from "../../components/shared/Buttons/PrimaryButton";
 import { isAuth } from "../../helpers/auth";
 import "./Landing.css";
 
@@ -15,7 +16,7 @@ const Landing = () => {
             <h3>Upload and Edit csv files and share with other users</h3>
             <div className='flex row landing-btns'>
               <Link to='/signup'>
-                <button className='btn btn-primary bg-1 get-started-btn pointer'>Get Started</button>
+                <PrimaryButton value='Get Started' />
               </Link>
               <Link to='/signin'>
                 {" "}
