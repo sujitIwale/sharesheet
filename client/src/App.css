@@ -2,12 +2,15 @@
 :root {
   --background-color: white;
   --secondary-background-color:grey;
+  --text-color-dark:#282828;
   --border-radius:4px;
   --text-primary-color: #0F044C;
-  --primary-color:#fbb040;
-  --primary-color-1: #5800FF;
-  --primary-color-2: #F78812;
-  --btn-hover-primary-color: #6b1bfe;
+  --primary-color:#F15412;
+  --primary-color-light:#ffdcb9;
+  --primary-color-1: #F78812;
+  --primary-color-2: #5800FF;
+  --primary-btn-hover-color: #f9952b;
+  --secondary-btn-hover-color: #fff3e7;
   --text-secondary-color: #141E61;
   --border-color:rgb(230, 227, 227);
   --accent: purple;

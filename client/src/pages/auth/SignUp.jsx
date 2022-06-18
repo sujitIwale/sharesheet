@@ -3,6 +3,7 @@ import { Redirect, useHistory } from "react-router-dom";
 import { isAuth } from "../../helpers/auth";
 import { useAuth } from "../../hooks/auth";
 import Auth from "./Auth";
+import SubmitButton from "./SubmitButton";
 
 const SignUp = () => {
   const { signUp } = useAuth();
@@ -22,6 +23,7 @@ const SignUp = () => {
     e.preventDefault();
     setSubmitted(true);
     const res = await signUp(User);
+    setSubmitted(false)
     if (res) {
       history.push("/");
     }
@@ -46,9 +48,7 @@ const SignUp = () => {
           />
         </div>
         <div className='auth-btn-container'>
-          <button className="btn btn-primary bg-1" type='submit' disabled={Submitted}>
-            Sign Up
-          </button>
+          <SubmitButton Submitted={Submitted} />
         </div>
       </form>
     </Auth>

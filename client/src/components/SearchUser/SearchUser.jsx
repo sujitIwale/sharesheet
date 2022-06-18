@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import Loader from "../../components/shared/Loader/Loader";
+import Alert from "../shared/Alert/Alert";
 import SearchInput from "./SearchInput";
 import "./SearchUser.css";
 
@@ -16,7 +17,11 @@ const SearchUser = ({ searchUsers, addUserToSheet, sheetData, user }) => {
   const timer = useRef();
 
   const addUser = async () => {
-    if (SelectedUsers.size < 0) {
+    if (SelectedUsers.size <= 0) {
+      setStatus({ ...Status, msg: 'Please Select a User' })
+      setTimeout(() => {
+        setStatus({ ...Status, msg: null })
+      }, 1800)
       return;
     }
     const data = [];
@@ -73,75 +78,76 @@ const SearchUser = ({ searchUsers, addUserToSheet, sheetData, user }) => {
     removeUser(user);
   };
 
-  if (Status.loading) return <Loader />;
-
   return (
     <div className='search-user'>
-      {Status.msg && <h3>{Status.msg}</h3>}
-      <div className='search-form'>
-        <div className='search-container'>
-          {SelectedUsers.size > 0 && (
-            <div className='items'>
-              {getSelectedUsers(SelectedUsers).map((u) => (
-                <span className='item'>
-                  <img
-                    alt='user-profile'
-                    src={u.image}
-                    className='item-user-profile'
-                  />
-                  <h4>{u.email}</h4>
-                  <i
-                    className='fas fa-times remove-btn'
-                    onClick={() => removeUser(u)}
-                  ></i>
-                </span>
-              ))}
-            </div>
-          )}
-          <SearchInput onChange={onChangeHandler} />
-        </div>
-      </div>
-      {Users && Array.isArray(Users) && (
-        <ul className='users-list'>
-          {Users.map((u, i) => {
-            if (
-              sheetData.users.includes(u._id) ||
-              sheetData.ownerId === u._id
-            ) {
-              return null;
-            }
-            return (
-              <li className='users-list-element'>
-                <div className='flex row align-center'>
-                  <img
-                    alt='user-profile'
-                    src={u.image}
-                    className='user-profile'
-                  />
-                  <div>
-                    <h4>{u.name}</h4>
+      {Status.msg && <Alert message={Status.msg} type='success' />}
+      {Status.loading ? <Loader /> : <>
+        <div className='search-form'>
+          <div className='search-container'>
+            {SelectedUsers.size > 0 && (
+              <div className='items'>
+                {getSelectedUsers(SelectedUsers).map((u) => (
+                  <span className='item'>
+                    <img
+                      alt='user-profile'
+                      src={u.image}
+                      className='item-user-profile'
+                    />
                     <h4>{u.email}</h4>
+                    <i
+                      className='fas fa-times remove-btn'
+                      onClick={() => removeUser(u)}
+                    ></i>
+                  </span>
+                ))}
+              </div>
+            )}
+            <SearchInput onChange={onChangeHandler} />
+          </div>
+        </div>
+        {Users && Array.isArray(Users) && (
+          <ul className='users-list'>
+            {Users.map((u, i) => {
+              if (
+                sheetData.users.includes(u._id) ||
+                sheetData.ownerId === u._id
+              ) {
+                return null;
+              }
+              return (
+                <li className='users-list-element' key={i}>
+                  <div className='flex row align-center'>
+                    <img
+                      alt='user-profile'
+                      src={u.image}
+                      className='user-profile'
+                    />
+                    <div>
+                      <h4>{u.name}</h4>
+                      <h4>{u.email}</h4>
+                    </div>
                   </div>
-                </div>
-                <input
-                  type='checkbox'
-                  onChange={(e) => checkBoxChangeHandler(e, u)}
-                  checked={SelectedUsers.has(u)}
-                />
-              </li>
-            );
-          })}
-        </ul>
-      )}
-      <div className='footer'>
-        <button
-          className='btn'
-          onClick={addUser}
-          disabled={SelectedUsers.size > 0 ? false : true}
-        >
-          Share
-        </button>
-      </div>
+                  <input
+                    type='checkbox'
+                    onChange={(e) => checkBoxChangeHandler(e, u)}
+                    checked={SelectedUsers.has(u)}
+                  />
+                </li>
+              );
+            })}
+          </ul>
+        )}
+        <div className='footer'>
+          <button
+            className='btn btn-primary bg-green'
+            onClick={addUser}
+          // disabled={SelectedUsers.size > 0 ? false : true}
+          >
+            Share
+          </button>
+        </div>
+      </>}
+
     </div>
   );
 };

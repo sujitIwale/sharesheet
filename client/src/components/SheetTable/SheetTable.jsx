@@ -25,7 +25,7 @@ const SheetTable = ({ chartOpened }) => {
       // console.log(sheetData.data[rowId], columnId, newData);
       sheetData.data[rowId][columnId] = newData;
       // console.log(sheetData.data);
-      setSheetData({ ...sheetData, data: JSON.stringify(sheetData.data) });
+      setSheetData({ ...sheetData, data: sheetData.data });
     } catch (error) {
       console.log(error);
     }
@@ -62,7 +62,7 @@ const SheetTable = ({ chartOpened }) => {
         <div className="section-resizer" ref={sectionResizerElement} id="dragMe"></div>
 
         {
-          chartOpened && <ChartSection />
+          chartOpened && <ChartSection data={sheetData.data} />
         }
       </div>
     );

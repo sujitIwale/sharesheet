@@ -21,24 +21,26 @@ const AuthState = (props) => {
     isAuthenticated: false,
     user: null,
     token: localStorage.getItem("token"),
-    loading: false,
+    loading: true,
     authError: null,
   };
   const [state, dispatch] = useReducer(AuthReducer, initialState);
   const loadUser = async (option) => {
-    
-      dispatch({ type: SET_LOADING });
+
+    dispatch({ type: SET_LOADING });
     const res = await verifyToken();
     if (res) {
       dispatch({ type: GET_USER });
     }
     // setTimeout(() => {
-      dispatch({ type: REMOVE_LOADING });
+    dispatch({ type: REMOVE_LOADING });
     // }, 5000);
   };
 
   const setError = (error) => {
     dispatch({ type: SET_AUTH_ERROR, payload: error });
+
+    setTimeout(() => dispatch({ type: SET_AUTH_ERROR, payload: null }), 2000)
   };
   const signUp = async (data) => {
     const res = await postRequest(signUp_Url, data);

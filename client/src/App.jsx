@@ -12,7 +12,18 @@ import SignUp from "./pages/auth/SignUp";
 import Landing from "./pages/landing/Landing";
 import Project from "./pages/project/Project";
 import Sheet from "./pages/sheet/Sheet";
-// App
+
+// (() => {
+//   const temp = console.log
+//   console.log = (...para) => {
+//     if (process.env.NODE_ENV === 'development') {
+//       temp(...para)
+//     }
+//   }
+// })()
+
+
+
 function App() {
   return (
     <Router>

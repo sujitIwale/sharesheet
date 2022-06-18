@@ -37,9 +37,8 @@
   font-weight: lighter;
 }
 .auth-card form label {
-  font-size: x-small;
-  font-weight: lighter;
-  color: grey;
+  font-size: small;
+  font-weight: bolder;
 }
 .auth-card form input {
   margin: 10px 0;
@@ -48,6 +47,7 @@
   border: 0.7px solid grey;
   padding: 7px 8px;
   border-radius: 4px;
+  font-size: 16px;
 }
 
 .auth-card form input:focus {
@@ -78,6 +78,11 @@
 .auth-card form button {
   width: 40%;
   margin: 20px 0;
+}
+
+.auth-loader {
+   width:60px; 
+   height:40px;
 }
 
 
@@ -115,6 +120,13 @@
   .auth-card {
     width: 70%;
   }
+  .auth-card form button {
+  width: 50%;
+}
+  .auth-loader {
+   width: 37px; 
+   height:30px;
+}
 }
 
 @media only screen and (max-width: 400px) {

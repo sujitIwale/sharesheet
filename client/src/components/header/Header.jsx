@@ -2,6 +2,7 @@ import React, { Fragment, useEffect } from "react";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import { isAuth } from "../../helpers/auth";
 import { useAuth } from "../../hooks/auth";
+import PrimaryButton from "../shared/Buttons/PrimaryButton";
 import Logo from "../shared/Logo/Logo";
 import "./Header.css";
 
@@ -32,7 +33,7 @@ const Header = () => {
               <button className='btn btn-secondary signin-btn pointer'>Sign In</button>
             </Link>
             <Link to='/signup'>
-              <button className='btn btn-primary bg-1 signup-btn pointer'>Sign Up</button>
+              <PrimaryButton value='Sign Up' />
             </Link>
           </div>
         ) : (

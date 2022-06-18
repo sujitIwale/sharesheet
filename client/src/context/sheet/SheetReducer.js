@@ -8,6 +8,7 @@ import {
 } from "../types";
 
 const SheetReducer = (state, action) => {
+
   switch (action.type) {
     case SET_SHEETS:
       return {
@@ -15,6 +16,7 @@ const SheetReducer = (state, action) => {
         sheets: action.payload,
       };
     case SET_SHEET_DATA:
+      action.payload.data.columns = action.payload.data[0]
       return {
         ...state,
         sheetData: action.payload,
