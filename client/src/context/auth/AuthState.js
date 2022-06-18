@@ -21,7 +21,7 @@ const AuthState = (props) => {
     isAuthenticated: false,
     user: null,
     token: localStorage.getItem("token"),
-    loading: false,
+    loading: true,
     authError: null,
   };
   const [state, dispatch] = useReducer(AuthReducer, initialState);

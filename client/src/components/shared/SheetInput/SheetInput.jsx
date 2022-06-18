@@ -6,7 +6,7 @@ const SheetInput = ({ rowIndex, columnIndex, value, onSheetDataChange }) => {
   const timer = useRef();
 
   const changeHandler = (e) => {
-    setValue(e.target.value);
+    setValue(e.target.value.trim());
     clearTimeout(timer.current);
 
     const v = e.target.value.trim();
@@ -54,7 +54,7 @@ const SheetInput = ({ rowIndex, columnIndex, value, onSheetDataChange }) => {
       className='sheet-input'
       value={Value}
       onChange={changeHandler}
-      // onKeyDown={changeFocus}
+    // onKeyDown={changeFocus}
     />
   );
 };
