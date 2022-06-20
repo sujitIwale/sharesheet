@@ -75,6 +75,7 @@ body {
 .pa-10 {
   padding: 10px;
 }
+
 .pointer {
   cursor: pointer;
 }
@@ -82,7 +83,7 @@ body {
 /*Font */
 
 .bold {
-  font-weight: 600;
+  font-weight: 700;
 }
 
 /*Customize Scrollbar*/
@@ -91,6 +92,7 @@ body {
   background-color: var(--background-color);
   width: 15px;
 }
+
 .customize-scrollbar::-webkit-scrollbar-thumb {
   cursor: pointer;
   background-color: rgb(177, 177, 177);
@@ -106,6 +108,7 @@ body {
 .white {
   color: white;
 }
+
 /*Background Colors*/
 
 
@@ -129,6 +132,10 @@ body {
   background-color: var(--primary-color-light);
 }
 
+.text-blue {
+  color: blue;
+}
+
 /* Buttton */
 
 
@@ -139,7 +146,7 @@ body {
   cursor: pointer;
   font-weight: bold;
   font-size: large;
-} 
+}
 
 
 .btn-primary {
@@ -168,7 +175,7 @@ body {
 
 /*Border*/
 
-.round { 
+.round {
   border-radius: var(--border-radius);
 }
 
@@ -206,5 +213,3 @@ body {
     font-size: medium;
   }
 }
-
-

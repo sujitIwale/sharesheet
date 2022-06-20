@@ -15,14 +15,14 @@ const Auth = (props) => {
       <div className='auth-card'>
         {props.children}
         <div className='auth-card-footer'>
-          <h5>
+          <h4>
             {props.type === "signup" ? "Already have " : `Don't have `} an
             account?
             <Link to={props.type === "signup" ? "/signin" : "/signup"}>
               {" "}
-              <span>Get started</span>
+              <span className="text-blue bold">Get started</span>
             </Link>
-          </h5>
+          </h4>
         </div>
       </div>
     </div>

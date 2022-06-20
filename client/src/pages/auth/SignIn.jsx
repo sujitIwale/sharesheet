@@ -50,7 +50,7 @@ const SignIn = () => {
           />
         </div>
         <div className='auth-btn-container'>
-          <SubmitButton Submitted={Submitted} />
+          <SubmitButton Submitted={Submitted} value='Sign In' />
         </div>
       </form>
     </Auth>

@@ -1,10 +1,10 @@
 import React from 'react'
 import AuthLoader from './AuthLoader'
 
-const SubmitButton = ({ Submitted }) => {
+const SubmitButton = ({ Submitted, value }) => {
     return (
         <button className={`btn btn-primary bg-1 flex row center ${Submitted ? 'pd-0 primary-light text-dark' : ''}`} type='submit' disabled={Submitted}>
-            Sign In
+            {value}
             {
                 Submitted && <AuthLoader />
             }

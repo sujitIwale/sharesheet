@@ -48,7 +48,7 @@ const SignUp = () => {
           />
         </div>
         <div className='auth-btn-container'>
-          <SubmitButton Submitted={Submitted} />
+          <SubmitButton Submitted={Submitted} value='Sign Up' />
         </div>
       </form>
     </Auth>
