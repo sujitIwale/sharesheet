@@ -1,11 +1,16 @@
 .project-page-main {
   overflow: auto;
   height: 100%;
+  background: #ECE9E6;
+  background: -webkit-linear-gradient(to left, #FFFFFF, #f4bb7d);
+  background: linear-gradient(to left, rgb(241, 241, 241), #f5ece3);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 @media only screen and (max-width: 500px) {
   .project-page-container {
     width: 90%;
     margin: 0 auto;
+    overflow: auto;
   }
 }

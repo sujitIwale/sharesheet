@@ -90,7 +90,7 @@ body {
 
 .customize-scrollbar::-webkit-scrollbar {
   background-color: var(--background-color);
-  width: 15px;
+  width: 11px;
 }
 
 .customize-scrollbar::-webkit-scrollbar-thumb {
@@ -211,5 +211,16 @@ body {
   .btn {
     padding: 4px;
     font-size: medium;
+  }
+
+  .customize-scrollbar::-webkit-scrollbar {
+    background-color: var(--background-color);
+    width: 0;
+  }
+
+  .customize-scrollbar::-webkit-scrollbar-thumb {
+    cursor: pointer;
+    background-color: rgb(177, 177, 177);
+    border-radius: 2px;
   }
 }
