@@ -2,13 +2,13 @@ import React from "react";
 
 const ListOptionBar = () => {
   return (
-    <thead>
+    <thead className="list-option-bar">
       <tr>
-        <th>Sr No</th>
-        <th>Title</th>
+        <th style={{ borderBottomLeftRadius: '12px', borderTopLeftRadius: '12px' }}>Sr No</th>
+        <th style={{ textAlign: 'initial' }}>Title</th>
         <th>Owner</th>
-        <th>Last opened</th>
-        <th></th>
+        <th>Last Updated</th>
+        <th style={{ borderBottomRightRadius: '12px', borderTopRightRadius: '12px' }}></th>
       </tr>
     </thead>
   );

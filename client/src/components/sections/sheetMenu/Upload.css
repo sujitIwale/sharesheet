@@ -6,10 +6,15 @@
   margin: 10px;
 }
 
+.option-card:hover {
+  border: 0.7px solid var(--primary-color);
+}
+
 .option-card.upload {
   display: flex;
   flex-direction: column;
 }
+
 
 .option-card.upload i {
   font-size: xx-large;
@@ -21,6 +26,7 @@
   width: 100%;
   max-width: 600px;
 }
+
 .upload-form label {
   float: left;
   clear: both;
@@ -33,6 +39,7 @@
   transition: all 0.2s ease;
   color: black;
 }
+
 .upload-form label:hover {
   border-color: #454cad;
 }
@@ -46,6 +53,7 @@ p,
 span {
   margin: 5px;
 }
+
 .upload-form label.hover .upload-btn-container i.fa {
   transform: scale(0.8);
   opacity: 0.3;
@@ -63,4 +71,11 @@ span {
 
 .upload-btn {
   margin: 5px 0;
+}
+
+
+@media only screen and (max-width:600px) {
+  .option-card.upload h2 {
+    font-size: medium;
+  }
 }
