@@ -20,13 +20,20 @@ const SheetMenu = () => {
   return (
     <section className='sheet-menu'>
       <div className='menu-options project-page-container'>
-        <div className='option-card pointer shadow' onClick={newSheetClickHandler}>
-          <img
-            src='https://ssl.gstatic.com/docs/templates/thumbnails/sheets-blank-googlecolors.png'
-            alt='add-img'
-          />
+        <div className="flex flex-column">
+          <div className='flex flex-column option-card pointer shadow' onClick={newSheetClickHandler}>
+            <img
+              src='https://ssl.gstatic.com/docs/templates/thumbnails/sheets-blank-googlecolors.png'
+              alt='add-img'
+            />
+          </div>
+          <h4 className="mt-4">Blank</h4>
         </div>
-        <Upload />
+        <div className="flex flex-column">
+          <Upload />
+          <h4 className="mt-4">Upload Csv File</h4>
+        </div>
+
       </div>
     </section>
   );

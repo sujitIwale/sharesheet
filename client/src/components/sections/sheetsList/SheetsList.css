@@ -69,10 +69,8 @@
   border-bottom: 0.5px solid var(--border-color);
 }
 
-
-
 .sheet-list-item:hover {
-  background-color: rgb(241, 241, 241);
+  background-color: rgb(255, 182, 118);
 }
 
 .sheet-list-item-options i {
