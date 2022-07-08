@@ -10,7 +10,7 @@ const SheetInput = ({ rowIndex, columnIndex, value, onSheetDataChange }) => {
     clearTimeout(timer.current);
 
     const v = e.target.value.trim();
-    if (v === "" || v === Value.trim()) {
+    if (v === Value.trim()) {
       return;
     }
     timer.current = setTimeout(() => {

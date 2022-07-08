@@ -17,6 +17,7 @@ const SheetTable = ({ chartOpened }) => {
   }, [chartOpened])
 
   const onSheetDataChange = (rowId, columnId, newData) => {
+    // console.log('change ')
     try {
       const { data } = sheetData;
       if (!data[rowId]) {
@@ -25,7 +26,7 @@ const SheetTable = ({ chartOpened }) => {
       // console.log(sheetData.data[rowId], columnId, newData);
       sheetData.data[rowId][columnId] = newData;
       // console.log(sheetData.data);
-      setSheetData({ ...sheetData, data: sheetData.data });
+      setSheetData({ ...sheetData, data: JSON.stringify(sheetData.data) });
     } catch (error) {
       console.log(error);
     }

@@ -87,7 +87,7 @@ const SheetState = (props) => {
   const updateSheetData = async () => {
     try {
       let dataString = "";
-
+      // console.log(state.sheetData.data)
       state.sheetData.data.forEach((row) => {
         if (Array.isArray(row)) {
           row.forEach((v, i) => {

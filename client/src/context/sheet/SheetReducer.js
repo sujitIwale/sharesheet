@@ -41,6 +41,13 @@ const SheetReducer = (state, action) => {
 
       };
     case SET_SHEET_DATA:
+      if (!Array.isArray(action.payload.data)) {
+        try {
+          action.payload.data = JSON.parse(action.payload.data);
+        } catch (error) {
+          console.log(error);
+        }
+      }
       action.payload.data.columns = action.payload.data[0]
       return {
         ...state,
