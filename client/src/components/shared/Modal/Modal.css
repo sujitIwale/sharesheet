@@ -10,26 +10,28 @@
 }
 
 .modalContainer {
-	width: 600px;
+	width: 700px;
+	min-height: 270px;
 	margin: 10px;
 	border-radius: 5px;
 	background-color: #ffffff;
 	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 	display: flex;
 	flex-direction: column;
-    margin-bottom: 14%;
+	justify-content: space-between;
+	margin-bottom: 14%;
 }
 
 .modalContainer .title {
 	display: inline-block;
 	text-align: center;
 	margin-top: 10px;
-	
+
 }
 
 .titleCloseBtn {
 	display: flex;
-	justify-content:space-between;
+	justify-content: space-between;
 	flex-direction: row-reverse;
 	box-shadow: rgba(214, 214, 214, 0.35) 0px 5px 15px;
 	padding: 5px 10px;
@@ -55,14 +57,15 @@
 	cursor: pointer;
 }
 
-@media only screen and (max-width:400px){
+@media only screen and (max-width:600px) {
 	.modalContainer {
 		top: 15%;
 		position: fixed;
-		width: 300px;
-		height: 300px;
+		width: 350px;
+		height: 250px;
 	}
+
 	.modalBackground {
-		justify-content:normal;
+		justify-content: center;
 	}
 }

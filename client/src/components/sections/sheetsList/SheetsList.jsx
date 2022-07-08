@@ -11,12 +11,12 @@ import "./SheetsList.css";
 const List = ({ sheets }) => {
   return sheets.map((sheet, i) => (
     <tr className='sheet-list-item' key={i}>
-      <td>{i + 1}</td>
+      <td style={{ borderBottomLeftRadius: '30px', borderTopLeftRadius: '30px' }}>{i + 1}</td>
 
       <td style={{ textAlign: 'initial' }}>{sheet.name}</td>
       <td>{sheet.ownerName}</td>
       <td>{getPeriod(sheet.updatedAt)}</td>
-      <td className='sheet-list-item-options'>
+      <td className='sheet-list-item-options' style={{ borderBottomRightRadius: '30px', borderTopRightRadius: '30px' }}>
         {/* <i className='fa-solid fa-ellipsis-vertical pointer'></i> */}
         <Link to={`/sheet/${sheet._id}`}>
           <i className='fa-solid fa-arrow-up-right-from-square'></i>

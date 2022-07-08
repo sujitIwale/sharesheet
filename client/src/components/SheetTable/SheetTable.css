@@ -3,19 +3,21 @@
 }
 
 .chart-opened {
-   display: flex;
+  display: flex;
   /* grid-template-columns: 0.65fr 0.01fr 0.34fr;   */
   flex-direction: row;
 }
 
 .table-container {
-  height: 865px;
+  height: 86vh;
   overflow: scroll;
   width: 100%;
 }
+
 .chart-opened .table-container {
   width: 60%;
 }
+
 .chart-section {
   flex: 1;
 }
@@ -37,7 +39,7 @@
 }
 
 .section-resizer:hover {
-  background-color:  rgb(69, 69, 70);
+  background-color: rgb(69, 69, 70);
 }
 
 .sheet-header-row {

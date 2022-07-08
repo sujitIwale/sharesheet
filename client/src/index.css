@@ -1,15 +1,15 @@
-@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300&family=Roboto:wght@100;400&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@400&family=Mochiy+Pop+P+One&family=Montserrat&family=Open+Sans:wght@500;600;800&family=Oswald:wght@300&family=Roboto:wght@500&display=swap');
 
 html,
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 body,
@@ -43,8 +43,18 @@ body {
   background-color: F7F7F7;
 }
 
+/* flex box*/
+
 .flex {
   display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-1 {
+  flex: 1;
 }
 
 .row {
@@ -68,12 +78,25 @@ body {
   justify-content: space-between;
 }
 
+/* padding */
+
 .pd-0 {
   padding: 0 !important;
 }
 
 .pa-10 {
   padding: 10px;
+}
+
+
+/* Margin */
+
+.mt-2 {
+  margin-top: 4px;
+}
+
+.mt-4 {
+  margin-top: 8px;
 }
 
 .pointer {
@@ -84,19 +107,6 @@ body {
 
 .bold {
   font-weight: 700;
-}
-
-/*Customize Scrollbar*/
-
-.customize-scrollbar::-webkit-scrollbar {
-  background-color: var(--background-color);
-  width: 11px;
-}
-
-.customize-scrollbar::-webkit-scrollbar-thumb {
-  cursor: pointer;
-  background-color: rgb(177, 177, 177);
-  border-radius: 2px;
 }
 
 /* Text Color*/
@@ -140,7 +150,7 @@ body {
 
 
 .btn {
-  padding: 7px 9px;
+  padding: 5px 9px;
   border: none;
   outline: none;
   cursor: pointer;
@@ -161,6 +171,7 @@ body {
 }
 
 .btn-secondary {
+  padding: 4px 9px;
   color: #000000;
   cursor: pointer;
   font-weight: bold;
@@ -183,6 +194,10 @@ body {
   border-radius: 2px;
 }
 
+.border-aqua {
+  border-color: aqua;
+}
+
 .shadow {
   box-shadow: var(--box-shadow);
 }
@@ -191,16 +206,24 @@ body {
   box-shadow: 1px 4px 16px 0px #0000001A;
 }
 
+/*Customize Scrollbar*/
+
 .customized-scrollbar::-webkit-scrollbar {
   background-color: #e9eaed;
   width: 11px;
+  height: 11px;
 }
 
 .customized-scrollbar::-webkit-scrollbar-thumb {
+  opacity: 30%;
   background-color: rgb(187, 188, 190);
   border-radius: 20px;
   width: 12px;
   cursor: pointer;
+}
+
+.customized-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(168, 168, 168);
 }
 
 
@@ -209,8 +232,13 @@ body {
 
 @media only screen and (max-width: 500px) {
   .btn {
-    padding: 4px;
+    padding: 4px 6px;
     font-size: medium;
+  }
+
+
+  .btn-secondary {
+    padding: 3px 6px;
   }
 
   .customize-scrollbar::-webkit-scrollbar {
