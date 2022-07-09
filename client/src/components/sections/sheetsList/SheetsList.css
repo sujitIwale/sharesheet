@@ -1,27 +1,76 @@
-.project-page-container {
+.sheet-list-container {
+  min-height: 300px;
   width: 70%;
-  margin: 0 auto;
+  margin: 0 auto 30px auto;
+  background-color: rgb(255, 255, 255);
+  border-radius: 12px;
+  padding: 0 30px;
 }
 
 .sheet-list-table {
+  width: 100%;
   text-align: center;
   border-collapse: collapse;
+}
+
+.sheet-list-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 60px;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.sheet-list-header .search-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+  width: 250px;
+}
+
+.sheet-list-header .search-bar input {
+  width: 100%;
+  padding: 5px 14px;
+  outline: none;
+  border: 0.7px solid var(--primary-color-1);
+  border-radius: 30px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.sheet-list-header .search-bar input:focus {
+  border-width: 1.7px;
+  border-color: var(--primary-color);
+}
+
+.sheet-list-header .search-bar .search-icon {
+  position: absolute;
+  top: 6px;
+  right: 0;
+  margin-right: 15px;
+}
+
+.sheet-list-table .list-option-bar {
+  background-color: rgb(244, 241, 241);
+  border-radius: 12px !important;
 }
 
 .sheet-list-table tr {
   height: 50px;
 }
 
-.sheet-list-table th,
-td {
-  border-bottom: 0.7px solid var(--border-color);
+.sheet-list-table th {
+  min-width: 45px;
 }
 
-.sheet-list-item {
+.sheet-list-table td {
+  border-bottom: 0.5px solid var(--border-color);
 }
 
 .sheet-list-item:hover {
-  background-color: rgb(238, 238, 238);
+  background-color: rgb(255, 182, 118);
 }
 
 .sheet-list-item-options i {
@@ -38,16 +87,31 @@ td {
 }
 
 @media only screen and (max-width: 800px) {
-  .project-page-container {
+  .sheet-list-container {
     width: 85%;
     margin: 0 auto;
   }
+
+  .sheet-list-header .search-bar {
+    width: 200px;
+  }
+
+  .sheet-list-header .search-bar input {
+    padding: 3px 8px;
+    font-size: 15px;
+  }
+
+  .sheet-list-table .list-option-bar tr th {
+    padding: 0 5px;
+  }
 }
+
 @media only screen and (max-width: 500px) {
-  .project-page-container {
-    width: 95%;
+  .sheet-list-container {
+    width: 97%;
     margin: 0 auto;
     font-size: small;
+    padding: 0 5px;
   }
 
   .sheet-list-item-options i {

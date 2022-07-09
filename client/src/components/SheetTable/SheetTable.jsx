@@ -17,6 +17,7 @@ const SheetTable = ({ chartOpened }) => {
   }, [chartOpened])
 
   const onSheetDataChange = (rowId, columnId, newData) => {
+    // console.log('change ')
     try {
       const { data } = sheetData;
       if (!data[rowId]) {
@@ -25,7 +26,7 @@ const SheetTable = ({ chartOpened }) => {
       // console.log(sheetData.data[rowId], columnId, newData);
       sheetData.data[rowId][columnId] = newData;
       // console.log(sheetData.data);
-      setSheetData({ ...sheetData, data: sheetData.data });
+      setSheetData({ ...sheetData, data: JSON.stringify(sheetData.data) });
     } catch (error) {
       console.log(error);
     }
@@ -45,18 +46,20 @@ const SheetTable = ({ chartOpened }) => {
         <div className="table-container customized-scrollbar" id="sheet">
           <table className='table' ref={table}>
             <SheetTableHeader tableRef={table} />
-            {Array(50)
-              .fill("")
-              .map((row, rowIndex) => (
-                <SheetRow
-                  rowIndex={rowIndex}
-                  data={sheetData.data[rowIndex]}
-                  type='row'
-                  key={rowIndex}
-                  tableRef={table}
-                  onSheetDataChange={onSheetDataChange}
-                />
-              ))}
+            <tbody>
+              {Array(50)
+                .fill("")
+                .map((row, rowIndex) => (
+                  <SheetRow
+                    rowIndex={rowIndex}
+                    data={sheetData.data[rowIndex]}
+                    type='row'
+                    key={rowIndex}
+                    tableRef={table}
+                    onSheetDataChange={onSheetDataChange}
+                  />
+                ))}
+            </tbody>
           </table>
         </div>
         <div className="section-resizer" ref={sectionResizerElement} id="dragMe"></div>

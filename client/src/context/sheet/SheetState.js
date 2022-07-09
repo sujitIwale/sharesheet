@@ -16,6 +16,8 @@ import {
   SET_SHEETS,
   UPDATE_SHEET_NAME,
   UPDATE_SHEET_USERS,
+  SET_SEARCHED_SHEETS,
+  REMOVE_SEARCHED_SHEETS,
 } from "../types";
 import SheetReducer from "./SheetReducer";
 
@@ -25,6 +27,8 @@ SheetContext.displayName = "SheetContext";
 const SheetState = (props) => {
   const initialState = {
     sheets: null,
+    searchedSheets: null,
+    searching: false,
     sheetData: null,
     sortBy: {
       ASC: true,
@@ -46,6 +50,16 @@ const SheetState = (props) => {
     const res = await getRequest(getUsersSheets_Url);
     dispatch({ type: SET_SHEETS, payload: res.data });
   };
+
+
+  const searchSheets = (query, option) => {
+    if (query === null || option === false) removeSearchedSheets()
+    dispatch({ type: SET_SEARCHED_SHEETS, payload: query })
+  }
+
+  const removeSearchedSheets = () => {
+    dispatch({ type: REMOVE_SEARCHED_SHEETS })
+  }
 
   const createNewSheet = async () => {
     const res = await postRequest(createSheet_Url);
@@ -73,7 +87,7 @@ const SheetState = (props) => {
   const updateSheetData = async () => {
     try {
       let dataString = "";
-
+      // console.log(state.sheetData.data)
       state.sheetData.data.forEach((row) => {
         if (Array.isArray(row)) {
           row.forEach((v, i) => {
@@ -181,7 +195,11 @@ const SheetState = (props) => {
         sheetData: state.sheetData,
         loading: state.loading,
         sortBy: state.sortBy,
+        searchedSheets: state.searchedSheets,
+        searching: state.searching,
         fetchSheets,
+        removeSearchedSheets,
+        searchSheets,
         createNewSheet,
         fetchSheetData,
         updateSheetData,

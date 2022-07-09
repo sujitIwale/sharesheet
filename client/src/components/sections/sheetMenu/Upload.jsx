@@ -108,18 +108,19 @@ const Upload = () => {
                 </label>
               </form>
               {Error && <h3>{Error.msg}</h3>}
-              <button onClick={onUpload} className='btn btn-primary bg-2 upload-btn'>
-                Upload
-              </button>
             </div>
           ) : (
             <Loader />
           )}
+          <div className="flex center">
+            <button onClick={onUpload} disabled={loading} className='btn btn-primary bg-2 upload-btn'>
+              Upload
+            </button>
+          </div>
         </Modal>
       )}
       <div className='option-card shadow upload btn' onClick={openModal}>
         <i className='fa-solid fa-upload'></i>
-        <h2>Upload Csv File</h2>
       </div>
     </>
   );

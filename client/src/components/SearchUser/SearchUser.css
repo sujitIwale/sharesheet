@@ -5,7 +5,7 @@
   justify-content: space-between;
   padding: 10px;
   align-items: center;
-  min-height: 200px;
+  min-height: 300px;
 }
 
 .search-form {
@@ -21,9 +21,9 @@
   display: flex;
   flex-direction: row;
   border-bottom: 1px solid grey;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
-    flex-wrap: wrap;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  flex-wrap: wrap;
 }
 
 .search-container .items {
@@ -31,10 +31,11 @@
   font-size: x-small;
   font-weight: lighter;
   display: flex;
-    align-items: center;
-    flex-wrap: wrap;
+  align-items: center;
+  flex-wrap: wrap;
 }
-.search-container .items .item{
+
+.search-container .items .item {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -47,7 +48,7 @@
   font-size: medium;
 }
 
-.search-container .items .item .item-user-profile{
+.search-container .items .item .item-user-profile {
   width: 22px;
   height: 22px;
   border-radius: 50%;
@@ -108,7 +109,7 @@
 input[type='checkbox'] {
   padding: 4px;
   width: 1.4em;
-    height: 1.4em;
+  height: 1.4em;
 }
 
 .footer {
@@ -118,3 +119,21 @@ input[type='checkbox'] {
   justify-content: flex-end;
 }
 
+@media only screen and (max-width: 600px) {
+  .search-user {
+    overflow-y: auto;
+    padding: 5px;
+  }
+
+  .search-user .search-container {
+    width: 85%;
+  }
+
+  .users-list {
+    width: 85%;
+  }
+
+  .footer {
+    margin-top: 7px;
+  }
+}

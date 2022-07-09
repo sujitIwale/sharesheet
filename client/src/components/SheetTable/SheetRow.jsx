@@ -24,29 +24,28 @@ const SheetRow = ({ rowIndex, data, type, onSheetDataChange, tableRef }) => {
     // resizer(tableRef.current, "th");
   }, []);
   return (
-    <tbody>
-      <tr>
-        <td className='left-index-element' key={Math.random()}>
-          {rowIndex + 1}
-        </td>
-        {Array(26)
-          .fill("")
-          .map((el, columnIndex) => (
-            <td key={columnIndex} id={`td${columnIndex}`}>
-              {data && data && data[columnIndex] ? (
-                getRow(rowIndex, columnIndex, data, onSheetDataChange)
-              ) : (
-                <SheetInput
-                  rowIndex={rowIndex}
-                  columnIndex={columnIndex}
-                  key={columnIndex}
-                  onSheetDataChange={onSheetDataChange}
-                />
-              )}
-            </td>
-          ))}
-      </tr>
-    </tbody>
+
+    <tr>
+      <td className='left-index-element' key={Math.random()}>
+        {rowIndex + 1}
+      </td>
+      {Array(26)
+        .fill("")
+        .map((el, columnIndex) => (
+          <td key={columnIndex} id={`td${columnIndex}`}>
+            {data && data && data[columnIndex] ? (
+              getRow(rowIndex, columnIndex, data, onSheetDataChange)
+            ) : (
+              <SheetInput
+                rowIndex={rowIndex}
+                columnIndex={columnIndex}
+                key={columnIndex}
+                onSheetDataChange={onSheetDataChange}
+              />
+            )}
+          </td>
+        ))}
+    </tr>
   );
 };
 

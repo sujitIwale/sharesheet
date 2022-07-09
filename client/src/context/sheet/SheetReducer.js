@@ -1,5 +1,7 @@
 import {
+  REMOVE_SEARCHED_SHEETS,
   SET_LOADING,
+  SET_SEARCHED_SHEETS,
   SET_SHEETS,
   SET_SHEET_DATA,
   SET_SORT_BY,
@@ -15,7 +17,37 @@ const SheetReducer = (state, action) => {
         ...state,
         sheets: action.payload,
       };
+    case SET_SEARCHED_SHEETS:
+      let filteredSheets = []
+      try {
+        filteredSheets = state.sheets.filter(sheet => {
+          const regex = new RegExp(`${action.payload}`, 'gi')
+          return sheet.ownerName.match(regex) || sheet.name.match(regex)
+        })
+      } catch (error) {
+        console.log(error, 'Please enter valid name')
+      }
+      return {
+        ...state,
+        searching: true,
+        searchedSheets: filteredSheets
+
+      };
+    case REMOVE_SEARCHED_SHEETS:
+      return {
+        ...state,
+        searching: false,
+        searchedSheets: null
+
+      };
     case SET_SHEET_DATA:
+      if (!Array.isArray(action.payload.data)) {
+        try {
+          action.payload.data = JSON.parse(action.payload.data);
+        } catch (error) {
+          console.log(error);
+        }
+      }
       action.payload.data.columns = action.payload.data[0]
       return {
         ...state,
