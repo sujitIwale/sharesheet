@@ -241,9 +241,9 @@ body {
     padding: 3px 6px;
   }
 
-  .customize-scrollbar::-webkit-scrollbar {
-    background-color: var(--background-color);
-    width: 0;
+  .customized-scrollbar::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
   }
 
   .customize-scrollbar::-webkit-scrollbar-thumb {
