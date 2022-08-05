@@ -12,7 +12,7 @@ const Landing = () => {
       <div className='landing-page-container'>
         <div className='flex center info'>
           <div>
-            <h1>Upload and Edit Csv Files </h1>
+            <h1>Upload and Edit <span>Csv Files</span></h1>
             <h3>Upload and Edit csv files and share with other users</h3>
             <div className='flex row landing-btns'>
               <Link to='/signup'>

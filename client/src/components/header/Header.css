@@ -12,14 +12,32 @@
 }
 
 .signin-btn {
-  margin: 0 10px;
+  margin: 0 20px;
   font-size: large;
+  border: none;
+  background-color: rgb(198, 196, 196);
+  padding: 5px 8px;
+}
+
+.signin-btn:hover {
+  background-color: rgb(169, 168, 168);
 }
 
 .signup-btn {
-  margin: 0 10px;
   font-size: large;
 }
+
+
+.user-profile-icon {
+  width: 30px;
+  height: 30px;
+  border: 0.7px solid grey;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 
 @media only screen and (max-width: 500px) {
   .header-main {

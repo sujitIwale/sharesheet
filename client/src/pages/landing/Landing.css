@@ -17,10 +17,15 @@
 }
 
 .landing-page .info h1 {
+  font-weight: 600;
   font-size: 44px;
   margin: 0 0 20px;
   line-height: 1.4;
   color: #5d5d5d;
+}
+
+.landing-page .info h1 span {
+  color: var(--primary-color);
 }
 
 .landing-page .info p {
@@ -64,9 +69,11 @@
   .landing-page-container {
     width: 95%;
   }
+
   .landing-img {
     width: 55%;
   }
+
   .landing-page .info {
     width: 40%;
   }
@@ -77,10 +84,12 @@
     width: 95%;
     flex-direction: column;
   }
+
   .landing-img {
     width: 100%;
     margin-top: 30px;
   }
+
   .landing-page .info {
     width: 100%;
   }
