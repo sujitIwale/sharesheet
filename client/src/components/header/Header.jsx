@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import { isAuth } from "../../helpers/auth";
 import { useAuth } from "../../hooks/auth";
@@ -37,7 +37,7 @@ const Header = () => {
             </Link>
           </div>
         ) : (
-          <Fragment>
+          <div className="flex row align-center">
             <span>{isAuth().name}</span>
             <button
               className='btn btn-secondary signin-btn pointer'
@@ -45,7 +45,8 @@ const Header = () => {
             >
               Sign Out
             </button>
-          </Fragment>
+            {/* <span className="user-profile-icon"><i class="fa-solid fa-user"></i></span> */}
+          </div>
         )}
       </div>
     </header>

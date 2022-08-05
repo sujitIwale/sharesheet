@@ -4,7 +4,7 @@
   flex-direction: column;
   align-items: center;
   margin-top: 7%;
-  overflow-y: auto;
+  overflow-y: scroll;
 }
 
 .auth-card {
@@ -36,10 +36,12 @@
   padding: 30px 11%;
   font-weight: lighter;
 }
+
 .auth-card form label {
   font-size: small;
   font-weight: bolder;
 }
+
 .auth-card form input {
   margin: 10px 0;
   border: none;
@@ -57,9 +59,11 @@
 .password-container {
   position: relative;
 }
+
 .password-container input {
   width: 100%;
 }
+
 .forgot-pass {
   right: 0;
   bottom: 15px;
@@ -76,13 +80,13 @@
 }
 
 .auth-card form button {
-  width: 40%;
+  width: 50%;
   margin: 20px 0;
 }
 
 .auth-loader {
-   width:60px; 
-   height:40px;
+  width: 60px;
+  height: 40px;
 }
 
 
@@ -117,16 +121,19 @@
   .auth-page-main {
     margin-top: 25%;
   }
+
   .auth-card {
     width: 70%;
   }
+
   .auth-card form button {
-  width: 50%;
-}
+    width: 50%;
+  }
+
   .auth-loader {
-   width: 37px; 
-   height:30px;
-}
+    width: 37px;
+    height: 30px;
+  }
 }
 
 @media only screen and (max-width: 400px) {

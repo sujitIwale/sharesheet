@@ -20,7 +20,7 @@ const Auth = (props) => {
             account?
             <Link to={props.type === "signup" ? "/signin" : "/signup"}>
               {" "}
-              <span className="text-blue bold">Get started</span>
+              <span className="text-blue bold">{props.type === "signup" ? "Sign In" : "Get started"}</span>
             </Link>
           </h4>
         </div>

@@ -6,13 +6,9 @@ const SheetInput = ({ rowIndex, columnIndex, value, onSheetDataChange }) => {
   const timer = useRef();
 
   const changeHandler = (e) => {
-    setValue(e.target.value.trim());
+    setValue(e.target.value);
     clearTimeout(timer.current);
 
-    const v = e.target.value.trim();
-    if (v === Value.trim()) {
-      return;
-    }
     timer.current = setTimeout(() => {
       if (typeof onSheetDataChange === "function") {
         onSheetDataChange(rowIndex, columnIndex, e.target.value);
