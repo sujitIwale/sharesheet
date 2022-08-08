@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import Loader from "../../components/shared/Loader/Loader";
 import Alert from "../shared/Alert/Alert";
+import ShareButton from "../shared/Buttons/ShareButton";
 import SearchInput from "./SearchInput";
 import "./SearchUser.css";
 
@@ -137,14 +138,8 @@ const SearchUser = ({ searchUsers, addUserToSheet, sheetData, user }) => {
             })}
           </ul>
         )}
-        <div className='footer'>
-          <button
-            className='btn btn-primary bg-green'
-            onClick={addUser}
-          // disabled={SelectedUsers.size > 0 ? false : true}
-          >
-            Share
-          </button>
+        <div className='searchuser-footer'>
+          <ShareButton onClick={addUser} />
         </div>
       </>}
 

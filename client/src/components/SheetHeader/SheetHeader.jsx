@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSheet } from "../../hooks/sheet";
+import ShareButton from "../shared/Buttons/ShareButton";
 import "./SheetHeader.css";
 
 const SheetHeader = ({ openModal, user, openChart }) => {
@@ -21,23 +22,24 @@ const SheetHeader = ({ openModal, user, openChart }) => {
   return (
     <div className='sheet-header'>
       <div className="flex row align-center left-group">
-        <input
-          className='sheet-header-input'
-          value={SheetName}
-          onChange={onChangeHandler}
-          onBlurCapture={() => updateSheetName(SheetName)}
-        />
-        <button className="btn" onClick={openChart}><i className="fa-solid fa-chart-line"></i></button>
+        <div className="sheet-title-container">
+          <i className="fa-solid fa-pen"></i>
+          <input
+            className='sheet-header-input'
+            value={SheetName}
+            onChange={onChangeHandler}
+            onBlurCapture={() => updateSheetName(SheetName)}
+          />
+        </div>
       </div>
+      <button className="btn" onClick={openChart}><i className="fa-solid fa-chart-line"></i></button>
       <div className="right-group">
         {user._id === sheetData.ownerId && (
           <>
-            <button className='btn btn-secondary border-aqua save-btn' onClick={updateSheetData}>
+            <button className='btn btn-secondary border-borderColor save-btn' onClick={updateSheetData}>
               Save
             </button>
-            <button className='btn btn-primary bg-green' onClick={openModal}>
-              Share
-            </button>
+            <ShareButton onClick={openModal} />
           </>
         )}
       </div>
