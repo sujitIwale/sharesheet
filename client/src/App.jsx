@@ -1,7 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
+import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
+import MainLayout from "./components/layout/MainLayout";
 import HiddenRoute from "./components/routes/HiddenRoute";
 import PrivateRoute from "./components/routes/PrivateRoute";
 import { AuthState } from "./context/auth/AuthState";
@@ -27,9 +29,8 @@ import Sheet from "./pages/sheet/Sheet";
 function App() {
   return (
     <Router>
-      <div className='app'>
-        <AuthState>
-          <Header />
+      <AuthState>
+        <MainLayout>
           <Switch>
             <Route exact path='/signin'>
               <SignIn />
@@ -37,18 +38,17 @@ function App() {
             <Route exact path='/signup'>
               <SignUp />
             </Route>
-            <HiddenRoute exact path='/about' component={Landing} />
+            <HiddenRoute exact path='/landing' component={Landing} />
             <FileState>
               <SheetState>
                 <PrivateRoute exact path='/' component={Project} />
                 <PrivateRoute exact path='/sheet/:sheetId' component={Sheet} />
               </SheetState>
             </FileState>
-
             <Route path='*' element={<p>There's nothing here: 404!</p>} />
           </Switch>
-        </AuthState>
-      </div>
+        </MainLayout>
+      </AuthState>
     </Router>
   );
 }
