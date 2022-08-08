@@ -112,7 +112,7 @@ input[type='checkbox'] {
   height: 1.4em;
 }
 
-.footer {
+.searchuser-footer {
   margin-top: 20px;
   width: 100%;
   display: flex;
@@ -133,7 +133,7 @@ input[type='checkbox'] {
     width: 85%;
   }
 
-  .footer {
+  .searchuser-footer {
     margin-top: 7px;
   }
 }

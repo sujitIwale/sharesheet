@@ -12,6 +12,10 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+#root {
+  height: 100vh;
+}
+
 body,
 h1,
 h2,
@@ -63,6 +67,14 @@ body {
 
 .align-center {
   align-items: center;
+}
+
+.gap-1 {
+  gap: 4px;
+}
+
+.justify-ceneter {
+  justify-content: center;
 }
 
 .center {
@@ -127,7 +139,7 @@ body {
 }
 
 .bg-green {
-  background-color: green;
+  background-color: rgb(1, 147, 1);
 }
 
 .bg-1 {
@@ -146,24 +158,30 @@ body {
   color: blue;
 }
 
+.text-red {
+  color: red;
+}
+
 /* Buttton */
 
 
 .btn {
-  padding: 5px 9px;
+  padding: 6px 12px;
   border: none;
   outline: none;
   cursor: pointer;
-  font-weight: bold;
-  font-size: large;
+  font-weight: 500;
+  font-size: 16px;
+  border-radius: 3px;
+}
+
+.btn:hover {
+  opacity: 85%;
 }
 
 
 .btn-primary {
   color: #ffffff;
-  cursor: pointer;
-  font-weight: bold;
-  border-radius: 3px;
 }
 
 .btn-primary.hover:hover {
@@ -171,13 +189,9 @@ body {
 }
 
 .btn-secondary {
-  padding: 4px 9px;
   color: #000000;
-  cursor: pointer;
-  font-weight: bold;
   background-color: inherit;
   border: 0.7px solid grey;
-  border-radius: 3px;
 }
 
 .btn-secondary:hover {
@@ -198,6 +212,10 @@ body {
   border-color: aqua;
 }
 
+.border-borderColor {
+  border-color: var(--border-color);
+}
+
 .shadow {
   box-shadow: var(--box-shadow);
 }
@@ -210,7 +228,7 @@ body {
 
 .customized-scrollbar::-webkit-scrollbar {
   background-color: #e9eaed;
-  width: 11px;
+  width: 8px;
   height: 11px;
 }
 
@@ -235,7 +253,6 @@ body {
     padding: 4px 6px;
     font-size: medium;
   }
-
 
   .btn-secondary {
     padding: 3px 6px;

@@ -4,7 +4,7 @@
   flex-direction: column;
   align-items: center;
   margin-top: 7%;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .auth-card {
@@ -33,7 +33,7 @@
   width: 90%;
   display: flex;
   flex-direction: column;
-  padding: 30px 11%;
+  padding: 25px 11%;
   font-weight: lighter;
 }
 
@@ -120,6 +120,11 @@
 @media only screen and (max-width: 550px) {
   .auth-page-main {
     margin-top: 25%;
+  }
+
+  .auth-card form {
+    padding: 25px 4%;
+    font-weight: lighter;
   }
 
   .auth-card {

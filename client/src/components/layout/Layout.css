@@ -1,0 +1,13 @@
+.app {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    /* overflow: auto; */
+    position: relative;
+    justify-content: space-between;
+}
+
+.main-section {
+    height: 100%;
+    overflow: auto;
+}

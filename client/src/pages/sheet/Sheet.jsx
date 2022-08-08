@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import SearchUser from "../../components/SearchUser/SearchUser";
 import Modal from "../../components/shared/Modal/Modal";
@@ -17,6 +17,19 @@ const Sheet = () => {
   const { fetchSheetData, sheetData, searchUsers, addUserToSheet } = useSheet();
   const { user } = useAuth();
 
+
+  useLayoutEffect(() => {
+    const mainSection = document.querySelector('.main-section')
+
+    if (mainSection) {
+      mainSection.style.overflow = 'hidden'
+    }
+    return () => {
+      mainSection.style.overflow = 'auto'
+    };
+  }, [])
+
+
   useEffect(() => {
     setLoading(true);
     fetchSheetData(sheetId, () => setLoading(false));
@@ -26,6 +39,8 @@ const Sheet = () => {
     // eslint-disable-next-line
   }, [sheetId]);
   if (!sheetData || !user) return <LineLoader />;
+
+
 
   const chartAction = () => {
     setchartOpened((state) => {

@@ -2,41 +2,81 @@
   display: flex;
   flex-direction: row;
   background-color: var(--background-color);
-  padding: 10px 2%;
+  padding: 5px 2%;
   width: 100%;
   border-bottom: 0.7px solid var(--border-color);
   justify-content: space-between;
   align-items: center;
   top: 0;
-  position: sticky;
 }
 
 .signin-btn {
   margin: 0 20px;
-  font-size: large;
   border: none;
-  background-color: rgb(198, 196, 196);
-  padding: 5px 8px;
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  font-size: large;
 }
 
 .signin-btn:hover {
-  background-color: rgb(169, 168, 168);
+  background-color: rgb(248, 248, 248);
 }
 
 .signup-btn {
   font-size: large;
 }
 
-
 .user-profile-icon {
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   border: 0.7px solid grey;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
+
+.user-profile-icon i {
+  font-size: large;
+}
+
+.profile-container {
+  position: relative;
+}
+
+.profile-dropdown {
+  user-select: none;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  position: absolute;
+  top: 45px;
+  left: -100px;
+  background-color: #fff;
+  width: 150px;
+  z-index: 100 !important;
+  box-shadow: var(--box-shadow);
+}
+
+.profile-dropdown li {
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 4px 8px;
+  width: 100%;
+}
+
+
+.profile-dropdown li:hover {
+  background-color: rgb(234, 232, 232);
+}
+
+
 
 
 @media only screen and (max-width: 500px) {

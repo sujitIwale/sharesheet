@@ -11,7 +11,7 @@
   --primary-btn-hover-color: #f9952b;
   --secondary-btn-hover-color: #f8f8f8;
   --text-secondary-color: #141E61;
-  --border-color: rgb(230, 227, 227);
+  --border-color: #C9CBE2;
   --accent: purple;
   --box-shadow: 1px 1px 4px 0px #0000001A;
 }
@@ -20,10 +20,4 @@ body {
   background-color: var(--background-color);
   color: var(--text-primary-color);
   overflow: hidden;
-}
-
-.app {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
 }
