@@ -51,7 +51,7 @@ const Header = () => {
               Sign Out
             </button> */}
             <div className="profile-container">
-              <span className="user-profile-icon" onClick={() => setProfileOpen(state => !state)}><i class="fa-solid fa-user"></i></span>
+              <span className="user-profile-icon" onClick={() => setProfileOpen(state => !state)}><i className="fa-solid fa-user"></i></span>
               {
                 ProfileOpen && <ul className="profile-dropdown">
                   <li>{isAuth().name}</li>
@@ -59,7 +59,7 @@ const Header = () => {
                   <li
                     onClick={signOutClickHandler}
                     className='flex row align-center gap-1'
-                  ><span>Sign Out</span><i class="fa-solid fa-arrow-right-from-bracket"></i></li>
+                  ><span>Sign Out</span><i className="fa-solid fa-arrow-right-from-bracket"></i></li>
                 </ul>
               }
             </div>

@@ -2,8 +2,10 @@
   width: 90%;
   margin: 0 auto;
   display: flex;
-  margin-top: 80px;
+  margin-top: 100px;
   flex-direction: row;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 60px;
 }
 
 .landing-page {
@@ -17,11 +19,21 @@
 }
 
 .landing-page .info h1 {
-  font-weight: 600;
+  font-weight: 500;
   font-size: 44px;
   margin: 0 0 20px;
   line-height: 1.4;
   color: #1d1d1d;
+}
+
+.card-image {
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  user-select: none;
+}
+
+.card-image:hover {
+  border: 1px solid var(--primary-color);
 }
 
 .landing-page .info h1 span {
@@ -58,7 +70,49 @@
 
 .landing-img img {
   width: 95%;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
 }
+
+.landing-img img:hover {
+  border: 1px solid var(--primary-color);
+}
+
+
+.details-section {
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 70px;
+  margin-bottom: 40px;
+}
+
+.details-section .details-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.feature-detail {
+  display: flex;
+  flex-direction: row;
+  gap: 100px;
+  align-items: center;
+  padding: 0 200px;
+}
+
+.feature-detail img {
+  height: 300px;
+  width: 60%;
+}
+
+.feature-detail h1 {
+  flex: 1;
+  font-size: 32px;
+}
+
 
 /* .header-main {
   margin-top: 10px;
@@ -68,6 +122,7 @@
 @media only screen and (max-width: 900px) {
   .landing-page-container {
     width: 95%;
+    margin-top: 70px;
   }
 
   .landing-img {
@@ -83,14 +138,40 @@
   .landing-page-container {
     width: 95%;
     flex-direction: column;
+    margin-top: 25px;
+  }
+
+  .landing-page .info h1 {
+    font-size: 32px;
   }
 
   .landing-img {
     width: 100%;
     margin-top: 30px;
+    user-select: none;
   }
 
   .landing-page .info {
     width: 100%;
+  }
+
+  .details-section {
+    gap: 40px;
+    margin-bottom: 20px;
+  }
+
+  .feature-detail {
+    flex-direction: row;
+    gap: 10px;
+    padding: 0 20px;
+  }
+
+  .feature-detail img {
+    height: 120px;
+    width: 60%;
+  }
+
+  .feature-detail h1 {
+    font-size: 16px;
   }
 }
