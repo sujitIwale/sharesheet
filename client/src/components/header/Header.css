@@ -13,13 +13,13 @@
 .signin-btn {
   margin: 0 20px;
   border: none;
-  background-color: #ffffff;
-  border: 1px solid var(--border-color);
+  background-color: #efefef;
+  /* border: 1px solid var(--border-color); */
   font-size: large;
 }
 
 .signin-btn:hover {
-  background-color: rgb(248, 248, 248);
+  background-color: rgb(232, 232, 232);
 }
 
 .signup-btn {
@@ -35,6 +35,10 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+}
+
+.user-profile-icon:hover {
+  border-color: var(--primary-color);
 }
 
 .user-profile-icon i {
@@ -81,7 +85,12 @@
 
 @media only screen and (max-width: 500px) {
   .header-main {
-    padding: 5px 1%;
+    padding: 3px 1%;
+  }
+
+  .user-profile-icon {
+    width: 30px;
+    height: 30px;
   }
 }
 

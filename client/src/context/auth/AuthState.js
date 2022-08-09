@@ -26,7 +26,6 @@ const AuthState = (props) => {
   };
   const [state, dispatch] = useReducer(AuthReducer, initialState);
   const loadUser = async (option) => {
-
     dispatch({ type: SET_LOADING });
     const res = await verifyToken();
     if (res) {
@@ -40,7 +39,7 @@ const AuthState = (props) => {
   const setError = (error) => {
     dispatch({ type: SET_AUTH_ERROR, payload: error });
 
-    setTimeout(() => dispatch({ type: SET_AUTH_ERROR, payload: null }), 2000)
+    setTimeout(() => dispatch({ type: SET_AUTH_ERROR, payload: null }), 3000);
   };
   const signUp = async (data) => {
     const res = await postRequest(signUp_Url, data);

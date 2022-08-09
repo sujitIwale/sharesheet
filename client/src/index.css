@@ -226,6 +226,10 @@ body {
 
 /*Customize Scrollbar*/
 
+.customize-scrollbar {
+  scroll-behavior: smooth;
+}
+
 .customized-scrollbar::-webkit-scrollbar {
   background-color: #e9eaed;
   width: 8px;
