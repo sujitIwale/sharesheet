@@ -175,10 +175,6 @@ body {
   border-radius: 3px;
 }
 
-.btn:hover {
-  opacity: 85%;
-}
-
 
 .btn-primary {
   color: #ffffff;
