@@ -11,3 +11,10 @@
     height: 100%;
     overflow: auto;
 }
+
+
+@media only screen and (max-width:500px) {
+    .main-section::-webkit-scrollbar {
+        display: none;
+    }
+}

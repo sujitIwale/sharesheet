@@ -12,6 +12,7 @@
 .modalContainer {
 	width: 700px;
 	min-height: 270px;
+	max-height: 500px;
 	margin: 10px;
 	border-radius: 5px;
 	background-color: #ffffff;
@@ -20,6 +21,7 @@
 	flex-direction: column;
 	justify-content: space-between;
 	margin-bottom: 14%;
+	overflow: auto;
 }
 
 .modalContainer .title {
@@ -62,7 +64,7 @@
 		top: 15%;
 		position: fixed;
 		width: 350px;
-		height: 250px;
+		min-height: 250px;
 	}
 
 	.modalBackground {
